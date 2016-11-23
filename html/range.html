@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LCsim</title>
+<style type="text/css">
+body {
+	background-color: #F4F4F4;
+}
+</style>
+</head>
+
+<body>
+<p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+<form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <p>
+    <label for="tempfile">Template File:</label>
+    <input type="file" name="tempfile" id="tempfile">
+    <label for="scalemin"><br>
+      <br>
+    </label>
+    <label for="phase">Constant phase offset:</label>
+    <input type="text" name="phase" id="phase">
+    <label for="scalemin"><br>
+      <br>
+      OR input range of phase offsets:      <br>
+    </label>
+   </p>
+  <blockquote>
+    <p>
+      Minimum phase offset:
+        <input name="phasemin" type="text" id="phasemin">
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <label for="phasemax">Maximum phase offset:</label>
+    <input type="text" name="phasemax" id="phasemax">
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <label for="phasestep">Number of </label>
+      <select name="phasetype" id="phasetype">
+        <option value="phaselin" selected>linear steps</option>
+        <option value="phaselog">logarithmic steps</option>
+      </select>
+      <label for="phasestep"> for phase offset range:</label>
+      <input type="text" name="phasestep" id="phasestep">
+    </p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <p>
+    <input type="checkbox" name="checkbox" id="checkbox">
+    <label for="checkbox">Use Date for Template</label>
+  </p>
+  <p>
+    <label for="textfield2">Epoch of Zero Phase:</label>
+    <input type="text" name="textfield2" id="textfield2">
+    <br>
+     <label for="scalemin"><br>
+     </label>
+     <label for="obsfile">Observation File:</label>
+     <input type="file" name="obsfile" id="obsfile">
+  </p>
+   <p>
+     <label for="period">Constant period (days):</label>
+     <input type="text" name="period" id="period">
+  </p>
+   <p>OR input range of periods:</p>
+   <blockquote>
+    <label for="periodmin">
+
+    Minimum period (days): </label>
+    <input type="text" name="periodmin" id="periodmin">
+  </blockquote>
+    <blockquote>
+
+    <label for="periodmax">Maximum period (days):</label>
+    <input type="text" name="periodmax" id="periodmax">
+    <label for="scalemin">
+    
+
+    </label>
+    </blockquote>
+    <blockquote>
+    <label for="periodstep">Number of </label>
+    <select name="periodtype" id="periodtype">
+      <option value="periodlin" selected>linear steps</option>
+      <option value="periodlog">logarithmic steps</option>
+    </select>
+    <label for="periodstep"> for period range:</label>
+    <input type="text" name="periodstep" id="periodstep">
+    <label for="scalemin">  <br>
+      <br>
+    </label>
+    </blockquote>
+
+  <p>
+      <select name="mag" id="mag">
+        <option value="max">Maximum Magnitude</option>
+        <option value="min">Minimum Magnitude</option>
+    </select>
+(mag)      :
+      <input type="text" name="magvalue" id="magvalue">
+  </p>
+  <p></p>
+  <p>
+    <label for="scale">Constant Scale Factor:</label>
+    <input type="text" name="scale" id="scale">    
+  </p>
+  <p>OR input range of scale factors:</p>
+  <blockquote>
+    <label for="scalemin">Minimum scale factor:</label>
+    <input type="text" name="scalemin" id="scalemin">
+  </blockquote>
+
+  <blockquote>
+    <label for="scalemax">Maximum scale factor:</label>
+    <input type="text" name="scalemax" id="scalemax">
+  </blockquote>
+  <blockquote>
+    <label for="scalestep">Number of </label>
+    <select name="scaletype" id="scaletype">
+      <option value="scalelin" selected>linear steps</option>
+      <option value="scalelog">logarithmic steps</option>
+    </select>
+    <label for="scalestep"> for scale factor range:</label>
+    <input type="text" name="scalestep" id="scalestep">
+  </blockquote>
+  <p>Mean Error (mag):
+    <input type="text" name="error" id="error">
+  </p>
+  <p>Enter sigma for systematic noise (mag) :
+    <input type="text" name="sigma" id="sigma">
+  </p>
+  <p>Poisson Noise?
+    <input type="checkbox" name="poisson" id="poisson">
+  </p>
+  <p>Output noise info?
+    <input type="checkbox" name="info" id="info">
+  </p>
+  <p>
+    <label for="filename">Output filename:</label>
+    <input name="filename" type="text" id="filename" value="model">
+  </p>
+  <p>
+    <label for="number">Number of Lightcurves generated per combination of parameters:</label>
+    <input name="number" type="text" id="number" value="1">
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+</form>
+</body>
+</html>

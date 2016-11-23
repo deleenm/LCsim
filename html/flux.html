@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LCsim</title>
+<style type="text/css">
+body {
+	background-color: #F4F4F4;
+}
+</style>
+</head>
+
+<body>
+<p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+<p><a href="fluxrange.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
+<form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <p>
+    <label for="tempfile">Template File (given in flux):</label>
+    <input type="file" name="tempfile" id="tempfile">
+    <label for="scale"><br>
+      <br>
+      Template File Format:<br>
+      <br>
+    </label>
+    <label>
+      <input name="format" type="radio" id="RadioGroup1_0" title="format" value="fphase" checked>
+      Phase</label>
+    <br>
+    <label>
+      <input type="radio" name="format" value="fdate" id="RadioGroup1_0">
+      Date</label>
+    <br>
+    <label for="scale"><br>
+      Phase offset:
+        <input name="phase" type="text" id="phase" value="0">
+<br>
+      <br>
+      Epoch of zero Phase:
+      <input type="text" name="date" id="date">
+<br>
+<br>
+    </label>
+    <label for="obsfile">Observation File:</label>
+    <input type="file" name="obsfile" id="obsfile">
+    <label for="scale"><br>
+      <br>
+      Period (days): </label>
+    <input type="text" name="period" id="period">
+    <label for="scale"><br>
+      <br>
+    </label>
+    <select name="flux" id="flux">
+      <option value="max">Maximum Value</option>
+      <option value="min">Minimum Value</option>
+    </select>
+    <label for="fluxvalue">:</label>
+    <input type="text" name="fluxvalue" id="fluxvalue">
+    <label for="scale">  <br>
+    </label>
+  </p>
+<label for="scale">Scale Factor:</label>
+    <input name="scale" type="text" id="scale" value="1.0">
+  </p>
+  <p>Mean Error:
+    <input name="error" type="text" id="error" value="5">
+  </p>
+  <p>Enter sigma for systematic noise:
+    <input type="text" name="sigma" id="sigma">
+  </p>
+  <p>Poisson Noise?
+    <input type="checkbox" name="poissonflux" id="poissonflux">
+  </p>
+  <p>Output noise info?
+    <input type="checkbox" name="info" id="info">
+  </p>
+  <p>
+    <label for="filename">Output filename:</label>
+    <input name="filename" type="text" id="filename" value="model">
+  </p>
+  <p>
+    <label for="number">Number of Lightcurve Observations:</label>
+    <input name="number" type="text" id="number" value="1">
+  </p>
+  <p>&nbsp;</p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+</form>
+</body>
+</html>

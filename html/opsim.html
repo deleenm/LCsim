@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LCsim</title>
+<style type="text/css">
+body {
+	background-color: #F4F4F4;
+}
+</style>
+</head>
+
+<body>
+<p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+<p>Input RA, Dec, and filter (ugrizy) to find a set of Opsim observations.</p>
+<form action="./LCopsim.py" method="post" name="form1" id="form1">
+  <p>
+    <label for="ra">Right Ascension (degrees):</label>
+    <input type="text" name="ra" id="ra">
+  </p>
+  <p>
+    <label for="dec">Declination (degrees):</label>
+    <input type="text" name="dec" id="dec">
+  </p>
+  <p>
+    <label for="filter">Select:</label>
+    <select name="filter" id="filter">
+      <option value="u">u</option>
+      <option value="g">g</option>
+      <option value="r">r</option>
+      <option value="i">i</option>
+      <option value="z">z</option>
+      <option value="y">y</option>
+      <option value="all" selected>All filters</option>
+    </select>
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+</form>
+<p>&nbsp;</p>
+
+</body>
+</html>
