@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 '''
 LCpage feeds form data to the LCsim package
 
@@ -13,149 +13,41 @@ all the data and return the finished product to a downloadable file.
 # -----------------------------
 # Standard library dependencies
 # -----------------------------
+
 import cgi 
 import cgitb
 import os 
 from subprocess import Popen, PIPE
 import sys
 from time import time, gmtime, strftime
-
 import numpy as np
+
+#--------------------------------
+#Third party library dependencies
+#--------------------------------
+
+#from astropy import SkyCoord
 
 # --------------------
 # Function Definitions
 # --------------------
-'''
-Save uploaded file to upload directory
-'''
 
-def gcirc(u,ra1,dc1,ra2,dc2,verb=False):
-#+
-# NAME:
-#     GCIRC
-# PURPOSE:
-#     Computes rigorous great circle arc distances.
-# EXPLANATION:
-#     Input position can either be either radians, sexagesimal RA, Dec or
-#     degrees.   All computations are double precision.
-#
-# CALLING SEQUENCE:
-#      GCIRC, U, RA1, DC1, RA2, DC2
-#
-# INPUTS:
-#      U    -- integer = 0,1, or 2: Describes units of inputs and output:
-#              0:  everything radians
-#              1:  RAx in decimal hours, DCx in decimal
-#                       degrees, DIS in arc seconds
-#              2:  RAx and DCx in degrees, DIS in arc seconds
-#      RA1  -- Right ascension or longitude of point 1
-#      DC1  -- Declination or latitude of point 1
-#      RA2  -- Right ascension or longitude of point 2
-#      DC2  -- Declination or latitude of point 2
-#
-# OUTPUTS:
-#      DIS  -- Angular distance on the sky between points 1 and 2
-#              See U above for units;  double precision
-#
-# PROCEDURE:
-#      "Haversine formula" see
-#      http://en.wikipedia.org/wiki/Great-circle_distance
-#
-# NOTES:
-#       (1) If RA1,DC1 are scalars, and RA2,DC2 are vectors, then DIS is a
-#       vector giving the distance of each element of RA2,DC2 to RA1,DC1.
-#       Similarly, if RA1,DC1 are vectors, and RA2, DC2 are scalars, then DIS
-#       is a vector giving the distance of each element of RA1, DC1 to
-#       RA2, DC2.    If both RA1,DC1 and RA2,DC2 are vectors then DIS is a
-#       vector giving the distance of each element of RA1,DC1 to the
-#       corresponding element of RA2,DC2.    If the input vectors are not the
-#       same length, then excess elements of the longer ones will be ignored.
-#
-#       (2) The function SPHDIST provides an alternate method of computing
-#        a spherical distance.
-#
-#       (3) The haversine formula can give rounding errors for antipodal
-#       points.
-#
-# PROCEDURE CALLS:
-#      None
-#
-#   MODIFICATION HISTORY:
-#      Written in Fortran by R. Hill -- SASC Technologies -- January 3, 1986
-#      Translated from FORTRAN to IDL, RSH, STX, 2/6/87
-#      Vector arguments allowed    W. Landsman    April 1989
-#      Prints result if last argument not given.  RSH, RSTX, 3 Apr. 1998
-#      Remove ISARRAY(), V5.1 version        W. Landsman   August 2000
-#      Added option U=2                      W. Landsman   October 2006
-#      Use double precision for U=0 as advertised R. McMahon/W.L. April 2007
-#      Use havesine formula, which has less roundoff error in the
-#             milliarcsecond regime      W.L. Mar 2009
-#-
-
-    d2r    = np.pi/180.0
-    as2r   = np.pi/648000.0
-    h2r    = np.pi/12.0
-
-    #Convert input to double precision radians
- 
-    if u == 0:
-        rarad1 = np.array(ra1,ndmin=1)
-        rarad2 = np.array(ra2,ndmin=1)
-        dcrad1 = np.array(dc1,ndmin=1)
-        dcrad2 = np.array(dc2,ndmin=1)
-    elif u == 1:
-        rarad1 = np.array(ra1,ndmin=1)*h2r
-        rarad2 = np.array(ra2,ndmin=1)*h2r
-        dcrad1 = np.array(dc1,ndmin=1)*d2r
-        dcrad2 = np.array(dc2,ndmin=1)*d2r      
-
-    elif u == 2:
-        rarad1 = np.array(ra1,ndmin=1)*d2r
-        rarad2 = np.array(ra2,ndmin=1)*d2r
-        dcrad1 = np.array(dc1,ndmin=1)*d2r
-        dcrad2 = np.array(dc2,ndmin=1)*d2r 
-
-    else:
-        print 'U must be 0 (radians), 1 ( hours, degrees) or 2 (degrees)'
-        sys.exit(1)
-
-    deldec2 = (dcrad2-dcrad1)/2.0
-    delra2 =  (rarad2-rarad1)/2.0
-    sindis = np.sqrt( np.sin(deldec2)*np.sin(deldec2) + np.cos(dcrad1)*np.cos(dcrad2)*np.sin(delra2)*np.sin(delra2) )
-    dis = 2.0*np.arcsin(sindis)
-
-    if u != 0:
-        dis = dis/as2r
-
-    if verb == True:
-        for dist in dis:
-            if (u != 0) and (dist >= 0.1) and (dist <= 1000):
-                fmt = '10.4f'
-            else:
-                fmt = '15.8E'
-            if (u != 0):
-                units = ' arcsec'
-            else:
-                units = ' radians'
-                print 'Angular separation is {:{format}} {}'.format(dist,units,format=fmt)
-
-    return(dis)
-
-def saveFile(uFile, saveDir):
-        fPath = "%s/%s" % (saveDir, uFile.filename)
+def saveFile(ufile, saveDir):
+        fpath = "%s/%s" % (saveDir, uFile.filename)
         buf = uFile.file.read()
         bytes = len(buf)
         try:
             sFile = open(fPath, 'wb')
-        except IOError:
+        except I0Error:
             print "File {} could not be opened!".format(fPath)
             sys.exit(1)
         sFile.write(buf)
         sFile.close()
-
+        
 # -------------
 # Main Function
 # -------------
+
 def LCopsim_main():
     
     index = np.array([-1.570795,-1.483528611,-1.396262222,-1.308995833,-1.221729444,-1.134463056,-1.047196667,
@@ -177,7 +69,6 @@ def LCopsim_main():
     os.umask(0000)
     os.mkdir('storage3/{}'.format(name))
     
-    
     #Process regular inputs
         
     if form.getvalue('ra'):
@@ -198,7 +89,9 @@ def LCopsim_main():
         print 'The LSST is a Southern Hemisphere survey, so there are less observations the higher the declination.<br>'
     if dec > .305432:
         print 'There are fewer observations above 35 degrees, so the closest observation may be more than a degree away or more.<br>'
+    
     #Process dropdown box
+    
     type = form.getvalue('filter')
     
     opsim = np.genfromtxt('/hd1/LCsim/opsim/opsimindex.dat')
@@ -228,8 +121,6 @@ def LCopsim_main():
             outfile.write("{:.5f}\n".format(line[1]))
             
     outfile.close()
-    
-    dis = gcirc(0,opsim[idx,2],opsim[idx,3],ra,dec,verb=False)
     
     os.chdir('/hd1/LCsim/storage3/{}'.format(name))
     print 'The closest point was found at an Right Ascension of {:.04f} degrees and a Declination of {:.04f} degrees, which is {:.06f} degrees away.'.format(opsim[idx,2]*360/np.pi,opsim[idx,3]*360/np.pi,float(dis)*360/np.pi)
