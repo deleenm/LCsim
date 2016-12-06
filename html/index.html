@@ -10,6 +10,28 @@ body {
 </style>
 </head>
 
+<script>
+	function phaseError() {
+    var error, x;
+    erro = document.getElementById("error");
+    error.innerHTML = "";
+    x = document.getElementById("phase").value;
+    try { 
+        if(x == "")  throw "empty";
+        if(isNaN(x)) throw "not a number";
+        x = Number(x);
+        if(x < 0)    throw "too low";
+        if(x > 1)   throw "too high";
+    }
+    catch(err) {
+        message.innerHTML = "Input is " + err;
+    }
+}
+	
+
+</script>
+	
+	
 <body>
 <p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
 <p><a href="range.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
@@ -38,8 +60,9 @@ body {
 	
   <p><br>
     <label for="scale">Phase offset:
-      <input name="phase" type="text" id="phase" value="0">
+      <input name="phase" type="text" id="phase" value="0" onchange="phaseError()">
       <br>
+	    <p id = "error"></p>
       <br>
       Epoch of zero Phase:
       <input type="text" name="date" id="date">
