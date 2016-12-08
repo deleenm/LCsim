@@ -10,26 +10,7 @@ body {
 </style>
 </head>
 
-<script>
-	function phaseError() {
-    var error, x;
-    erro = document.getElementById("error");
-    error.innerHTML = "";
-    x = document.getElementById("phase").value;
-    try { 
-        if(x == "")  throw "empty";
-        if(isNaN(x)) throw "not a number";
-        x = Number(x);
-        if(x < 0)    throw "too low";
-        if(x > 1)   throw "too high";
-    }
-    catch(err) {
-        message.innerHTML = "Input is " + err;
-    }
-}
-	
-
-</script>
+<script src ="error.js"></script>
 	
 	
 <body>
@@ -60,41 +41,43 @@ body {
 	
   <p><br>
     <label for="scale">Phase offset:
-      <input name="phase" type="text" id="phase" value="0" onchange="phaseError()">
+      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')">
       <br>
-	    <p id = "error"></p>
-      <br>
+	    <p id = "phaseError" data-error-type="errormessage"></p>
       Epoch of zero Phase:
-      <input type="text" name="date" id="date">
+      <input type="text" name="date" id="date" onchange="errorHandler('date','epochError')">
       <br>
-  <br>
+	    <p id = "epochError" data-error-type="errormessage"></p>
     </label>
     <label for="obsfile">Observation File:</label>
     <input type="file" name="obsfile" id="obsfile">
     <label for="scale"><br>
       <br>
       Period (days): </label>
-    <input type="text" name="period" id="period">
-    <label for="scale"><br>
+    <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
+    <label for="scale">
     </label>
   </p>
   <p>
       <select name="mag" id="mag">
         <option value="max">Maximum Magnitude</option>
         <option value="min">Minimum Magnitude</option>
-      </select>
-(mag)      :
+      </select>(mag):
       <input name="magvalue" type="text" id="magvalue" value="10">
       <br>
   </p>
     <label for="scale">Scale Factor:</label>
-    <input name="scale" type="text" id="scale" value="1.0">
+    <input name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p>
   </p>
   <p>Mean Error (mag):
-    <input name="error" type="text" id="error" value="0.01">
+    <input name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')">
+	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise (mag) :
-    <input type="text" name="sigma" id="sigma">
+    <input type="text" name="sigma" id="sigma" onchange="errorHandler('sigma','sigmaError')">
+	    <p id = "sigmaError" data-error-type="errormessage"></p>
   </p>
   <p>Poisson Noise?
     <input type="checkbox" name="poisson" id="poisson">
@@ -108,11 +91,12 @@ body {
   </p>
   <p>
     <label for="number">Number of Lightcurve Observations:</label>
-    <input name="number" type="text" id="number" value="1">
+    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')">
+	    <p id = "numberError" data-error-type="errormessage">:</p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input type="submit" name="submit" id="submit" value="Submit" onclick="validator()">
   </p>
 </form>
 </body>
