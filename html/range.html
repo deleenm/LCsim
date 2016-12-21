@@ -9,7 +9,7 @@ body {
 }
 </style>
 </head>
-
+<script src ="js/errorHandlers.js"></script>
 <body>
 <p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
 <form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
@@ -20,7 +20,9 @@ body {
       <br>
     </label>
     <label for="phase">Constant phase offset:</label>
-    <input type="text" name="phase" id="phase">
+    <input type="text" name="phase" id="phase" onchange="errorHandlerPhase('phase','phaseError')">
+      <br>
+	    <p id = "phaseError" data-error-type="errormessage"></p>
     <label for="scalemin"><br>
       <br>
       OR input range of phase offsets:      <br>
@@ -56,7 +58,9 @@ body {
   </p>
   <p>
     <label for="textfield2">Epoch of Zero Phase:</label>
-    <input type="text" name="textfield2" id="textfield2">
+    <input type="text" name="textfield2" id="textfield2" onchange="errorHandler('textfield2','epochError')">
+      <br>
+	    <p id = "epochError" data-error-type="errormessage"></p>
     <br>
      <label for="scalemin"><br>
      </label>
@@ -65,7 +69,8 @@ body {
   </p>
    <p>
      <label for="period">Constant period (days):</label>
-     <input type="text" name="period" id="period">
+     <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
   </p>
    <p>OR input range of periods:</p>
    <blockquote>
@@ -107,7 +112,8 @@ body {
   <p></p>
   <p>
     <label for="scale">Constant Scale Factor:</label>
-    <input type="text" name="scale" id="scale">    
+    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p>    
   </p>
   <p>OR input range of scale factors:</p>
   <blockquote>
@@ -129,10 +135,12 @@ body {
     <input type="text" name="scalestep" id="scalestep">
   </blockquote>
   <p>Mean Error (mag):
-    <input type="text" name="error" id="error">
+    <input type="text" name="error" id="error" onchange="errorHandler('error','meanError')">
+	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise (mag) :
-    <input type="text" name="sigma" id="sigma">
+    <input type="text" name="sigma" id="sigma" onchange="errorHandler('sigma','sigmaError')">
+	    <p id = "sigmaError" data-error-type="errormessage"></p>
   </p>
   <p>Poisson Noise?
     <input type="checkbox" name="poisson" id="poisson">
@@ -146,11 +154,12 @@ body {
   </p>
   <p>
     <label for="number">Number of Lightcurves generated per combination of parameters:</label>
-    <input name="number" type="text" id="number" value="1">
+    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')">
+	    <p id = "numberError" data-error-type="errormessage">:</p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input type="submit" name="submit" id="submit" value="Submit" onclick="validator()">
   </p>
 </form>
 </body>
