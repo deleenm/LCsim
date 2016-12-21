@@ -9,7 +9,7 @@ body {
 }
 </style>
 </head>
-
+<script src ="js/errorHandlers.js"></script>
 <body>
 <p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
 <p><a href="fluxrange.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
@@ -32,12 +32,12 @@ body {
     <br>
     <label for="scale"><br>
       Phase offset:
-        <input name="phase" type="text" id="phase" value="0">
-<br>
+      <input name="phase" type="text" id="phase" value="0"onchange="errorHandlerPhase('phase','phaseError')">
+	    <p id = "phaseError" data-error-type="errormessage"></p>
       <br>
       Epoch of zero Phase:
-      <input type="text" name="date" id="date">
-<br>
+      <input type="text" name="date" id="date" onchange="errorHandler('date','epochError')">
+	    <p id = "epochError" data-error-type="errormessage"></p>
 <br>
     </label>
     <label for="obsfile">Observation File:</label>
@@ -45,7 +45,8 @@ body {
     <label for="scale"><br>
       <br>
       Period (days): </label>
-    <input type="text" name="period" id="period">
+    <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
     <label for="scale"><br>
       <br>
     </label>
@@ -59,13 +60,16 @@ body {
     </label>
   </p>
 <label for="scale">Scale Factor:</label>
-    <input name="scale" type="text" id="scale" value="1.0">
+    <input name="scale" type="text" id="scale" value="1.0" onchange="errorHandler('scale','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p>
   </p>
   <p>Mean Error:
-    <input name="error" type="text" id="error" value="5">
+    <input name="error" type="text" id="error" value="5" onchange="errorHandler('error','meanError')">
+	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise:
-    <input type="text" name="sigma" id="sigma">
+    <input type="text" name="sigma" id="sigma" onchange="errorHandler('sigma','sigmaError')">
+	    <p id = "sigmaError" data-error-type="errormessage"></p>
   </p>
   <p>Poisson Noise?
     <input type="checkbox" name="poissonflux" id="poissonflux">
@@ -79,11 +83,12 @@ body {
   </p>
   <p>
     <label for="number">Number of Lightcurve Observations:</label>
-    <input name="number" type="text" id="number" value="1">
+    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')">
+	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input type="submit" name="submit" id="submit" value="Submit" onclick="validator()>
   </p>
 </form>
 </body>

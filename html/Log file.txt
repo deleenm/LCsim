@@ -1,0 +1,10 @@
+Variables that need parameter:
+
+
+range.html:
+Min and Max phase offset
+Min and Max days
+Min and Max scale factors
+
+flux.html:
+Min and Max flux 
