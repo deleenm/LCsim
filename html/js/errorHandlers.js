@@ -13,6 +13,7 @@
         x = Number(x);
         if(x < 0)    throw "too low";
         if(x >= 1)   throw "too high";
+		else{errorBoolean= false;}
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
@@ -29,6 +30,7 @@
         if(isNaN(x)) throw "not a number";
         x = Number(x);
         if(x <= 0)    throw "too low";
+		else{errorBoolean= false;}
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
@@ -49,6 +51,7 @@
         x = Number(x);
         if(x < 0)    throw "too low";
         if(x >= 1000)   throw "too high";
+		else{errorBoolean= false;}
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
@@ -56,8 +59,13 @@
     }
 	}
 	
-	
+	 
 	function validator()
 	{
-		if(errorBoolean) window.alert("Please correct the errors");
+		if(errorBoolean) {
+			alert("Please correct the errors");
+			return false;}
+		else{
+			return true;
+		}
 	}

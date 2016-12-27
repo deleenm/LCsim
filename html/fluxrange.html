@@ -2,16 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src ="js/errorHandlers.js"></script>
+</head>
 <style type="text/css">
 body {
 	background-color: #F4F4F4;
+	position: relative;
+    left: 10px;
 }
+[data-error-type="errormessage"]{color: red;}
 </style>
 </head>
-
+<script src ="js/errorHandlers.js"></script>
 <body>
-<p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+<p><img src="banner.jpg" width=75% height=25%  alt=""/></p>
 <form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
   <p>
     <label for="tempfile">Template File (given in flux):</label>
@@ -20,22 +27,24 @@ body {
       <br>
     </label>
     <label for="phase">Constant phase offset:</label>
-    <input type="text" name="phase" id="phase">
+    <input type="text" name="phase" id="phase" onchange="errorHandlerPhase('phase','phaseError')">
+	    <p id = "phaseError" data-error-type="errormessage"></p>
     <label for="scalemin"><br>
-      <br>
       OR input range of phase offsets:      <br>
     </label>
    </p>
   <blockquote>
     <p>
       Minimum phase offset:
-        <input name="phasemin" type="text" id="phasemin">
+        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseError')">
+	    <p id = "phaseError" data-error-type="errormessage"></p>
     </p>
   </blockquote>
 
   <blockquote>
     <label for="phasemax">Maximum phase offset:</label>
-    <input type="text" name="phasemax" id="phasemax">
+    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseError')">
+	    <p id = "phaseError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
@@ -56,28 +65,32 @@ body {
   </p>
   <p>
     <label for="textfield2">Epoch of Zero Phase:</label>
-    <input type="text" name="textfield2" id="textfield2">
-    <br>
-     <label for="scalemin"><br>
+    <input type="text" name="textfield2" id="textfield2" onchange="errorHandler('textfield2','epochError')">
+      <br>
+	    <p id = "epochError" data-error-type="errormessage"></p>
+	<label for="scalemin"><br>
      </label>
      <label for="obsfile">Observation File:</label>
      <input type="file" name="obsfile" id="obsfile">
   </p>
    <p>
      <label for="period">Constant period (days):</label>
-     <input type="text" name="period" id="period">
+     <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
   </p>
    <p>OR input range of periods:</p>
    <blockquote>
     <label for="periodmin">
 
     Minimum period (days): </label>
-    <input type="text" name="periodmin" id="periodmin">
+    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
   </blockquote>
     <blockquote>
 
     <label for="periodmax">Maximum period (days):</label>
-    <input type="text" name="periodmax" id="periodmax">
+    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodError')">
+	    <p id = "periodError" data-error-type="errormessage"></p>
     <label for="scalemin">
     
 
@@ -106,17 +119,20 @@ body {
   </p>
   <p>
     <label for="scale">Constant Scale Factor:</label>
-    <input type="text" name="scale" id="scale">    
+    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p> 
   </p>
   <p>OR input range of scale factors:</p>
   <blockquote>
     <label for="scalemin">Minimum scale factor:</label>
-    <input type="text" name="scalemin" id="scalemin">
+    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
     <label for="scalemax">Maximum scale factor:</label>
-    <input type="text" name="scalemax" id="scalemax">
+    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleError')">
+	    <p id = "scaleError" data-error-type="errormessage"></p>
   </blockquote>
   <blockquote>
     <label for="scalestep">Number of </label>
@@ -128,10 +144,12 @@ body {
     <input type="text" name="scalestep" id="scalestep">
   </blockquote>
   <p>Mean Error (mag):
-    <input type="text" name="error" id="error">
+    <input type="text" name="error" id="error" onchange="errorHandler('error','meanError')">
+	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise (mag) :
-    <input type="text" name="sigma" id="sigma">
+    <input type="text" name="sigma" id="sigma" onchange="errorHandler('sigma','sigmaError')">
+	    <p id = "sigmaError" data-error-type="errormessage"></p>
   </p>
   <p>Poisson Noise?
     <input type="checkbox" name="poisson" id="poisson">
@@ -145,11 +163,12 @@ body {
   </p>
   <p>
     <label for="number">Number of Lightcurves generated per combination of parameters:</label>
-    <input name="number" type="text" id="number" value="1">
+    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')">
+	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
   </p>
 </form>
 </body>

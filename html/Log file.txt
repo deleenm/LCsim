@@ -8,3 +8,14 @@ Min and Max scale factors
 
 flux.html:
 Min and Max flux 
+
+fluxrange.html:
+Min and Max phase offset
+
+
+opsim.html
+Right Ascension (degrees)
+Declination (degrees)
+
+
+
