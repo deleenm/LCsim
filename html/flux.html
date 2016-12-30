@@ -61,7 +61,8 @@ body {
       <option value="min">Minimum Value</option>
     </select>
     <label for="fluxvalue">:</label>
-    <input type="text" name="fluxvalue" id="fluxvalue">
+    <input type="text" name="fluxvalue" id="fluxvalue" onchange="errorHandlerFlux('fluxvalue','fluxError')">
+	    <p id = "fluxError" data-error-type="errormessage"></p>
     <label for="scale">  <br>
     </label>
   </p>

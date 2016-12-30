@@ -37,15 +37,15 @@ body {
   <blockquote>
     <p>
       <label for="phasemax">Minimum phase offset:</label>
-        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseError')">
-	    <p id = "phaseError" data-error-type="errormessage"></p>
+        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseMinError')">
+	    <p id = "phaseMinError" data-error-type="errormessage"></p>
     </p>
   </blockquote>
 
   <blockquote>
     <label for="phasemax">Maximum phase offset:</label>
-    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseError')">
-	    <p id = "phaseError" data-error-type="errormessage"></p>
+    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseMaxError')">
+	    <p id = "phaseMaxError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
@@ -85,14 +85,14 @@ body {
     <label for="periodmin">
 
     Minimum period (days): </label>
-    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodError')">
-	    <p id = "periodError" data-error-type="errormessage"></p>
+    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodMinError')">
+	    <p id = "periodMinError" data-error-type="errormessage"></p>
   </blockquote>
     <blockquote>
 
     <label for="periodmax">Maximum period (days):</label>
-    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodError')">
-	    <p id = "periodError" data-error-type="errormessage"></p>
+    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodMaxError')">
+	    <p id = "periodMaxError" data-error-type="errormessage"></p>
     <label for="scalemin">
     
 
@@ -128,14 +128,14 @@ body {
   <p>OR input range of scale factors:</p>
   <blockquote>
     <label for="scalemin">Minimum scale factor:</label>
-    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
+    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleMinError')">
+	    <p id = "scaleMinError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
     <label for="scalemax">Maximum scale factor:</label>
-    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
+    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleMaxError')">
+	    <p id = "scaleMaxError" data-error-type="errormessage"></p>
   </blockquote>
   <blockquote>
     <label for="scalestep">Number of </label>

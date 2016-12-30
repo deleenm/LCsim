@@ -36,15 +36,15 @@ body {
   <blockquote>
     <p>
       Minimum phase offset:
-        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseError')">
-	    <p id = "phaseError" data-error-type="errormessage"></p>
+        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseMinError')">
+	    <p id = "phaseMinError" data-error-type="errormessage"></p>
     </p>
   </blockquote>
 
   <blockquote>
     <label for="phasemax">Maximum phase offset:</label>
-    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseError')">
-	    <p id = "phaseError" data-error-type="errormessage"></p>
+    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseMaxError')">
+	    <p id = "phaseMaxError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
@@ -55,7 +55,8 @@ body {
         <option value="phaselog">logarithmic steps</option>
       </select>
       <label for="phasestep"> for phase offset range:</label>
-      <input type="text" name="phasestep" id="phasestep">
+      <input type="text" name="phasestep" id="phasestep" onchange="errorHandlerPhase('phasestep','phaseStepError')">
+	    <p id = "phaseStepError" data-error-type="errormessage"></p>
     </p>
     <p>&nbsp;</p>
   </blockquote>
@@ -83,14 +84,14 @@ body {
     <label for="periodmin">
 
     Minimum period (days): </label>
-    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodError')">
-	    <p id = "periodError" data-error-type="errormessage"></p>
+    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodMinError')">
+	    <p id = "periodMinError" data-error-type="errormessage"></p>
   </blockquote>
     <blockquote>
 
     <label for="periodmax">Maximum period (days):</label>
-    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodError')">
-	    <p id = "periodError" data-error-type="errormessage"></p>
+    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodMaxError')">
+	    <p id = "periodMaxError" data-error-type="errormessage"></p>
     <label for="scalemin">
     
 
@@ -103,7 +104,8 @@ body {
       <option value="periodlog">logarithmic steps</option>
     </select>
     <label for="periodstep"> for period range:</label>
-    <input type="text" name="periodstep" id="periodstep">
+    <input type="text" name="periodstep" id="periodstep" onchange="errorHandler('periodstep','periodStepMaxError')">
+	    <p id = "periodStepMaxError" data-error-type="errormessage"></p>
     <label for="scalemin"><br>
     </label>
     </blockquote>
@@ -114,7 +116,8 @@ body {
       <option value="min">Minimum Value</option>
     </select>
     <label for="fluxvalue">:</label>
-    <input type="text" name="fluxvalue" id="fluxvalue">
+    <input type="text" name="fluxvalue" id="fluxvalue" onchange="errorHandlerFlux('fluxvalue','fluxError')">
+	    <p id = "fluxError" data-error-type="errormessage"></p>
     <label for="scale3"> </label>
   </p>
   <p>
@@ -125,14 +128,14 @@ body {
   <p>OR input range of scale factors:</p>
   <blockquote>
     <label for="scalemin">Minimum scale factor:</label>
-    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
+    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleMinError')">
+	    <p id = "scaleMinError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
     <label for="scalemax">Maximum scale factor:</label>
-    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
+    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleMaxError')">
+	    <p id = "scaleMaxError" data-error-type="errormessage"></p>
   </blockquote>
   <blockquote>
     <label for="scalestep">Number of </label>
@@ -141,7 +144,8 @@ body {
       <option value="scalelog">logarithmic steps</option>
     </select>
     <label for="scalestep"> for scale factor range:</label>
-    <input type="text" name="scalestep" id="scalestep">
+    <input type="text" name="scalestep" id="scalestep" onchange="errorHandler('scalestep','scaleStepError')">
+	    <p id = "scaleStepError" data-error-type="errormessage"></p>
   </blockquote>
   <p>Mean Error (mag):
     <input type="text" name="error" id="error" onchange="errorHandler('error','meanError')">

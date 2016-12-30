@@ -23,11 +23,13 @@ body {
 <form action="./LCopsim.py" method="post" name="form1" id="form1">
   <p>
     <label for="ra">Right Ascension (degrees):</label>
-    <input type="text" name="ra" id="ra">
+    <input type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
+	    <p id = "raError" data-error-type="errormessage"></p>
   </p>
   <p>
     <label for="dec">Declination (degrees):</label>
-    <input type="text" name="dec" id="dec">
+    <input type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')">
+	    <p id = "decError" data-error-type="errormessage"></p>
   </p>
   <p>
     <label for="filter">Select:</label>
