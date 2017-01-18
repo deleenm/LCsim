@@ -27,7 +27,7 @@ body {
   <p>
 	  
     <label for="tempfile">Template File (mag) :</label>
-    <input type="file" name="tempfile" id="tempfile">
+    <input type="file" name="tempfile" id="tempfile" required>
     <label for="scale"><br><br>
 	    
 	    
@@ -45,7 +45,7 @@ body {
 	
   <p><br>
     <label for="scale">Phase offset:
-      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')">
+      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
       <br>
 	    <p id = "phaseError" data-error-type="errormessage"></p>
       Epoch of zero Phase:
