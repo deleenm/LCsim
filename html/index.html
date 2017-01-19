@@ -23,7 +23,7 @@ body {
 <p><a href="range.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
 <p><a href="flux.html">Want to input a template using flux instead of magnitude?</a></p>
 <p><a href="opsim.html">Get an observation file from OpSim for the upcoming LSST survey!</a></p>
-<form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
   <p>
 	  
     <label for="tempfile">Template File (mag) :</label>
@@ -45,7 +45,7 @@ body {
 	
   <p><br>
     <label for="scale">Phase offset:
-      <input name="phase" type="text" id="phase" value="0" required onchange="errorHandlerPhase('phase','phaseError')">
+      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
       <br>
 	    <p id = "phaseError" data-error-type="errormessage"></p>
       Epoch of zero Phase:
