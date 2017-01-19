@@ -227,7 +227,7 @@ if __name__ == '__main__':
     </head>
     
     <body>
-    <p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+    <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
     '''
     
     #Run LCpage
