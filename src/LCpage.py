@@ -35,7 +35,7 @@ def saveFile(uFile, saveDir):
         try:
             sFile = open(fPath, 'wb')
         except IOError:
-            print "File {} could not be opened!".format(fPath)
+            print("File {} could not be opened!".format(fPath))
             sys.exit(1)
         sFile.write(buf)
         sFile.close()
@@ -45,13 +45,14 @@ def saveFile(uFile, saveDir):
 # -------------
 def LCpage_main():
     
+    global name, name
     start = time()
     # Create instance of FieldStorage 
     form = cgi.FieldStorage()
     
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
-        print 'You must include a template file. Please go back and upload one.'
+        print('You must include a template file. Please go back and upload one.')
         sys.exit(0)
     
     #Create directory with timestamp down to the second
