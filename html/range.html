@@ -66,7 +66,7 @@ body {
   </p>
   <p>
     <label for="textfield2">Epoch of Zero Phase:</label>
-    <input type="text" name="textfield2" id="textfield2" onchange="errorHandler('textfield2','epochError')" required>
+    <input type="text" name="textfield2" id="textfield2" onchange="errorHandler('textfield2','epochError')" >
       <br>
 	    <p id = "epochError" data-error-type="errormessage"></p>
     <br>
@@ -85,13 +85,13 @@ body {
     <label for="periodmin">
 
     Minimum period (days): </label>
-    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodMinError')" required>
+    <input type="text" name="periodmin" id="periodmin" onchange="errorHandler('periodmin','periodMinError')" >
 	    <p id = "periodMinError" data-error-type="errormessage"></p>
   </blockquote>
     <blockquote>
 
     <label for="periodmax">Maximum period (days):</label>
-    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodMaxError')" required>
+    <input type="text" name="periodmax" id="periodmax" onchange="errorHandler('periodmax','periodMaxError')">
 	    <p id = "periodMaxError" data-error-type="errormessage"></p>
     <label for="scalemin">
     
@@ -128,13 +128,13 @@ body {
   <p>OR input range of scale factors:</p>
   <blockquote>
     <label for="scalemin">Minimum scale factor:</label>
-    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleMinError')" required>
+    <input type="text" name="scalemin" id="scalemin" onchange="errorHandler('scalemin','scaleMinError')">
 	    <p id = "scaleMinError" data-error-type="errormessage"></p>
   </blockquote>
 
   <blockquote>
     <label for="scalemax">Maximum scale factor:</label>
-    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleMaxError')" required>
+    <input type="text" name="scalemax" id="scalemax" onchange="errorHandler('scalemax','scaleMaxError')">
 	    <p id = "scaleMaxError" data-error-type="errormessage"></p>
   </blockquote>
   <blockquote>
