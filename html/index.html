@@ -2,72 +2,86 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src ="js/errorHandlers.js"></script>
+</head>
 <style type="text/css">
+
+
 body {
 	background-color: #F4F4F4;
+	position: relative;
+    left: 10px;
 }
+[data-error-type="errormessage"]{color: red;}
 </style>
-</head>
-
+	
 <body>
-<p><img src="banner.jpg" width="600" height="199"  alt=""/></p>
+<p><img src="banner.jpg" width=75% height=25%  alt="banner"></p>
 <p><a href="range.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
 <p><a href="flux.html">Want to input a template using flux instead of magnitude?</a></p>
 <p><a href="opsim.html">Get an observation file from OpSim for the upcoming LSST survey!</a></p>
-<form action="./LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
   <p>
+	  
     <label for="tempfile">Template File (mag) :</label>
-    <input type="file" name="tempfile" id="tempfile">
-    <label for="scale"><br>
-      <br>
+    <input type="file" name="tempfile" id="tempfile" required>
+    <label for="scale"><br><br>
+	    
+	    
+	    
       Template File Format:<br>
       <br>
     </label>
     <label>
       <input name="format" type="radio" id="RadioGroup1_0" title="format" value="fphase" checked>
       Phase</label>
-    <br>
     <label>
       <input type="radio" name="format" value="fdate" id="RadioGroup1_0">
       Date</label>
   </p>
+	
   <p><br>
     <label for="scale">Phase offset:
-      <input name="phase" type="text" id="phase" value="0">
+      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
       <br>
-      <br>
+	    <p id = "phaseError" data-error-type="errormessage"></p>
       Epoch of zero Phase:
-      <input type="text" name="date" id="date">
+      <input type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
       <br>
-  <br>
+	    <p id = "epochError" data-error-type="errormessage"></p>
     </label>
     <label for="obsfile">Observation File:</label>
     <input type="file" name="obsfile" id="obsfile">
     <label for="scale"><br>
       <br>
       Period (days): </label>
-    <input type="text" name="period" id="period">
-    <label for="scale"><br>
+    <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
+	    <p id = "periodError" data-error-type="errormessage"></p>
+    <label for="scale">
     </label>
   </p>
   <p>
       <select name="mag" id="mag">
         <option value="max">Maximum Magnitude</option>
         <option value="min">Minimum Magnitude</option>
-      </select>
-(mag)      :
+      </select>(mag):
       <input name="magvalue" type="text" id="magvalue" value="10">
       <br>
   </p>
     <label for="scale">Scale Factor:</label>
-    <input name="scale" type="text" id="scale" value="1.0">
+    <input name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')" required>
+	    <p id = "scaleError" data-error-type="errormessage"></p>
   </p>
   <p>Mean Error (mag):
-    <input name="error" type="text" id="error" value="0.01">
+    <input name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')" required>
+	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise (mag) :
-    <input type="text" name="sigma" id="sigma">
+    <input type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
+	    <p id = "sigmaError" data-error-type="errormessage"></p>
   </p>
   <p>Poisson Noise?
     <input type="checkbox" name="poisson" id="poisson">
@@ -81,12 +95,14 @@ body {
   </p>
   <p>
     <label for="number">Number of Lightcurve Observations:</label>
-    <input name="number" type="text" id="number" value="1">
+    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
+	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
+    <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
   </p>
+  
 </form>
 </body>
 </html>

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 '''
 LCsim creates a model lightcurve from specified data
 

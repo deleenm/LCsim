@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+'''
+LCpage feeds form data to the LCsim package
+'''
 
 import cgi 
 import cgitb
