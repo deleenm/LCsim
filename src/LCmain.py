@@ -38,7 +38,7 @@ def LCmain_date(args):
     try: 
         outfile = open('./storage3/{}/info.txt'.format(args.name),'w')
     except IOError:
-        print "File {} could not be opened!".format('info.txt')
+        print "[LC Main]File {} could not be opened!".format('info.txt')
         sys.exit(1)
     outfile.write('File             Period  Amp  Phase offset\n')
     
@@ -142,7 +142,7 @@ def LCmain_main(args):
     try: 
         outfile = open('./storage3/{}/info.txt'.format(args.name),'w')
     except IOError:
-        print "File {} could not be opened!".format('info.txt')
+        print "[LCmain]File {} could not be opened!".format('info.txt')
         sys.exit(1)
     outfile.write('File             Period  Amp  Phase offset  Epoch of Maximum\n')
     
