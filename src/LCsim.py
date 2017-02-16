@@ -245,7 +245,7 @@ def save_noise(noise,name,j):
         outfile = open('{}/noise{num:05d}.cur'.format(name,num=j),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/noise{num:05d}.cur'.format(name,num=j),'w')
     except IOError:
-        print "File {} could not be opened!".format('noise.cur')
+        print "[LCsim.py] File {} could not be opened!".format('noise.cur')
         sys.exit(1)
     
     for i in range(noise.shape[0]):

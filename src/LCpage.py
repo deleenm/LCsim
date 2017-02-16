@@ -35,7 +35,7 @@ def saveFile(uFile, saveDir):
         try:
             sFile = open(fPath, 'wb')
         except IOError:
-            print("File {} could not be opened!".format(fPath))
+            print("[LCpage] File {} could not be opened!".format(fPath))
             sys.exit(1)
         sFile.write(buf)
         sFile.close()
