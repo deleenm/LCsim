@@ -224,7 +224,7 @@ def save_model(model,filename,name):
         outfile = open('{}/{}'.format(name,filename),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/{}'.format(name,filename),'w')
     except IOError:
-        print "File {} could not be opened!".format(filename)
+        print "[LCsm] File {} could not be opened!".format(filename)
         sys.exit(1)
     
     for line in model:
