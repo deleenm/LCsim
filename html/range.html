@@ -27,7 +27,7 @@ body {
       <br>
     </label>
     <label for="phase">Constant phase offset:</label>
-    <input type="text" name="phase" id="phase" onchange="errorHandlerPhase('phase','phaseError')" required>
+    <input type="text" name="phase" id="phase" onchange="errorHandlerPhase('phase','phaseError')" >
 	    <p id = "phaseError" data-error-type="errormessage"></p>
     <label for="scalemin"><br>
       <br>
@@ -66,7 +66,7 @@ body {
   </p>
   <p>
     <label for="textfield2">Epoch of Zero Phase:</label>
-    <input type="text" name="textfield2" id="textfield2" onchange="errorHandler('textfield2','epochError')" >
+    <input type="text" name="textfield2" id="textfield2" value="0" onchange="errorHandler('textfield2','epochError')" >
       <br>
 	    <p id = "epochError" data-error-type="errormessage"></p>
     <br>
@@ -77,7 +77,7 @@ body {
   </p>
    <p>
      <label for="period">Constant period (days):</label>
-     <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
+     <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')" >
 	    <p id = "periodError" data-error-type="errormessage"></p>
   </p>
    <p>OR input range of periods:</p>
@@ -122,7 +122,7 @@ body {
   <p></p>
   <p>
     <label for="scale">Constant Scale Factor:</label>
-    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')" required>
+    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')" >
 	    <p id = "scaleError" data-error-type="errormessage"></p>    
   </p>
   <p>OR input range of scale factors:</p>
@@ -147,7 +147,7 @@ body {
     <input type="text" name="scalestep" id="scalestep">
   </blockquote>
   <p>Mean Error (mag):
-    <input type="text" name="error" id="error" onchange="errorHandler('error','meanError')" required>
+    <input type="text" name="error" id="error" onchange="errorHandler('error','meanError')" >
 	    <p id = "meanError" data-error-type="errormessage"></p>
   </p>
   <p>Enter sigma for systematic noise (mag) :
@@ -161,11 +161,11 @@ body {
     <input type="checkbox" name="info" id="info">
   </p>
   <p>
-    <label for="filename">Output filename:</label>
-    <input name="filename" type="text" id="filename" value="model">
+    <label for="filename">*Output filename:</label>
+    <input name="filename" type="text" id="filename" value="model" required>
   </p>
   <p>
-    <label for="number">Number of Lightcurves generated per combination of parameters:</label>
+    <label for="number">*Number of Lightcurves generated per combination of parameters:</label>
     <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
 	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
