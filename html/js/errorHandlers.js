@@ -69,8 +69,8 @@ function errorHandlerPhase(inputID,outputID) {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
-        if(x <= 0)    throw "too low";
-        if(x >= 1)   throw "too high";
+        if(x < 0)    throw "too low";
+        if(x > 1)   throw "too high";
 		else{errorBoolean= false;}
     }
     catch(err) {
