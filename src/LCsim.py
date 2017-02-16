@@ -221,7 +221,7 @@ def save_model(model,filename,name):
     
     #Open a file to store results
     try: 
-        outfile = open('{}/{}'.format(name,filename),'w')
+        outfile = open('./Storage3/{}/{}'.format(name,filename),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/{}'.format(name,filename),'w')
     except IOError:
         print "[LCsm] File {} could not be opened!".format(filename)
@@ -242,7 +242,7 @@ def save_noise(noise,name,j):
     
     #Open a file to store results
     try: 
-        outfile = open('{}/noise{num:05d}.cur'.format(name,num=j),'w')
+        outfile = open('./Storage3/{}/noise{num:05d}.cur'.format(name,num=j),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/noise{num:05d}.cur'.format(name,num=j),'w')
     except IOError:
         print "[LCsim.py] File {} could not be opened!".format('noise.cur')
