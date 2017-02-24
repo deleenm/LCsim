@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src ="js/errorHandlers.js"></script>
 </head>
 <style type="text/css">
@@ -26,21 +33,16 @@ body {
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
   <p>
 	  
-    <label for="tempfile">Template File (mag) :</label>
+    <label for="tempfile"><h4>*Template File (mag) :</h4></label>
     <input type="file" name="tempfile" id="tempfile" required>
-    <label for="scale"><br><br>
-	    
-	    
-	    
-      Template File Format:<br>
-      <br>
-    </label>
-    <label>
-      <input name="format" type="radio" id="RadioGroup1_0" title="format" value="fphase" checked>
-      Phase</label>
-    <label>
-      <input type="radio" name="format" value="fdate" id="RadioGroup1_0">
-      Date</label>
+    <label for="scale"><br><h4>Template File Format:</h4></label>
+	<p>
+	
+	<label>
+      <input name="format" type="radio" id="RadioGroup1_0" title="format" value="fphase" checked>Phase </label>
+    <label> 
+      <input type="radio" name="format" value="fdate" id="RadioGroup1_0"> Date</label>
+	</p>
   </p>
 	
   <p><br>
@@ -101,6 +103,7 @@ body {
   <p>&nbsp;</p>
   <p>
     <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
+	<input type='reset' value='Clear' name='reset'>
   </p>
   
 </form>
