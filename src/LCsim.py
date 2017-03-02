@@ -13,7 +13,7 @@ accomplishes the same tasks for multiple runs.
 
 @verbatim
 Usage: LCsim.py Templatefile
-
+period
 Templatefile   Template lightcurve file
 @endverbatim
 

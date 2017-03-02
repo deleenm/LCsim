@@ -70,7 +70,7 @@ function errorHandlerPhase(inputID,outputID) {
         if(isNaN(x)) throw "not a number";
         x = Number(x);
         if(x < 0)    throw "too low";
-        if(x > 1)   throw "too high";
+        if(x >= 1)   throw "too high";
 		else{errorBoolean= false;}
     }
     catch(err) {
@@ -127,4 +127,10 @@ function errorHandlerLightObs(inputID,outputID) {
 		else{
 			return true;
 		}
+	}
+	
+	
+	function clearErrors()
+	{
+		errorBoolean = false;
 	}
