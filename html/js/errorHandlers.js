@@ -11,7 +11,10 @@ function errorHandlerFlux(inputID,outputID) {
         x = Number(x);
         if(x <= -3e26)    throw "too low";
         if(x >= 3e26 )   throw "too high";
-		else{errorBoolean= false;}
+		else
+		{
+			errorBoolean= false;
+		}
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
@@ -60,6 +63,8 @@ function errorHandlerRightDeclination(inputID,outputID) {
 }
 
 
+
+
 function errorHandlerPhase(inputID,outputID) {
     var error, x;
     error = document.getElementById(outputID);
@@ -88,7 +93,9 @@ function errorHandler(inputID,outputID) {
         if(isNaN(x)) throw "not a number";
         x = Number(x);
         if(x < 0)    throw "too low";
-		else{errorBoolean= false;}
+		else{
+			errorBoolean= false;
+			}
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
@@ -132,5 +139,6 @@ function errorHandlerLightObs(inputID,outputID) {
 	
 	function clearErrors()
 	{
-		errorBoolean = false;
+		location.reload();
+		
 	}

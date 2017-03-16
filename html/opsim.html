@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src ="js/errorHandlers.js"></script>
 </head>
 <style type="text/css">
@@ -16,24 +25,49 @@ body {
 [data-error-type="errormessage"]{color: red;}
 </style>
 </head>
-<script src ="js/errorHandlers.js"></script>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+	  <li><a href="#">About</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Range Models
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="range.html">Range</a></li>
+          <li><a href="fluxrange.html">Flux Range</a></li>
+        </ul>
+      </li>
+      <li><a href="flux.html">Flux</a></li>
+      <li><a href="opsim.html">Opsim</a></li>
+    </ul>
+  </div>
+</nav>
 <body>
-<p><img src="banner.jpg" width=75% height=25%  alt=""/></p>
+<p><img  class="center-block" src="banner.jpg" width=75% height=25%  alt=""/></p>
+
 <p>Input RA, Dec, and filter (ugrizy) to find a set of Opsim observations.</p>
+<div class="container">
 <form action="../src/LCopsim.py" method="post" name="form1" id="form1">
-  <p>
+  
+	<div class="form-group">
     <label for="ra">*Right Ascension (degrees):</label>
-    <input type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
+    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
 	    <p id = "raError" data-error-type="errormessage"></p>
-  </p>
-  <p>
+	</div>
+  
+	<div class="form-group">
     <label for="dec">*Declination (degrees):</label>
-    <input type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
+    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
 	    <p id = "decError" data-error-type="errormessage"></p>
-  </p>
-  <p>
+	</div>
+	
+	<div class="form-group">
     <label for="filter">Select:</label>
-    <select name="filter" id="filter">
+    <select class="form-control" name="filter" id="filter">
       <option value="u">u</option>
       <option value="g">g</option>
       <option value="r">r</option>
@@ -42,13 +76,12 @@ body {
       <option value="y">y</option>
       <option value="all" selected>All filters</option>
     </select>
-  </p>
-  <p>
-    <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input type='reset' value='Clear' name='reset'>
-  </p>
+	</div>
+  
+    <input class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
+	<input class="btn btn-primary btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
+  
 </form>
-<p>&nbsp;</p>
-
+</div>
 </body>
 </html>

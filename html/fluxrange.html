@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src ="js/errorHandlers.js"></script>
 </head>
 <style type="text/css">
@@ -17,49 +26,81 @@ body {
 </style>
 </head>
 <script src ="js/errorHandlers.js"></script>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+	  <li><a href="#">About</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Range Models
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="range.html">Range</a></li>
+          <li><a href="fluxrange.html">Flux Range</a></li>
+        </ul>
+      </li>
+      <li><a href="flux.html">Flux</a></li>
+      <li><a href="opsim.html">Opsim</a></li>
+    </ul>
+  </div>
+</nav>
+
 <body>
-<p><img src="banner.jpg" width=75% height=25%  alt=""/></p>
+<p><img  class="center-block" src="banner.jpg" width=75% height=25%  alt=""/></p>
+
+<div class="container">
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <p>
-    <label for="tempfile">Template File (given in flux):</label>
+  <br>
+	<div class="form-group">
+    <label for="tempfile"><h5>Template File (given in flux):</h5></label>
     <input type="file" name="tempfile" id="tempfile">
-    <label for="scalemin"><br>
-      <br>
-    </label>
-    <label for="phase">Constant phase offset:</label>
-    <input type="text" name="phase" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" >
+	</div>
+	
+	<div class="form-group">
+	<div class="form-group">
+    <label for="phase"><h5>Constant phase offset:</h5></label>
+    <input class="form-control" type="text" name="phase" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" >
 	    <p id = "phaseError" data-error-type="errormessage"></p>
-    <label for="scalemin"><br>
-      OR input range of phase offsets:      <br>
-    </label>
-   </p>
-  <blockquote>
-    <p>
-      Minimum phase offset:
-        <input name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseMinError')">
+	</div>
+    <label><h5>OR input range of phase offsets:</h5></label>
+	<br>
+	<div class="col-sm-5">
+		<span class="col-md-5 control-label"><h5>Minimum phase offset:</h5></span>
+        <input class="form-control" name="phasemin" type="text" id="phasemin" onchange="errorHandlerPhase('phasemin','phaseMinError')">
 	    <p id = "phaseMinError" data-error-type="errormessage"></p>
-    </p>
-  </blockquote>
+	</div>
 
-  <blockquote>
-    <label for="phasemax">Maximum phase offset:</label>
-    <input type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseMaxError')">
+	<div class="col-sm-5">
+    <span class="col-md-5 control-label"><h5>Maximum phase offset:</h5></span>
+    <input class="form-control" type="text" name="phasemax" id="phasemax" onchange="errorHandlerPhase('phasemax','phaseMaxError')">
 	    <p id = "phaseMaxError" data-error-type="errormessage"></p>
-  </blockquote>
-
-  <blockquote>
-    <p>
-      <label for="phasestep">Number of </label>
-      <select name="phasetype" id="phasetype">
+	</div>
+	
+  <div class="form-group">
+	  
+	  <div class="form-group">
+	  <label for="phasetype" class="col-md-2 control-label"><h5>Number of</h5></label>
+	  <div class="col-sm-2">
+      <select class="form-control" name="phasetype" id="phasetype">
         <option value="phaselin" selected>linear steps</option>
         <option value="phaselog">logarithmic steps</option>
       </select>
-      <label for="phasestep"> for phase offset range:</label>
-      <input type="text" name="phasestep" id="phasestep" onchange="errorHandlerPhase('phasestep','phaseStepError')">
+	  </div>
+	  
+      <label for="phasestep" class="col-md-2 control-label"><h5>for phase offset range:</h5></label>
+      <div class="col-sm-2">
+	  <input class="form-control" type="text" name="phasestep" id="phasestep" onchange="errorHandlerPhase('phasestep','phaseStepError')">
 	    <p id = "phaseStepError" data-error-type="errormessage"></p>
-    </p>
-    <p>&nbsp;</p>
-  </blockquote>
+		</div>
+	  </div>
+    </div>
+  </div>
+  
+  
   <p>
     <input type="checkbox" name="checkbox" id="checkbox">
     <label for="checkbox">Use Date for Template</label>
@@ -176,5 +217,7 @@ body {
 	<input type='reset' value='Clear' name='reset'>
   </p>
 </form>
+</div>
+
 </body>
 </html>

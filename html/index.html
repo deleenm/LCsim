@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -16,7 +17,6 @@
 </head>
 <style type="text/css">
 
-
 body {
 	background-color: #F4F4F4;
 	position: relative;
@@ -24,88 +24,127 @@ body {
 }
 [data-error-type="errormessage"]{color: red;}
 </style>
-	
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+	  <li><a href="#">About</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Range Models
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="range.html">Range</a></li>
+          <li><a href="fluxrange.html">Flux Range</a></li>
+        </ul>
+      </li>
+      <li><a href="flux.html">Flux</a></li>
+      <li><a href="opsim.html">Opsim</a></li>
+    </ul>
+  </div>
+</nav>
+
 <body>
-<p><img src="banner.jpg" width=75% height=25%  alt="banner"></p>
+<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
 <p><a href="range.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
 <p><a href="flux.html">Want to input a template using flux instead of magnitude?</a></p>
 <p><a href="opsim.html">Get an observation file from OpSim for the upcoming LSST survey!</a></p>
+
+<div class="container">
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  <p>
-	  
-    <label for="tempfile"><h4>*Template File (mag) :</h4></label>
+	<br>
+	<div class="form-group">
+    <label for="tempfile"><h5>*Template File (mag) :</h5></label>
     <input type="file" name="tempfile" id="tempfile" required>
-    <label for="scale"><br><h4>Template File Format:</h4></label>
-	<p>
+	</div>
+  
+	<div class="form-group">
+	<label for="RadioGroup1_0"><br><h5>Template File Format:</h5></label><br>
+    <input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked>Phase
+    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"> Date</label>
+	</div>
 	
-	<label>
-      <input name="format" type="radio" id="RadioGroup1_0" title="format" value="fphase" checked>Phase </label>
-    <label> 
-      <input type="radio" name="format" value="fdate" id="RadioGroup1_0"> Date</label>
-	</p>
-  </p>
+	<div class="form-group">
+    <label for="phase"><h5>*Phase offset:</h5></label>
+      <input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
+	   <p id = "phaseError" data-error-type="errormessage"></p>
+	</div>
 	
-  <p><br>
-    <label for="scale">*Phase offset:
-      <input name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
-      <br>
-	    <p id = "phaseError" data-error-type="errormessage"></p>
-      Epoch of zero Phase:
-      <input type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
-      <br>
+	<div class="form-group">
+    <label for="date"><h5>Epoch of zero Phase:</h5></label>
+      <input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
 	    <p id = "epochError" data-error-type="errormessage"></p>
-    </label>
-    <label for="obsfile">Observation File:</label>
+	</div>
+    
+	<div class="form-group">
+    <label for="obsfile"><h5>Observation File:</h5></label>
     <input type="file" name="obsfile" id="obsfile">
-    <label for="scale"><br>
-      <br>
-      *Period (days): </label>
-    <input type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
+    </div>
+	
+	
+	<div class="form-group">
+	<label for="period"><h5>*Period (days):</h5></label>
+    <input class="form-control" type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
 	    <p id = "periodError" data-error-type="errormessage"></p>
-    <label for="scale">
-    </label>
-  </p>
-  <p>
-      <select name="mag" id="mag">
+	</div>
+	
+	<div class="form-group">
+	<span class="col-md-2 control-label">Select Magnitude:</span>
+      <div class="col-sm-5"><select class="form-control" name="mag" id="mag">
         <option value="max">Maximum Magnitude</option>
         <option value="min">Minimum Magnitude</option>
-      </select>(mag):
-      <input name="magvalue" type="text" id="magvalue" value="10">
-      <br>
-  </p>
-    <label for="scale">Scale Factor:</label>
-    <input name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
+      </select>
+	  </div>
+	<div class="col-sm-5">
+     <input class="form-control" name="magvalue" type="text" id="magvalue" value="10"></div>
+    </div>
+	 
+	 
+	<div class="form-group">
+    <label for="scale"><h5>Scale Factor:</h5></label>
+    <input class="form-control" name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
 	    <p id = "scaleError" data-error-type="errormessage"></p>
-  </p>
-  <p>*Mean Error (mag):
-    <input name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')" required>
+	</div>
+ 
+	<div class="form-group">
+    <label for="error"><h5>*Mean Error (mag):</h5></label>
+    <input class="form-control"  name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')" required>
 	    <p id = "meanError" data-error-type="errormessage"></p>
-  </p>
-  <p>Enter sigma for systematic noise (mag) :
-    <input type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
+	</div>
+	
+
+	<div class="form-group">
+    <label for="sigma"><h5>Enter sigma for systematic noise (mag) :</h5></label>
+    <input class="form-control" type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
 	    <p id = "sigmaError" data-error-type="errormessage"></p>
-  </p>
-  <p>Poisson Noise?
-    <input type="checkbox" name="poisson" id="poisson">
-  </p>
-  <p>Output noise info?
-    <input type="checkbox" name="info" id="info">
-  </p>
-  <p>
-    <label for="filename">Output filename:</label>
-    <input name="filename" type="text" id="filename" value="model">
-  </p>
-  <p>
-    <label for="number">*Number of Lightcurve Observations:</label>
-    <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
+	</div>
+	
+	<div class="checkbox">
+    <label><input type="checkbox" name="poisson" id="poisson">Poisson Noise?</label>
+	</div>
+	
+	<div class="checkbox">
+    <label><input type="checkbox" name="info" id="info">Output noise info?</label>
+	</div>
+  
+	<div class="form-group">
+    <label for="filename"><h5>Output filename:</h5></label>
+    <input class="form-control" name="filename" type="text" id="filename" value="model">
+	</div>
+	
+	<div class="form-group">
+    <label for="number"><h5>*Number of Lightcurve Observations:</h5></label>
+    <input class="form-control" name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
 	    <p id = "numberError" data-error-type="errormessage"></p>
-  </p>
-  <p>&nbsp;</p>
-  <p>
-    <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input type='reset' value='Clear' name='reset' onclick="clearErrors()">
-  </p>
+	</div>
+	
+    <input class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
+	<input class="btn btn-primary btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
   
 </form>
+</div>
 </body>
 </html>
