@@ -34,9 +34,10 @@ body {
       <li class="active"><a href="index.html">Home</a></li>
 	  <li><a href="#">About</a></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Range Models
+        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Models
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
+		  <li class = "divider"></li>
           <li><a href="range.html">Range</a></li>
           <li><a href="fluxrange.html">Flux Range</a></li>
         </ul>
@@ -49,10 +50,9 @@ body {
 
 <body>
 <p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
-<p><a href="range.html">Want to input a range of periods, scale factors, and phase offsets?</a></p>
-<p><a href="flux.html">Want to input a template using flux instead of magnitude?</a></p>
-<p><a href="opsim.html">Get an observation file from OpSim for the upcoming LSST survey!</a></p>
-
+<div class="container">
+<p> Sample Text Block</p>
+</div>
 <div class="container">
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
 	<br>
