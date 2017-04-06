@@ -13,10 +13,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script src ="js/errorHandlers.js"></script>
 </head>
 <style type="text/css">
+
 body {
 	background-color: #F4F4F4;
 	position: relative;
@@ -24,7 +24,7 @@ body {
 }
 [data-error-type="errormessage"]{color: red;}
 </style>
-</head>
+<body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -32,7 +32,7 @@ body {
     </div>
     <ul class="nav navbar-nav">
       <li><a href="index.html">Home</a></li>
-	  <li><a href="about.html">About</a></li>
+	  <li class="active"><a href="about.html">About</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
         <span class="caret"></span></a>
@@ -49,50 +49,18 @@ body {
           <li><a href="fluxrange.html">Flux</a></li>
         </ul>
       </li>
-      <li class="active" ><a href="opsim.html">Opsim</a></li>
+      <li><a href="opsim.html">Opsim</a></li>
     </ul>
   </div>
 </nav>
-<body>
-<p><img  class="center-block" src="banner.jpg" width=75% height=25%  alt=""/></p>
-<div class="container">
-<p>Input RA, Dec, and filter (ugrizy) to find a set of Opsim observations.</p>
-</div>
-<div class="container">
-<form action="../src/LCopsim.py" method="post" name="form1" id="form1">
-  
-	<div class="form-group">
-    <label for="ra">*Right Ascension (degrees):</label>
-    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
-	    <p id = "raError" data-error-type="errormessage"></p>
-	</div>
-  
-	<div class="form-group">
-    <label for="dec">*Declination (degrees):</label>
-    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
-	    <p id = "decError" data-error-type="errormessage"></p>
-	</div>
-	
-	<div class="form-group">
-    <label for="filter">Select:</label>
-    <select class="form-control" name="filter" id="filter">
-      <option value="u">u</option>
-      <option value="g">g</option>
-      <option value="r">r</option>
-      <option value="i">i</option>
-      <option value="z">z</option>
-      <option value="y">y</option>
-      <option value="all" selected>All filters</option>
-    </select>
-	</div>
-  
-    <input class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input class="btn btn-primary btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
-  
-</form>
 
+<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
+<div class="container">
+<p> Sample Text Block</p>
+	<a class="btn btn-primary btn-lg" href="mailto:emailholder">Contact</a> 
 <br><br>
 <footer>Last Update: 04/06/2017</footer>
+
 </div>
 </body>
 </html>
