@@ -28,7 +28,7 @@ import numpy as np
 
 #Log file
 import logging
-LOG_FILENAME = 'lcsim.log'
+LOG_FILENAME = '../log/lcsim.log'
 logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 logging.basicConfig(format='%(asctime)s %(message)s')
 logging.debug("New form request")
