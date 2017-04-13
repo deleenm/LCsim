@@ -13,47 +13,27 @@ Detailed Description
 Usage: cleaner.py -t time
 '''
 
-# -----------------------------
-# Standard library dependencies
-# -----------------------------
-import argparse
-import os
-import sys
-
-# -------------------
-# Third-party imports
 # -------------------
 import numpy as np
+#
+# # <editor-fold desc="Description">
+# def fixcurve_main(infile,outfile):
+#
+#
+#     return(0)
+#
+# if __name__ == '__main__':
+#     #Check to make sure we have 2 arguments
+#     parser = argparse.ArgumentParser(description='Identifies and deletes directories older than given time in days.')
+#     parser.add_argument('-t',default=2.0,type=float,help='Time in days that a directory should be allowed to exist (Default 2)')
+#
+#
+# #Put this in a dictionary
+#     args = vars(parser.parse_args())
+#     ret = fixcurve_main(args['t'])
+#     sys.exit(ret)
+# # </editor-fold>
+# # </editor-fold>
 
-
-# -----------------
-# Class Definitions
-# -----------------
-
-# --------------------
-# Function Definitions
-# --------------------
-
-# -------------
-# Main Function
-# -------------
-def fixcurve_main(infile,outfile):
-
-
-    return(0)
-
-if __name__ == '__main__':
-    #Check to make sure we have 2 arguments
-    parser = argparse.ArgumentParser(description='Identifies and deletes directories older than given time in days.')
-    parser.add_argument('-t',default=2.0,type=float,help='Time in days that a directory should be allowed to exist (Default 2)')
-
-
-#Put this in a dictionary    
-    args = vars(parser.parse_args())
-    ret = fixcurve_main(args['t'])
-    sys.exit(ret)
-
+def cleaner:
     
-##
-#@mainpage
- #@copydetails  slopetest

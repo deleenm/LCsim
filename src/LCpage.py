@@ -25,6 +25,14 @@ import numpy as np
 # --------------------
 # Function Definitions
 # --------------------
+
+#Log file
+import logging
+LOG_FILENAME = 'lcsim.log'
+logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s')
+logging.debug("New form request")
+
 '''
 Save uploaded file to upload directory
 '''
