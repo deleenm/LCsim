@@ -206,10 +206,10 @@ def LCpage_main():
 
      #Log file
     LOG_FILENAME = '../log/lcsim.log'
-    logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO)
-    logging.basicConfig(format='%(asctime)s %(message)s')
+    logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+    # logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
     logging.info(form['tempfile'].filename)
-    
+
     #Remove uploaded files
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
     if form['obsfile'].filename:
