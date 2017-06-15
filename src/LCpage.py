@@ -57,11 +57,11 @@ def LCpage_main():
         sys.exit(0)
     
     #Create directory with timestamp down to the second
-    
+
     success = False
     while not success:
         try:
-            name = strftime("%Y_%m_%d_%H_%M_%f", gmtime())
+            name = strftime("%Y_%m_%d_%H_%M_%S", gmtime())
             if not os.path.isdir(name):
                 success = True
                 os.umask(0000)
