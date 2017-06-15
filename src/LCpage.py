@@ -208,7 +208,7 @@ def LCpage_main():
     LOG_FILENAME = '../log/lcsim.log'
     #Formats text for the file
     logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Filename:"+ name)
+    logging.info("Filename:"+ name + " Template File: " + form['tempfile'].filename + "Obs File: " + form['obsfile'].filename)
 
     #Remove uploaded files
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
