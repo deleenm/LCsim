@@ -209,22 +209,22 @@ def LCpage_main():
     </html>
     '''
 
-     #Log file
-
-    
-if __name__ == '__main__':
-    
-    #Output errors to web
-    cgitb.enable()
-    LOG_FILENAME = '../log/lcsim.log'
-    #Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Directory: "+ 'storage3/{}'.format(name)+" Template File: " + form['tempfile'].filename + " Obs File: " + form['obsfile'].filename)
 
     #Remove uploaded files
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
+    
+if __name__ == '__main__':
+    
+    #Output errors to web
+    cgitb.enable()
+    #Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    #Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: "+ 'storage3/{}'.format(name)+" Template File: " + form['tempfile'].filename + " Obs File: " + form['obsfile'].filename)
+
     #Prepare webpage
     print "Content-type: text/html"
     print
