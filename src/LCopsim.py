@@ -130,7 +130,7 @@ if __name__ == '__main__':
 
     #Put this in a dictionary
     args = vars(parser.parse_args())
-    LCopsim_main(args['ra'],args['dec'],args['filtr'])
+
     
     #Output errors to web
     cgitb.enable()
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     '''
     
     #Run LCopsim
-    ret = LCopsim_main()
+    ret = LCopsim_main(args['ra'],args['dec'],args['filtr'])s
     sys.exit(ret)
     
     pass
