@@ -28,7 +28,7 @@ def saveFile(ufile, saveDir):
         sFile.close()
         
 #Connect to database
-tic_con = sqlite3.connect('..data/minion_1016_sqlite.db')
+tic_con = sqlite3.connect('../data/minion_1016_sqlite.db')
 
 #Create Cursor
 ticcurs = tic_con.cursor()
@@ -68,7 +68,7 @@ def LCopsim_main(ra,dec,filtr):
     Hexagon_minID = np.argmin(SkyCoord.separation(Target,Hexagon_compare))
     print(Hexagon_minID)
   
-    tic_con2 = sqlite3.connect('..data/minion_1016_sqlite.db')
+    tic_con2 = sqlite3.connect('../data/minion_1016_sqlite.db')
     ticcurs2 = tic_con.cursor()
     ticcmd2 = 'SELECT filter,expMJD FROM summary GROUP BY fieldID'
     tic_con2.row_factory = sqlite3.Row
