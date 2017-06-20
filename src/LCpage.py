@@ -210,6 +210,12 @@ def LCpage_main():
     '''
 
      #Log file
+
+    
+if __name__ == '__main__':
+    
+    #Output errors to web
+    cgitb.enable()
     LOG_FILENAME = '../log/lcsim.log'
     #Formats text for the file
     logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -219,12 +225,6 @@ def LCpage_main():
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
-    
-if __name__ == '__main__':
-    
-    #Output errors to web
-    cgitb.enable()
-    
     #Prepare webpage
     print "Content-type: text/html"
     print
