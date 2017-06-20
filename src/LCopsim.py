@@ -154,7 +154,7 @@ if __name__ == '__main__':
     '''
     
     #Run LCopsim
-    ret = LCopsim_main(args['ra'],args['dec'],args['filtr'])s
+    ret = LCopsim_main(args['ra'],args['dec'],args['filtr'])
     sys.exit(ret)
     
     pass
