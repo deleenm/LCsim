@@ -1,4 +1,4 @@
-#!/home/deleenm/anaconda2/emvs/LCsim/bin/python
+#!/home/deleenm/anaconda2/envs/LCsim/bin/python
 '''
 LCpage feeds form data to the LCsim package
 '''
@@ -96,14 +96,14 @@ def LCopsim_main(ra,dec,filtr):
         ra = form.getvalue('ra')
         ra = float(ra)*np.pi/180
     else:
-        print 'You must specify a Right Ascension. Please go back.'
+        print('You must specify a Right Ascension. Please go back.')
         sys.exit(0)
     
     if form.getvalue('dec'):
         dec = form.getvalue('dec')
         dec = float(dec)*np.pi/180
     else:
-        print 'You must specify a declination. Please go back.'
+        print('You must specify a declination. Please go back.')
         sys.exit(0)
     
     if dec > 0:
