@@ -65,14 +65,14 @@ def LCpage_main():
             if not os.path.isdir(name):
                 success = True
                 os.umask(0000)
-            os.mkdir('storage3/{}'.format(name))
+            os.mkdir('../storage3/{}'.format(name))
         except OSError:
             success = False
 
     os.mkdir('storage3/{}/upload'.format(name))
     
     #Specify upload directory
-    saveDir = "./storage3/{}/upload".format(name)
+    saveDir = "../storage3/{}/upload".format(name)
     
     #Process uploads
     if form['tempfile'].filename:
@@ -209,11 +209,11 @@ def LCpage_main():
     </html>
     '''
 
-     #Log file
+    # Log file
     LOG_FILENAME = '../log/lcsim.log'
-    #Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME,level=logging.INFO,format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Directory: "+ 'storage3/{}'.format(name)+" Template File: " + form['tempfile'].filename + " Obs File: " + form['obsfile'].filename)
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form['tempfile'].filename + " Obs File: " + o)
 
     #Remove uploaded files
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))

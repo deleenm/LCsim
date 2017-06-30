@@ -36,7 +36,7 @@ def LCmain_date(args):
     os.umask(0000)
     
     try: 
-        outfile = open('./storage3/{}/info.txt'.format(args.name),'w')
+        outfile = open('../storage3/{}/info.txt'.format(args.name),'w')
     except IOError:
         print "[LC Main]File {} could not be opened!".format('info.txt')
         sys.exit(1)
@@ -128,10 +128,10 @@ def LCmain_date(args):
     #Print link to lightcurve data
     outfile.close()
     
-    tar = Popen(["tar -czf storage3/{}/download/{}.tar.gz storage3/{}/download/*".format(args.name, args.f, args.name)], shell=True)
+    tar = Popen(["tar -czf ../storage3/{}/download/{}.tar.gz ../storage3/{}/download/*".format(args.name, args.f, args.name)], shell=True)
     tar.wait()
     
-    print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('storage3/{}/download/{}.tar.gz'.format(args.name, args.f))
+    print "<a href='{}' type='text/plain' onclick='log()'> Click here for lightcurve data! </a>".format('../storage3/{}/download/{}.tar.gz'.format(args.name, args.f))
 
 def LCmain_main(args):
     
@@ -140,7 +140,7 @@ def LCmain_main(args):
     os.umask(0000)
     
     try: 
-        outfile = open('./storage3/{}/info.txt'.format(args.name),'w')
+        outfile = open('../storage3/{}/info.txt'.format(args.name),'w')
     except IOError:
         print "[LCmain]File {} could not be opened!".format('info.txt')
         sys.exit(1)
@@ -236,11 +236,12 @@ def LCmain_main(args):
     #Print link to lightcurve data
     outfile.close()
     
-    os.chdir('./storage3/{}'.format(args.name))
+    os.chdir('../storage3/{}'.format(args.name))
     tar = Popen(["tar -czf {}.tar.gz *".format(args.f)], shell=True)
     tar.wait()
     
-    print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('storage3/{}/{}.tar.gz'.format(args.name, args.f))
+    print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
+
 
 
 if __name__ == '__main__':
