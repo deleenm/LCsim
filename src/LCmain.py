@@ -25,6 +25,7 @@ from subprocess import Popen
 import LCsim
 import LCpage
 import numpy as np
+import logging
 
 
 # -------------
