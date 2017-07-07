@@ -20,7 +20,6 @@ from subprocess import Popen, PIPE
 import sys
 from time import time, gmtime, strftime
 import logging
-from LCsim import LCmain
 import numpy as np
 
 # --------------------
