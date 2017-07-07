@@ -1,11 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LCsim</title>
-
-<!-- Latest compiled and minified CSS -->
+  <head>
+    {% if title %}
+    <title>{{ title }} - Lightcurve Simulator</title>
+    {% else %}
+    <title>Lightcurve Simulator</title>
+    {% endif %}
+  
+      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -14,7 +16,9 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src ="js/errorHandlers.js"></script>
+      
 </head>
+  
 <style type="text/css">
 
 body {
@@ -34,13 +38,13 @@ div{background-color : #F4F4F4;}
       <a class="navbar-brand" href="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="index.html">Home</a></li>
 	  <li><a href="about.html">About</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="index.html">Mag</a></li>
+          <li class="active"><a href="index.html">Mag</a></li>
           <li><a href="flux.html">Flux</a></li>
         </ul>
       </li>
@@ -57,16 +61,20 @@ div{background-color : #F4F4F4;}
   </div>
 </nav>
 
-<div class="container">
-<br>
-<br>
-<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
-<p> Sample Text Block</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+</script>
+  
+<script>
+       //Click on any li in ul with class 'navbar-nav'
+      $('ul.navbar-nav li').click(function(e) {
+        var $this = $(this); // declare variable for current li that we click
+        $('ul.navbar-nav').find('li.active').last().removeClass('active') //find all li that class class active and remove
+        $this.addClass('active'); //add 'active' class to current li.
+      });
+</script>
 
-<a class="btn btn-primary btn-lg" href="mailto:emailholder">Contact</a> 
-<br><br>
-<footer>Last Update: 04/13/2017</footer>
-</div>
+{% block content %}{% endblock %}
 
-</body>
+  </body>
 </html>

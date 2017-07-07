@@ -23,7 +23,9 @@ from subprocess import Popen
 # Third-party imports
 # -------------------
 import LCsim
+import LCpage
 import numpy as np
+
 
 # -------------
 # Main Function
@@ -132,6 +134,14 @@ def LCmain_date(args):
     tar.wait()
     
     print "<a href='{}' type='text/plain' onclick='log()'> Click here for lightcurve data! </a>".format('../storage3/{}/download/{}.tar.gz'.format(args.name, args.f))
+
+    # Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info(
+        "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form['tempfile'].filename + " Obs File: " + "Form Type: " + form.getvalue['FormType'])
 
 def LCmain_main(args):
     

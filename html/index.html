@@ -12,7 +12,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+</script>
+
+<script>
+       //Click on any li in ul with class 'navbar-nav'
+      $('ul.navbar-nav li').click(function(e) {
+        var $this = $(this); // declare variable for current li that we click
+        $('ul.navbar-nav').find('li.active').last().removeClass('active') //find all li that class class active and remove
+        $this.addClass('active'); //add 'active' class to current li.
+      });
+</script>
+
 <script src ="js/errorHandlers.js"></script>
 </head>
 <style type="text/css">
@@ -63,6 +76,7 @@ div{background-color : #F4F4F4;}
 <p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
 <p> Sample Text Block</p>
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <input type="hidden" name="FormType" value="Mag">
 	<br>
 	<div class="form-group">
     <label for="tempfile"><h5>*Template File (mag) :</h5></label>
