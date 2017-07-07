@@ -251,6 +251,11 @@ def LCmain_main(args):
     
     print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
+    # Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form['tempfile'].filename + " Obs File: " + "Form Type: " + form.getvalue['FormType'])
 
 
 if __name__ == '__main__':
