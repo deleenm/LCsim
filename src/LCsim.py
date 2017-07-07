@@ -59,7 +59,7 @@ def fixcurve_main(infile,outfile):
     badindex = ((phase < 0.0).nonzero())[0]
     
     phase[badindex] = phase[badindex] + 1
-
+#test
     #Check for multiple values for the same phase
     for i in range(len(phase)):
         curves[phase[i]].append(mag[i])
