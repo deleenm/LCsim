@@ -69,7 +69,7 @@ def LCpage_main():
         except OSError:
             success = False
 
-    os.mkdir('storage3/{}/upload'.format(name))
+    os.mkdir('../storage3/{}/upload'.format(name))
     
     #Specify upload directory
     saveDir = "../storage3/{}/upload".format(name)
