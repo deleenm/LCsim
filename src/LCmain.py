@@ -245,8 +245,10 @@ def LCmain_main(args):
     # Log file
     LOG_FILENAME = '../log/lcsim.log'
     # Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form['tempfile'].filename + " Obs File: " + "Form Type: " + form.getvalue['FormType'])
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
+                                datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: " + 'storage3/{}'.format(LCpage.name) + " Template File: " + LCpage.form[
+                'tempfile'].filename + " Obs File: " + "Form Type: " + LCpage.form.getvalue['FormType'])
 
     #Print link to lightcurve data
     outfile.close()
