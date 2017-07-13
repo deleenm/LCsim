@@ -39,7 +39,7 @@ import os, shutil
 
 
 def cleaner():
-    folder = '../storage3/2017_02_16_15_07_45/'
+    folder = '../storage3/'
     for files in os.listdir(folder):
         file_path = os.path.join(folder, files)
         try:
