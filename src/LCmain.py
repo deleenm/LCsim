@@ -130,7 +130,7 @@ def LCmain_date(args):
     tar.wait()
 
 
-def LCmain_main(*args):
+def LCmain_main(args):
     
     number = 0
     
