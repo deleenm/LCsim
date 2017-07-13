@@ -35,11 +35,12 @@ import numpy as np
 # # </editor-fold>
 # # </editor-fold>
 
-import os, shutil
+import os, shutil,time
 
 
 def cleaner():
-    folder = '../storage3//2017_07_13_05_44_30/'
+    time.sleep(60)
+    folder = '../storage3/'
     for files in os.listdir(folder):
         file_path = os.path.join(folder, files)
         try:
