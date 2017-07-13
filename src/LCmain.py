@@ -237,7 +237,7 @@ def LCmain_main(args):
     tar = Popen(["tar -czf {}.tar.gz *".format(args.f)], shell=True)
     tar.wait()
 
-    LCpage.log("File Created")
+    LCpage.log('File Created')
 
     print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
