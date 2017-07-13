@@ -24,8 +24,6 @@ from subprocess import Popen
 # -------------------
 import LCsim
 import numpy as np
-import logging
-
 # -------------
 # Main Function
 # -------------
@@ -239,8 +237,6 @@ def LCmain_main(args):
     os.chdir('../storage3/{}'.format(args.name))
     tar = Popen(["tar -czf {}.tar.gz *".format(args.f)], shell=True)
     tar.wait()
-
-    LCpage.log("File Created")
 
     print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
