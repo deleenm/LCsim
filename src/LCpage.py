@@ -200,7 +200,15 @@ def LCpage_main():
                    stdout=PIPE)
     
     prog.wait()
-    
+
+    # Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: " + 'storage3/{}'.format(LCpage.name) + " Template File: " + LCpage.form[
+        'tempfile'].filename + " Obs File: " + "Form Type: " + LCpage.form.getvalue['FormType'])
+
     #Output files and leave them available to download
     
     print prog.communicate()[0]
