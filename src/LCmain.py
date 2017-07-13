@@ -23,7 +23,6 @@ from subprocess import Popen
 # Third-party imports
 # -------------------
 import LCsim
-import LCpage
 import numpy as np
 import logging
 
@@ -246,7 +245,7 @@ def LCmain_main(args):
     
     print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
-
+    logging.info("Link Created")
 
 if __name__ == '__main__':
     
