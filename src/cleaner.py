@@ -39,7 +39,7 @@ import os, shutil,time
 
 
 def cleaner():
-    time.sleep(60)
+    time.sleep(5)
     folder = '../storage3/'
     for files in os.listdir(folder):
         file_path = os.path.join(folder, files)

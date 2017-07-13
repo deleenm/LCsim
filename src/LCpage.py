@@ -232,7 +232,6 @@ def LCpage_main():
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
 
 
-    cleaner.cleaner()
 
 if __name__ == '__main__':
 
@@ -262,6 +261,7 @@ if __name__ == '__main__':
     #Run LCpage
     ret = LCpage_main()
     log("File Created")
+    cleaner.cleaner()
     sys.exit(ret)
     
     pass
