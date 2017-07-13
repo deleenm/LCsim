@@ -256,7 +256,12 @@ if __name__ == '__main__':
     <body>
     <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
     '''
-
+    print '''<script>
+        function log()
+        {
+            '{}'
+        }
+    </script>'''.log("File Created")
 
     #Run LCpage
     ret = LCpage_main()

@@ -238,7 +238,7 @@ def LCmain_main(args):
     tar.wait()
 
 
-    print "<a href='{}' type='text/plain' id='link'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
+    print "<a href='{}' type='text/plain' id='link' onclick='log()'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
 
 
