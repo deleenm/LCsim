@@ -22,7 +22,7 @@ from subprocess import Popen
 # -------------------
 # Third-party imports
 # -------------------
-import LCsim
+import LCsim,LCpage
 import numpy as np
 # -------------
 # Main Function
@@ -123,7 +123,6 @@ def LCmain_date(args):
                         LCsim.save_noise(noise_norm,args.name,i+number)
                         
                 number = int(args.n) + number
-
     #Print link to lightcurve data
     outfile.close()
 
@@ -238,6 +237,8 @@ def LCmain_main(args):
     tar = Popen(["tar -czf {}.tar.gz *".format(args.f)], shell=True)
     tar.wait()
 
+    LCpage.log("File Created")
+    
     print "<a href='{}' type='text/plain'> Click here for lightcurve data! </a>".format('../storage3/{}/{}.tar.gz'.format(args.name, args.f))
 
 
