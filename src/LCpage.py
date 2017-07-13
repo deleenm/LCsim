@@ -208,7 +208,7 @@ def LCpage_main():
                    '-f','{}'.format(f), '-i','{}'.format(i),
                    '--poisson','{}'.format(poisson),'-z','{}'.format(z),
                    '-d','{}'.format(d),'--name','{}'.format(name),
-                   '-n','{}'.format(n),'--flux','{}'.format(flux)], log(message + ' File Created'),
+                   '-n','{}'.format(n),'--flux','{}'.format(flux)],
                  stdout=PIPE)
     
     prog.wait()
