@@ -41,13 +41,12 @@ def saveFile(uFile, saveDir):
         sFile.write(buf)
         sFile.close()
 
-def log(message):
+def log(log_message):
     # Log file
     LOG_FILENAME = '../log/lcsim.log'
     # Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
-                        datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info(message)
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info(log_message)
 
 # -------------
 # Main Function
