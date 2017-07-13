@@ -21,7 +21,7 @@ import sys
 from time import time, gmtime, strftime
 import logging
 import numpy as np
-import LCmain
+import cleaner
 # --------------------
 # Function Definitions
 # --------------------
@@ -232,7 +232,7 @@ def LCpage_main():
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
 
 
-
+    cleaner.cleaner()
 
 if __name__ == '__main__':
 
