@@ -40,7 +40,7 @@ def saveFile(uFile, saveDir):
             sys.exit(1)
         sFile.write(buf)
         sFile.close()
-        
+
 def log(message):
     # Log file
     LOG_FILENAME = '../log/lcsim.log'
@@ -208,8 +208,8 @@ def LCpage_main():
                    '-f','{}'.format(f), '-i','{}'.format(i),
                    '--poisson','{}'.format(poisson),'-z','{}'.format(z),
                    '-d','{}'.format(d),'--name','{}'.format(name),
-                   '-n','{}'.format(n),'--flux','{}'.format(flux)], log("File Created"),
-                   stdout=PIPE)
+                   '-n','{}'.format(n),'--flux','{}'.format(flux)], log(message + ' File Created'),
+                 stdout=PIPE)
     
     prog.wait()
 
