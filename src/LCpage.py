@@ -187,7 +187,14 @@ def LCpage_main():
     if int(n)*alength*plength*phaselength > 100000:
         print "Total lightcurves produced cannot exceed 100000. Please go back."
         sys.exit(0)
-    
+
+    # Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType'))
+
+
     #Run LCmain with form data
     prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
                    '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
@@ -201,13 +208,7 @@ def LCpage_main():
     
     prog.wait()
 
-    # Log file
-    LOG_FILENAME = '../log/lcsim.log'
-    # Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
-                        datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form[
-        'tempfile'].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType'))
+
 
     #Output files and leave them available to download
     
