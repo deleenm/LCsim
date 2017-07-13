@@ -21,7 +21,7 @@ import sys
 from time import time, gmtime, strftime
 import logging
 import numpy as np
-
+import LCmain
 # --------------------
 # Function Definitions
 # --------------------
@@ -200,17 +200,24 @@ def LCpage_main():
     log(message)
 
     #Run LCmain with form data
-    prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
-                   '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
-                   '--phase','{}'.format(phase), '-s','{}'.format(s),
-                   '--max','{}'.format(max), '--min','{}'.format(min),
-                   '-f','{}'.format(f), '-i','{}'.format(i),
-                   '--poisson','{}'.format(poisson),'-z','{}'.format(z),
-                   '-d','{}'.format(d),'--name','{}'.format(name),
-                   '-n','{}'.format(n),'--flux','{}'.format(flux)],
-                 stdout=PIPE)
-    
-    prog.wait()
+    # prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
+    #                '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
+    #                '--phase','{}'.format(phase), '-s','{}'.format(s),
+    #                '--max','{}'.format(max), '--min','{}'.format(min),
+    #                '-f','{}'.format(f), '-i','{}'.format(i),
+    #                '--poisson','{}'.format(poisson),'-z','{}'.format(z),
+    #                '-d','{}'.format(d),'--name','{}'.format(name),
+    #                '-n','{}'.format(n),'--flux','{}'.format(flux)],
+    #              stdout=PIPE)
+    #
+    # prog.wait()
+
+    LCpage_main(o='{}'.format(templatefile), a='{}'.format(a),e='{}'.format(e),p='{}'.format(p),phase='{}'.format(phase), s='{}'.format(s),
+                   max='{}'.format(max), min='{}'.format(min),
+                   f='{}'.format(f), i='{}'.format(i),
+                   poisson='{}'.format(poisson),z='{}'.format(z),
+                   d='{}'.format(d),name='{}'.format(name),
+                   n='{}'.format(n),flux='{}'.format(flux))
 
 
 
@@ -256,12 +263,6 @@ if __name__ == '__main__':
     <body>
     <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
     '''
-    print '''<script>
-        function log()
-        {
-            '{}'
-        }
-    </script>'''.log("File Created")
 
     #Run LCpage
     ret = LCpage_main()
