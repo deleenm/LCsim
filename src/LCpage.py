@@ -160,7 +160,7 @@ def LCpage_main():
         elif form.getvalue('phasetype') == 'phaselog':
             phase = np.logspace(np.log10(float(form.getvalue('phasemin'))),float(np.log10(form.getvalue('phasemax'))),float(form.getvalue('phasestep')))
         phaselength = int(phase.size) 
-        d = ''
+        d = False
     if form.getvalue('format') == 'fdate':
         d = True
         phase = 0
@@ -168,7 +168,7 @@ def LCpage_main():
         z = form.getvalue('date')
     else:
         z = ''
-        d = ''
+        d = False
     
     #Process dropdown box
     flux = ''
