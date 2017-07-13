@@ -212,7 +212,7 @@ def LCpage_main():
     #
     # prog.wait()
 
-    LCpage_main(o='{}'.format(templatefile), a='{}'.format(a),e='{}'.format(e),p='{}'.format(p),phase='{}'.format(phase), s='{}'.format(s),
+    LCmain.LCmain_main(o='{}'.format(templatefile), a='{}'.format(a),e='{}'.format(e),p='{}'.format(p),phase='{}'.format(phase), s='{}'.format(s),
                    max='{}'.format(max), min='{}'.format(min),
                    f='{}'.format(f), i='{}'.format(i),
                    poisson='{}'.format(poisson),z='{}'.format(z),
