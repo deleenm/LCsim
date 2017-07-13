@@ -200,19 +200,19 @@ def LCpage_main():
     log(message)
 
     #Run LCmain with form data
-    # prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
-    #                '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
-    #                '--phase','{}'.format(phase), '-s','{}'.format(s),
-    #                '--max','{}'.format(max), '--min','{}'.format(min),
-    #                '-f','{}'.format(f), '-i','{}'.format(i),
-    #                '--poisson','{}'.format(poisson),'-z','{}'.format(z),
-    #                '-d','{}'.format(d),'--name','{}'.format(name),
-    #                '-n','{}'.format(n),'--flux','{}'.format(flux)],
-    #              stdout=PIPE)
-    #
-    # prog.wait()
+    prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
+                   '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
+                   '--phase','{}'.format(phase), '-s','{}'.format(s),
+                   '--max','{}'.format(max), '--min','{}'.format(min),
+                   '-f','{}'.format(f), '-i','{}'.format(i),
+                   '--poisson','{}'.format(poisson),'-z','{}'.format(z),
+                   '-d','{}'.format(d),'--name','{}'.format(name),
+                   '-n','{}'.format(n),'--flux','{}'.format(flux)],
+                 stdout=PIPE)
 
-    LCmain.LCmain_main(templatefile,obsfile,a,e,p,phase,s,max, min,f,i,poisson,z,d,name,n,flux)
+    prog.wait()
+
+    #LCmain.LCmain_main(templatefile,obsfile,a,e,p,phase,s,max, min,f,i,poisson,z,d,name,n,flux)
 
 
 
