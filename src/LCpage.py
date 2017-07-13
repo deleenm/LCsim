@@ -188,13 +188,6 @@ def LCpage_main():
         print "Total lightcurves produced cannot exceed 100000. Please go back."
         sys.exit(0)
 
-    # Log file
-    LOG_FILENAME = '../log/lcsim.log'
-    # Formats text for the file
-    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',datefmt='%m/%d/%Y %I:%M:%S %p')
-    logging.info("Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType'))
-
-
     #Run LCmain with form data
     prog = Popen(['./LCmain.py','{}'.format(templatefile),'-o','{}'.format(obsfile),
                    '-a','{}'.format(a),'-e','{}'.format(e),'-p','{}'.format(p),
@@ -203,7 +196,7 @@ def LCpage_main():
                    '-f','{}'.format(f), '-i','{}'.format(i),
                    '--poisson','{}'.format(poisson),'-z','{}'.format(z),
                    '-d','{}'.format(d),'--name','{}'.format(name),
-                   '-n','{}'.format(n),'--flux','{}'.format(flux)],
+                   '-n','{}'.format(n),'--flux','{}'.format(flux)], log("File Created"),
                    stdout=PIPE)
     
     prog.wait()
@@ -224,9 +217,23 @@ def LCpage_main():
     os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
-    
+
+
+def log(message):
+    # Log file
+    LOG_FILENAME = '../log/lcsim.log'
+    # Formats text for the file
+    logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format='%(asctime)s %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p')
+    logging.info(message)
+
+
 if __name__ == '__main__':
-    
+
+    #Trigger logging function
+    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType')
+    log(message)
+
     #Output errors to web
     cgitb.enable()
 
