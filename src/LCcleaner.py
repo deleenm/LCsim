@@ -32,12 +32,16 @@ import datetime
 def LCcleaner():
 
     folder = '../storage3/'
-    for dirpath, dirnames, filenames in os.walk(folder):
-        for file in filenames:
-            curpath = os.path.join(dirpath, file)
-            file_modified = datetime.datetime.fromtimestamp(os.path.getmtime(curpath))
-            if datetime.datetime.now() - file_modified > datetime.timedelta(hours=24*5):
-                os.remove(curpath)
+    cleandays = 5
+    maxdeltatime =  datetime.timedelta(hours=24*cleandays)
+    for directory in os.listdir(folder):
+        curpath = os.path.join(folder, directory)
+        file_modified = datetime.datetime.fromtimestamp(
+            os.path.getmtime(curpath))
+            
+        deltatime = datetime.datetime.now() - file_modified
+        if deltatime > maxdeltatime:
+            shutil.rmtree(curpath)
 
 if __name__ == '__main__':
     ret = LCcleaner()
