@@ -21,7 +21,7 @@ import sys
 from time import time, gmtime, strftime
 import logging
 import numpy as np
-import cleaner
+import LCcleaner
 # --------------------
 # Function Definitions
 # --------------------
@@ -262,5 +262,5 @@ if __name__ == '__main__':
     ret = LCpage_main()
     log("File Created")
     sys.exit(ret)
-    cleaner.cleaner()
+    LCcleaner.LCcleaner()
     pass
