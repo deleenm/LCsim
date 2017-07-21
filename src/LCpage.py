@@ -261,6 +261,7 @@ if __name__ == '__main__':
     #Run LCpage
     ret = LCpage_main()
     log("File Created")
-    sys.exit(ret)
     LCcleaner.LCcleaner()
+    sys.exit(ret)
+
     pass
