@@ -23,6 +23,8 @@ import time
 # Third-party imports
 # -------------------
 import numpy as np
+import os
+import datetime
 # -------------
 # Main Function
 # -------------
@@ -30,15 +32,12 @@ import numpy as np
 def LCcleaner():
     time.sleep(5)
     folder = '../storage3/'
-    for files in os.listdir(folder):
-        file_path = os.path.join(folder, files)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-        except Exception as e:
-            print(e)
+    for dirpath, dirnames, filenames in os.walk(folder):
+        for file in filenames:
+            curpath = os.path.join(dirpath, file)
+            file_modified = datetime.datetime.fromtimestamp(os.path.getmtime(curpath))
+            if datetime.datetime.now() - file_modified > datetime.timedelta(hours=24*5):
+                os.remove(curpath)
 
 if __name__ == '__main__':
     ret = LCcleaner()
