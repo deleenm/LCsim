@@ -30,7 +30,7 @@ import datetime
 # -------------
 
 def LCcleaner():
-    time.sleep(5)
+
     folder = '../storage3/'
     for dirpath, dirnames, filenames in os.walk(folder):
         for file in filenames:
