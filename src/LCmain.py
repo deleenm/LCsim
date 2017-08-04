@@ -23,6 +23,7 @@ from subprocess import Popen
 # Third-party imports
 # -------------------
 import LCsim
+import LCpage
 import numpy as np
 # -------------
 # Main Function
@@ -71,6 +72,7 @@ def LCmain_date(args):
                     args.e = .01
                 if args.o == 'None':
                     args.o = LCsim.obs_create()
+                    LCpage.log("Generated File")
                 if args.max == '':
                     if args.min == '':
                         args.max = -float(amp)

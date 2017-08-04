@@ -201,7 +201,7 @@ def LCpage_main():
         sys.exit(0)
 
     #Trigger logging function
-    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType')
+    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + form['obsfile'].filename + "Form Type: " + form.getvalue('FormType')
     log(message)
 
     #Run LCmain with form data
