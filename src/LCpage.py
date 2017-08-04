@@ -90,7 +90,7 @@ def LCpage_main():
     if form['obsfile'].filename:
         saveFile(form['obsfile'], saveDir)
         obsfile = '{}/{}'.format(saveDir, form['obsfile'].filename)
-    if form.getvalue('obsfile') == 'obsfileNone':
+    elif form.getvalue('obsfile') == 'obsfileNone':
         obsfile = None
     else:
         obsfile = None
