@@ -22,6 +22,7 @@ from time import time, gmtime, strftime
 import logging
 import numpy as np
 import LCcleaner
+import LCsim
 # --------------------
 # Function Definitions
 # --------------------
@@ -89,6 +90,8 @@ def LCpage_main():
     if form['obsfile'].filename:
         saveFile(form['obsfile'], saveDir)
         obsfile = '{}/{}'.format(saveDir, form['obsfile'].filename)
+    if form.getvalue('obsfile') == 'obsfileNone':
+        obsfile = None
     else:
         obsfile = None
     
@@ -108,8 +111,9 @@ def LCpage_main():
     if form.getvalue('error'):
         e = form.getvalue('error')
     elif not form['obsfile'].filename:
-        print 'You must specify an error value. Please go back.'
-        sys.exit(0)
+        LCsim.obs_create()
+        #print 'You must specify an error value. Please go back.'
+       # sys.exit(0)
     else: 
         e = ''
     if form.getvalue('filename'):
