@@ -23,22 +23,25 @@ import time
 # Third-party imports
 # -------------------
 import numpy as np
+import os
+import datetime
 # -------------
 # Main Function
 # -------------
 
 def LCcleaner():
-    time.sleep(5)
+
     folder = '../storage3/'
-    for files in os.listdir(folder):
-        file_path = os.path.join(folder, files)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-        except Exception as e:
-            print(e)
+    cleandays = 5
+    maxdeltatime =  datetime.timedelta(hours=24*cleandays)
+    for directory in os.listdir(folder):
+        curpath = os.path.join(folder, directory)
+        file_modified = datetime.datetime.fromtimestamp(
+            os.path.getmtime(curpath))
+            
+        deltatime = datetime.datetime.now() - file_modified
+        if deltatime > maxdeltatime:
+            shutil.rmtree(curpath)
 
 if __name__ == '__main__':
     ret = LCcleaner()

@@ -21,7 +21,8 @@ import sys
 from time import time, gmtime, strftime
 import logging
 import numpy as np
-import cleaner
+import LCcleaner
+import LCsim
 # --------------------
 # Function Definitions
 # --------------------
@@ -89,6 +90,8 @@ def LCpage_main():
     if form['obsfile'].filename:
         saveFile(form['obsfile'], saveDir)
         obsfile = '{}/{}'.format(saveDir, form['obsfile'].filename)
+    elif form.getvalue('obsfileRadio') == 'obsfileNone':
+        obsfile = None
     else:
         obsfile = None
     
@@ -108,8 +111,10 @@ def LCpage_main():
     if form.getvalue('error'):
         e = form.getvalue('error')
     elif not form['obsfile'].filename:
-        print 'You must specify an error value. Please go back.'
-        sys.exit(0)
+        obsfile = None
+        #obsfile=LCsim.obs_create()
+        #print 'You must specify an error value. Please go back.'
+       # sys.exit(0)
     else: 
         e = ''
     if form.getvalue('filename'):
@@ -196,7 +201,7 @@ def LCpage_main():
         sys.exit(0)
 
     #Trigger logging function
-    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + "Form Type: " + form.getvalue('FormType')
+    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + form['obsfile'].filename + "Form Type: " + form.getvalue('FormType')
     log(message)
 
     #Run LCmain with form data
@@ -261,6 +266,8 @@ if __name__ == '__main__':
     #Run LCpage
     ret = LCpage_main()
     log("File Created")
+    LCcleaner.LCcleaner()
+    log("Cleaner")
     sys.exit(ret)
-    cleaner.cleaner()
+
     pass

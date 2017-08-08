@@ -14,20 +14,8 @@ import sqlite3
 import argparse
 from astropy.coordinates import SkyCoord
 import astropy.units as u
-#test
-def saveFile(ufile, saveDir):
-    fpath = "%s/%s" % (saveDir, uFile.filename)
-    buf = uFile.file.read()
-    bytes = len(buf)
-    try:
-        sFile = open(fPath, 'wb')
-    except I0Error:
-        print "File {} could not be opened!".format(fPath)
-        sys.exit(1)
-    sFile.write(buf)
-    sFile.close()
         
-def LCopsim_main(cra,cdec,cfiltr):
+def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
     #Connect to database
     tic_con = sqlite3.connect('../data/minion_1016_sqlite.db')
 
@@ -69,23 +57,30 @@ def LCopsim_main(cra,cdec,cfiltr):
     
     if(cdec != None):
         dec = cdec
-    if form.getvalue('dec'):
+    elif form.getvalue('dec'):
         dec = form.getvalue('dec')
         dec = float(dec)
     else:
         print('You must specify a declination. Please go back.')
         sys.exit(0)
     
-    if dec > 0:
-        print 'The LSST is a Southern Hemisphere survey, so there are less observations the higher the declination.<br>'
-    if dec > 35:
-        print 'There are fewer observations above 35 degrees, so the closest observation may be more than a degree away or more.<br>'
+    if csilent == False:   
+        if dec > 0:
+            print '<div style="color:red"><b>The LSST is a Southern Hemisphere survey, so there are less observations the higher the declination.</b></div><br>'
+        if dec > 35:
+            print '<div style="color:red"><b>There are fewer observations above 35 degrees, so the closest observation may be more than a degree away or more.</b></div><br>'
   
     if cfiltr != None:
         filtr = cfiltr
     elif form.getvalue('filter'):
         filtr = form.getvalue('filter')
-    
+
+    if cobsfile != None:
+        obsfile = cobsfile
+    elif form.getvalue('obsfile'):
+        obsfile = form.getvalue('obsfile')
+    else:
+        obsfile = None
     
     Target = SkyCoord(ra*u.deg,dec*u.deg, frame='icrs')
     
@@ -114,19 +109,37 @@ def LCopsim_main(cra,cdec,cfiltr):
         LSSTFieldFilter.append(star[0])
         LSSTFieldDate.append(star[1])
         
-        LSSTFieldFilter_arr = np.array(LSSTFieldFilter)
-        LSSTFieldDate_arr =  np.array(LSSTFieldDate)
+    LSSTFieldFilter_arr = np.array(LSSTFieldFilter)
+    LSSTFieldDate_arr =  np.array(LSSTFieldDate)
 
     ticcurs.close()
+
+    if csilent == False:
     
-    print('<table align="center" border="1">')
-    print("<tr><th colspan='2'>Field:{} RA: {:.3f} Dec: {:.3f} Dist: {:.3f}</th></tr>".format(fieldId,fieldRa,fieldDec,fieldSep))
-    print("<tr><th>Filter</th><th>MJD</th></tr>")
+        print('<table align="center" border="1">')
+        print("<tr><th colspan='2'>Field:{} RA: {:.3f} Dec: {:.3f} Dist: {:.3f}</th></tr>".format(fieldId,fieldRa,fieldDec,fieldSep))
+        print("<tr><th>Filter</th><th>MJD</th></tr>")
     
-    for i in range(len(LSSTFieldFilter_arr)):
-        print("<tr><td>{}</td><td>{}</td></tr>".format(LSSTFieldFilter_arr[i],LSSTFieldDate_arr[i]))
+        if len(LSSTFieldFilter_arr) == 0:
+            print("<tr><td colspan='2' style='color:red' align='center'><b>No Observations in this Field</b></td></tr>")
+
+        else:
+            for i in range(len(LSSTFieldFilter_arr)):
+                print("<tr><td>{}</td><td>{}</td></tr>".format(LSSTFieldFilter_arr[i],LSSTFieldDate_arr[i]))
     
-    print("</table>")
+        print("</table>")
+
+    if obsfile != None:
+        try:
+            OBS = open(obsfile, 'w')
+        except IOError:
+            print("[LCopsim] File {} could not be opened!".format(obsfile))
+            sys.exit(1) 
+
+        for i in range(len(LSSTFieldFilter_arr)):
+            OBS.write("{}\n".format(LSSTFieldDate_arr[i]))
+
+        OBS.close()
         
 if __name__ == '__main__':
 
@@ -137,30 +150,35 @@ if __name__ == '__main__':
     parser.add_argument('-r',metavar="RA",type=float,help='Right ascension of target')
     parser.add_argument('-d',metavar="DEC", type=float,help='Declination of target')
     parser.add_argument('-f', metavar="FILTER1,FILTER2",type=str,help='Filter used to view target')
+    parser.add_argument('-o', metavar="FILENAME",type=str,help='Filename for observation file')
+    parser.add_argument('-s', action='store_true',help='Do not print webpage.')
+    
 
     #Put this in a dictionary
     args = vars(parser.parse_args())
 
+    if args['s'] == False:
         #Prepare webpage
-    print "Content-type: text/html"
-    print
-    print '''<html>
-    <head>
-    <meta charset="UTF-8">
-    <title>LCOpsim Results</title>
-    <style type="text/css">
-    body {
+        print "Content-type: text/html"
+        print
+        print '''<html>
+        <head>
+        <meta charset="UTF-8">
+        <title>LCOpsim Results</title>
+        <style type="text/css">
+        body {
         background-color: #F4F4F4;
-    }
-    </style>
-    </head>
+        }
+        </style>
+        </head>
     
-    <body>
-    <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
-    '''
+        <body>
+        <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
+        '''
     
     #Run LCopsim
-    ret = LCopsim_main(args['r'],args['d'],args['f'])
+    ret = LCopsim_main(args['r'],args['d'],args['f'],args['o'],args['s'])
     sys.exit(ret)
     
-    print("</body>")
+    if args['s'] == False:
+        print("</body>")
