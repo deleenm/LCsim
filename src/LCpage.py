@@ -111,7 +111,7 @@ def LCpage_main():
     if form.getvalue('error'):
         e = form.getvalue('error')
     elif not form['obsfile'].filename:
-        obsfile = LCopsim_main(args['r'],args['d'],args['f'],args['o'],args['s'])
+        ##obsfile = LCopsim_main(args['r'],args['d'],args['f'],args['o'],args['s'])
         #obsfile=LCsim.obs_create()
         #print 'You must specify an error value. Please go back.'
        # sys.exit(0)

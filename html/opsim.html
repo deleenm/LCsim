@@ -67,13 +67,13 @@ div{background-color : #F4F4F4;}
 	<input type="hidden" name="FormType" value="Opsim">
 	<div class="form-group">
     <label for="ra">*Right Ascension (degrees):</label>
-    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
+    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
 	    <p id = "raError" data-error-type="errormessage"></p>
 	</div>
   
 	<div class="form-group">
     <label for="dec">*Declination (degrees):</label>
-    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" >
+    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
 	    <p id = "decError" data-error-type="errormessage"></p>
 	</div>
 	
