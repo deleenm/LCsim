@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/deleenm/anaconda2/envs/LCsim/bin/python
 '''
 LCpage feeds form data to the LCsim package
 
