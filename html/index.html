@@ -4,21 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src ="js/errorHandlers.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
-</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<script src ="js/errorHandlers.js"></script>
+
 </head>
 <style type="text/css">
 
@@ -94,11 +90,41 @@ div{background-color : #F4F4F4;}
 	</div>
     
 	<div class="form-group">
-    <label for="obsfile"><h5>Observation File:</h5></label>
-    <input type="file" name="obsfile" id="obsfile">
-	<label for="RadioGroup2_0"></label><br>
-    <input name="obsfileRadio" type="radio" id="RadioGroup2_0" value="obsfileNone" > Generate Observation File
+	<label for="RadioGroup2_0"><br><h5>Observation File</h5></label><br>
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs">Upload
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate
+	</div>
+	
+	
+	<div class="form-group">
+    <input type="file" name="obsfile" id="obsfile" >
     </div>
+	
+	<div class="form-group">
+    <label for="ra" id="raLabel">*Right Ascension (degrees):</label>
+    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
+	    <p id = "raError" data-error-type="errormessage"></p>
+	</div>
+  
+	<div class="form-group">
+    <label for="dec" id="decLabel">*Declination (degrees):</label>
+    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
+	    <p id = "decError" data-error-type="errormessage"></p>
+	</div>
+	
+	<div class="form-group">
+    <label for="filter" id="filterLabel">Select:</label>
+    <select class="form-control" name="filter" id="filter">
+      <option value="u">u</option>
+      <option value="g">g</option>
+      <option value="r">r</option>
+      <option value="i">i</option>
+      <option value="z">z</option>
+      <option value="y">y</option>
+      <option value="all" selected>All filters</option>
+    </select>
+	</div>
+  
 	
 	
 	<div class="form-group">

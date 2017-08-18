@@ -136,9 +136,43 @@ function errorHandlerLightObs(inputID,outputID) {
 		}
 	}
 	
-	
 	function clearErrors()
 	{
 		location.reload();
 		
 	}
+
+$(document).ready(function(){
+$("#obsfile").hide();
+$("#ra").hide();
+$("#dec").hide();
+$("#filter").hide();
+$("#raLabel").hide();
+$("#decLabel").hide();
+$("#filterLabel").hide();
+
+    $('input:radio[name="Obsformat"]').change(function(){
+		$("#test").append($('input[name ="Obsformat"]:checked').val());
+		
+		if ($('input[name ="Obsformat"]:checked').val() == 'uploadObs'){
+		 $("#ra").hide();
+		 $("#dec").hide();
+		 $("#filter").hide();
+		 $("#raLabel").hide();
+		 $("#decLabel").hide();
+		 $("#filterLabel").hide();
+		 $("#obsfile").show();
+		 
+		 }
+		else if ($('input[name ="Obsformat"]:checked').val() == 'generateObs'){
+			$("#obsfile").hide();
+			$("#ra").show();
+			$("#dec").show();
+			$("#filter").show();
+			$("#raLabel").show();
+			$("#decLabel").show();
+			$("#filterLabel").show();
+			} 
+		
+    });
+});
