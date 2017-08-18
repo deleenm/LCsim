@@ -22,7 +22,7 @@ from time import time, gmtime, strftime
 import logging
 import numpy as np
 import LCcleaner
-import LCopsim.py
+import LCopsim
 # --------------------
 # Function Definitions
 # --------------------
