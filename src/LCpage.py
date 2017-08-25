@@ -86,15 +86,20 @@ def LCpage_main():
     if form['tempfile'].filename:
         saveFile(form['tempfile'], saveDir)
         templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
-    
-    if form['obsfile'].filename:
-        saveFile(form['obsfile'], saveDir)
-        obsfile = '{}/{}'.format(saveDir, form['obsfile'].filename)
-    elif form.getvalue('obsfileRadio') == 'obsfileNone':
-        obsfile = None
-    else:
-        obsfile = None
-    
+
+    #Process either obsfile upload or sim
+    if form.getvalue('Obsformat') == 'uploadObs':
+        if form['obsfile'].filename:
+            saveFile(form['obsfile'], saveDir)
+            obsfile = '{}/{}'.format(saveDir, form['obsfile'].filename)
+    if form.getvalue('Obsformat') == 'generateObs':
+        ra = form.getvalue('ra')
+        ra = float(ra)
+        dec = form.getvalue('dec')
+        dec = float(dec)
+        filtr = form.getvalue('filter')
+        LCopsim.LCopsim_main(ra,dec,filtr,obsfile,True)
+
     #Process regular inputs
     if form.getvalue('scalemin') and form.getvalue('scalemax') and form.getvalue('scalestep'):
         if form.getvalue('scaletype') == 'scalelin':
@@ -111,10 +116,6 @@ def LCpage_main():
     if form.getvalue('error'):
         e = form.getvalue('error')
     elif not form['obsfile'].filename:
-        ##obsfile = LCopsim_main(args['r'],args['d'],args['f'],args['o'],args['s'])
-        #obsfile=LCsim.obs_create()
-        #print 'You must specify an error value. Please go back.'
-       # sys.exit(0)
         obsfile=None
     else: 
         e = ''
