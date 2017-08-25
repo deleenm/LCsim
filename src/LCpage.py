@@ -98,7 +98,7 @@ def LCpage_main():
         dec = form.getvalue('dec')
         dec = float(dec)
         filtr = form.getvalue('filter')
-        obsfile = "obsfile"
+        obsfile = "autoObsFile"
         silent = True
         LCopsim.LCopsim_main(ra,dec,filtr,obsfile,silent)
 
