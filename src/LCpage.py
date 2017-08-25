@@ -98,10 +98,9 @@ def LCpage_main():
         dec = form.getvalue('dec')
         dec = float(dec)
         filtr = form.getvalue('filter')
+        obsfile = '{}/{}'.format(saveDir, 'autoObsFile')
         silent = True
-        obsfile = LCopsim.LCopsim_main(ra,dec,filtr,'autoObs',silent)
-
-
+        LCopsim.LCopsim_main(ra,dec,filtr,obsfile,silent)
 
     #Process regular inputs
     if form.getvalue('scalemin') and form.getvalue('scalemax') and form.getvalue('scalestep'):
