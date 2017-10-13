@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LCsim</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src ="js/errorHandlers.js"></script>
 
 <!-- Latest compiled and minified CSS -->
@@ -66,10 +68,18 @@ div{background-color : #F4F4F4;}
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
     <input type="hidden" name="FormType" value="Mag">
 	<br>
+	
 	<div class="form-group">
-    <label for="tempfile"><h5>*Template File (mag) :</h5></label>
-    <input type="file" name="tempfile" id="tempfile" required>
+	<label for="RadioGroup3_0"><br><h5>Template</h5></label><br>
+    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="uploadTmp">Upload Template
+    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="useTmp">Use Existing Template
 	</div>
+	
+	<div class="form-group">
+    <input type="file" name="tempfile" id="tempfile" >
+    </div>
+	
+	<div class="listTest"></div>
   
 	<div class="form-group">
 	<label for="RadioGroup1_0"><br><h5>Template File Format:</h5></label><br>
@@ -90,7 +100,7 @@ div{background-color : #F4F4F4;}
 	</div>
     
 	<div class="form-group">
-	<label for="RadioGroup2_0"><br><h5>Observation File</h5></label><br>
+	<label for="RadioGroup2_0"><br><h5>Observation File:</h5></label><br>
     <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked>Upload
     <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate Using LCOpsim
 	</div>

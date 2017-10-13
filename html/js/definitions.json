@@ -1,0 +1,16 @@
+{definitions: [
+  {
+    "name": "Template One",
+	"id": "tempfile",
+    "tooltip" : "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude",
+	
+  },
+  {
+    "name": "Template Two",
+    "definition" : "Two Definiton",
+  },
+  {
+    "name": "Template Three",
+    "definition" : "Three Definition",
+  }
+]}

@@ -16,6 +16,16 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src ="js/errorHandlers.js"></script>
+
+<script>
+$(function() {
+    $('#nav').on('click','.nav', function ( e ) {
+        e.preventDefault();
+        $(this).parents('#nav').find('.active').removeClass('active').end().end().addClass('active');
+        $(activeTab).show();
+    });
+});
+</script>
       
 </head>
   
@@ -38,16 +48,20 @@ div{background-color : #F4F4F4;}
       <a class="navbar-brand" href="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
+
+      <li><a href="index.html">Home</a></li>
+
 	  <li><a href="about.html">About</a></li>
+
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li class="active"><a href="index.html">Mag</a></li>
+          <li><a href="index.html">Mag</a></li>
           <li><a href="flux.html">Flux</a></li>
         </ul>
       </li>
+
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
         <span class="caret"></span></a>
@@ -56,6 +70,7 @@ div{background-color : #F4F4F4;}
           <li><a href="fluxrange.html">Flux</a></li>
         </ul>
       </li>
+
       <li><a href="opsim.html">Opsim</a></li>
     </ul>
   </div>
@@ -64,15 +79,7 @@ div{background-color : #F4F4F4;}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
 </script>
-  
-<script>
-       //Click on any li in ul with class 'navbar-nav'
-      $('ul.navbar-nav li').click(function(e) {
-        var $this = $(this); // declare variable for current li that we click
-        $('ul.navbar-nav').find('li.active').last().removeClass('active') //find all li that class class active and remove
-        $this.addClass('active'); //add 'active' class to current li.
-      });
-</script>
+
 
 {% block content %}{% endblock %}
 
