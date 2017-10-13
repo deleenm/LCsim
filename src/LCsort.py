@@ -1,4 +1,4 @@
-import numpy as np
+#!/usr/local/lib/student/anaconda3/envs/LCsim/bin/python
 import matplotlib.pyplot as pl
 
 model = np.genfromtxt('/home/blairlm/workspace/RRa1.templ')

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/lib/student/anaconda3/envs/LCsim/bin/python
 
 '''
 Cleaner.py identifies and deletes old directories

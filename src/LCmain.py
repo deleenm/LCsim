@@ -1,4 +1,4 @@
-#!/home/deleenm/anaconda2/envs/LCsim/bin/python
+#!/usr/local/lib/student/anaconda3/envs/LCsim/bin/python
 '''
 LCmain processes data from LCpage
 

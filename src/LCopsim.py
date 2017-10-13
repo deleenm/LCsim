@@ -1,6 +1,7 @@
-#!/home/deleenm/anaconda2/envs/LCsim/bin/python
+#!/usr/local/lib/student/anaconda3/envs/LCsim/bin/python
 '''
-LCpage feeds form data to the LCsim package
+LCopsim.py querys an SQLite database to give filters and epochs in LSST for a 
+given position.
 '''
 
 import cgi 
