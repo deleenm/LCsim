@@ -207,15 +207,14 @@ $('input:radio[name="Tmpformat"]').change(function(){
 			var items = json.definitions;
 			for(var i = 0; i < items.length; i++) {
 			    var h5 = document.createElement("h5");
-		h5.innerHTML = items[i].name;
-		list.appendChild(h5);
-		p = document.createElement("p");
-		p.innerHTML = <abbr title=items[i].tooltip\>;
-		list.appendChild(p);
+				h5.innerHTML = items[i].name;
+				list.appendChild(h5);
+				p = document.createElement("p");
+			list.appendChild(p);}
     
 }
 
-			} 
+			 
 		
     });
 	
