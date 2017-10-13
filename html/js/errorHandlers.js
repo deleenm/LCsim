@@ -143,14 +143,14 @@ function errorHandlerLightObs(inputID,outputID) {
 	}
 
 $(document).ready(function(){
-$("#obsfile").hide();
+
 $("#ra").hide();
 $("#dec").hide();
 $("#filter").hide();
 $("#raLabel").hide();
 $("#decLabel").hide();
 $("#filterLabel").hide();
-$("#tempfile").hide();
+
 
     $('input:radio[name="Obsformat"]').change(function(){
 		$("#test").append($('input[name ="Obsformat"]:checked').val());
