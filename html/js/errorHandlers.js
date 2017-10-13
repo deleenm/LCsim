@@ -182,6 +182,7 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
+		 $(".listTest").hide();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
