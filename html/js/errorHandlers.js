@@ -182,11 +182,12 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
-		 $(".listTest").hide();
+		 $(".listTest").empty();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
 			$("#tempfile").hide();
+			
 			var json = {"definitions": [
   {
     "name": "Template One",
