@@ -150,6 +150,7 @@ $("#filter").hide();
 $("#raLabel").hide();
 $("#decLabel").hide();
 $("#filterLabel").hide();
+ $(".listTest").hide();
 
 
     $('input:radio[name="Obsformat"]').change(function(){
@@ -182,48 +183,40 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
-		 $(".listTest").empty();
+		 $(".listTest").hide();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
 			$("#tempfile").hide();
+			$("#dropDownDest").empty();
+			 $(".listTest").show();
 			
 			var json = {"definitions": [
   {
     "name": "Template One",
-	"id": "tempfile",
     "tooltip" : "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude",
+	"fileName" : "algo1.templ"
 	
   },
   {
     "name": "Template Two",
     "tooltip" : "Two Definiton",
+	"fileName" : "RRa2.templ"
   },
   {
     "name": "Template Three",
     "tooltip" : "Three Definition",
+	"fileName" : "RRa1.templ"
   }
 ]};
 
-			var list = document.getElementsByClassName("listTest")[0];
-			var items = json.definitions;
-			for(var i = 0; i < items.length; i++) {
-			    var h5 = document.createElement("h5");
-				h5.innerHTML = items[i].name;
-				list.appendChild(h5);
-				p = document.createElement("p");
-			list.appendChild(p);}
-    
-}
-
-			 
-		
-    });
-	
-	
-
-	
+	$.each(json.definitions, function (key, value) 
+	{
+    $("#dropDownDest").append($('<option></option>').val(value.fileName).html(value.fileName));
 });
+
+    
+}});});
 
 
 $(function() {

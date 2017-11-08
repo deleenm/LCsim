@@ -70,7 +70,7 @@ div{background-color : #F4F4F4;}
 	<br>
 	
 	<div class="form-group">
-	<label for="RadioGroup3_0"><br><h5>Template</h5></label><br>
+	<label for="RadioGroup3_0"><br><h5><abbr title = "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude.">Template</abbr></h5></label><br>
     <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="uploadTmp" checked>Upload Template
     <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="useTmp">Use Existing Template
 	</div>
@@ -79,28 +79,28 @@ div{background-color : #F4F4F4;}
     <input type="file" name="tempfile" id="tempfile" >
     </div>
 	
-	<div class="listTest"></div>
+	<div class="listTest"> <select id="dropDownDest"></select></div>
   
 	<div class="form-group">
-	<label for="RadioGroup1_0"><br><h5>Template File Format:</h5></label><br>
-    <input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked>Phase
-    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"> Date</label>
+	<label for="RadioGroup1_0"><br><h5><abbr title = "Select whether the first column of your template file is a phase or a Julian date." >Template File Format:</abbr></h5></label><br>
+    <input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked><abbr title = "Phase runs from 0 to 1.">Phase</abbr>
+    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"><abbr title = "This is some type of Julian Date (JD, MJD, HJD, BJD, etc.). It should be the same kind of date as your observation file.">Date</abbr></label>
 	</div>
 	
 	<div class="form-group">
-    <label for="phase"><h5>*Phase offset:</h5></label>
+    <label for="phase"><h5><abbr title = "If you would like to offset your template by a certain phase. The default is zero, no offset.">*Phase offset:</abbr></h5></label>
       <input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
 	   <p id = "phaseError" data-error-type="errormessage"></p>
 	</div>
 	
 	<div class="form-group">
-    <label for="date"><h5>Epoch of zero Phase:</h5></label>
+    <label for="date"><h5><abbr title = "The Julian Date (JD, MJD, HJD, BJD) of epoch 0. This should have the same type of date as your observation file.">Epoch of zero Phase:</abbr></h5></label>
       <input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
 	    <p id = "epochError" data-error-type="errormessage"></p>
 	</div>
     
 	<div class="form-group">
-	<label for="RadioGroup2_0"><br><h5>Observation File:</h5></label><br>
+	<label for="RadioGroup2_0"><br><h5><abbr title = "This file gives a list of dates that you would like to simulate observations for. It can have 1, 2, or 3 columns.">Observation File:</abbr></h5></label><br>
     <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked>Upload
     <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate Using LCOpsim
 	</div>

@@ -113,7 +113,7 @@ def LCpage_main():
         a = form.getvalue('scale')
         alength = 1
     else:
-        print 'You must specify a scale factor. Please go back.'
+        print('You must specify a scale factor. Please go back.')
         sys.exit(0)
     if form.getvalue('error'):
         e = form.getvalue('error')
@@ -124,7 +124,7 @@ def LCpage_main():
     if form.getvalue('filename'):
         f = form.getvalue('filename')
     else:
-        print 'You must specify a filename. Please go back.'
+        print('You must specify a filename. Please go back.')
         sys.exit(0)
     n = form.getvalue('number')
     if form.getvalue('periodmin') and form.getvalue('periodmax') and form.getvalue('periodstep'):
@@ -140,7 +140,7 @@ def LCpage_main():
         plength = 1
         p = ''
     else:
-        print 'You must specify a period. Please go back.'
+        print('You must specify a period. Please go back.')
         sys.exit(0)
     s = form.getvalue('sigma')
     
@@ -159,7 +159,7 @@ def LCpage_main():
     phase = form.getvalue('phase')
     phaselength = 1
     if not form.getvalue('phase') and not form.getvalue('phasemin') and form.getvalue('format') != 'fdate':
-        print 'You must specify a phase offset. Please go back.'
+        print('You must specify a phase offset. Please go back.')
         sys.exit(0)
     if form.getvalue('format') == 'fphase':
         d = ''
@@ -197,11 +197,11 @@ def LCpage_main():
             max = ''
             min = form.getvalue('fluxvalue')
     else:
-        print 'You must specify a maximum or minimum magnitude or value. Please go back.'
+        print('You must specify a maximum or minimum magnitude or value. Please go back.')
         sys.exit(0)
     
     if int(n)*alength*plength*phaselength > 100000:
-        print "Total lightcurves produced cannot exceed 100000. Please go back."
+        print("Total lightcurves produced cannot exceed 100000. Please go back.")
         sys.exit(0)
 
     #Trigger logging function
@@ -227,11 +227,11 @@ def LCpage_main():
 
     #Output files and leave them available to download
     
-    print prog.communicate()[0]
-    print '''
+    print(prog.communicate()[0])
+    print('''
     </body>
     </html>
-    '''
+    ''')
 
 
 
@@ -250,9 +250,8 @@ if __name__ == '__main__':
     cgitb.enable()
 
     #Prepare webpage
-    print "Content-type: text/html"
-    print
-    print '''<html>
+    print("Content-type: text/html")
+    print('''<html>
     <head>
     <meta charset="UTF-8">
     <title>LCsim Results</title>
@@ -265,7 +264,7 @@ if __name__ == '__main__':
     
     <body>
     <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
-    '''
+    ''')
 
     #Run LCpage
     ret = LCpage_main()
