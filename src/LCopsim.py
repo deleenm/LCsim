@@ -67,9 +67,9 @@ def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
     
     if csilent == False:   
         if dec > 0:
-            print '<div style="color:red"><b>The LSST is a Southern Hemisphere survey, so there are less observations the higher the declination.</b></div><br>'
+            print('<div style="color:red"><b>The LSST is a Southern Hemisphere survey, so there are less observations the higher the declination.</b></div><br>')
         if dec > 35:
-            print '<div style="color:red"><b>There are fewer observations above 35 degrees, so the closest observation may be more than a degree away or more.</b></div><br>'
+            print('<div style="color:red"><b>There are fewer observations above 35 degrees, so the closest observation may be more than a degree away or more.</b></div><br>')
   
     if cfiltr != None:
         filtr = cfiltr
@@ -160,9 +160,9 @@ if __name__ == '__main__':
 
     if args['s'] == False:
         #Prepare webpage
-        print "Content-type: text/html"
-        print
-        print '''<html>
+        print("Content-type: text/html")
+        print()
+        print('''<html>
         <head>
         <meta charset="UTF-8">
         <title>LCOpsim Results</title>
@@ -175,7 +175,7 @@ if __name__ == '__main__':
     
         <body>
         <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
-        '''
+        ''')
     
     #Run LCopsim
     ret = LCopsim_main(args['r'],args['d'],args['f'],args['o'],args['s'])
