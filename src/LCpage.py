@@ -61,11 +61,8 @@ def LCpage_main():
     
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
-        if form.getvalue('RadioGroup3_0') == 'useTmp':
-            print("test")
-
-    print('You must include a template file. Please go back and upload one.')
-    sys.exit(0)
+        print('You must include a template file. Please go back and upload one.')
+        sys.exit(0)
     
     #Create directory with timestamp down to the second
 
