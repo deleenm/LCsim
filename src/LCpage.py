@@ -15,6 +15,7 @@ all the data and return the finished product to a downloadable file.
 # -----------------------------
 import cgi 
 import cgitb
+import glob
 import os 
 from subprocess import Popen, PIPE
 import sys
@@ -241,7 +242,12 @@ def LCpage_main():
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
 
-
+    #Remove .cur files and info.txt
+    files = glob.glob('{}/../*.cur'.format(saveDir))
+    for f in files:
+        os.remove(f)
+    os.remove('{}/../{}'.format(saveDir,'info.txt'))
+    os.rmdir(saveDir)
 
 if __name__ == '__main__':
 
@@ -253,7 +259,7 @@ if __name__ == '__main__':
     #Prepare webpage
     print("Content-type: text/html")
     print()
-    head = '''<html>
+    print('''<html>
     <head>
     <meta charset="UTF-8">
     <title>LCsim Results</title>
@@ -266,8 +272,7 @@ if __name__ == '__main__':
     
     <body>
     <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
-    '''
-    print(head)
+    ''')
 
     #Run LCpage
     ret = LCpage_main()
