@@ -47,13 +47,13 @@ def fixcurve_main(infile,outfile):
     phase,mag = np.genfromtxt(infile,usecols=[0,1],unpack=True)
 
     if len(phase) < 2.0:
-        print "Your lightcurve file must have more than 2 points!"
+        print("Your lightcurve file must have more than 2 points!")
         return(1)
 
     wrongindex1 = ((phase < -1.0).nonzero())[0]
     wrongindex2 = ((phase > 1.0).nonzero())[0]
     if len(wrongindex1) > 0 or len(wrongindex2) > 0:
-        print "Your lightcurve phases must be between -1.0 and 1.0! (inclusive)"
+        print("Your lightcurve phases must be between -1.0 and 1.0! (inclusive)")
         return(1)
 
     badindex = ((phase < 0.0).nonzero())[0]
@@ -224,7 +224,7 @@ def save_model(model,filename,name):
         outfile = open('../storage3/{}/{}'.format(name,filename),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/{}'.format(name,filename),'w')
     except IOError:
-        print "[LCsm] File {} could not be opened!".format(filename)
+        print("[LCsm] File {} could not be opened!".format(filename))
         sys.exit(1)
     
     for line in model:
@@ -245,7 +245,7 @@ def save_noise(noise,name,j):
         outfile = open('../storage3/{}/noise{num:05d}.cur'.format(name,num=j),'w')
         #outfile = open('/hd1/LCsim/storage3/{}/noise{num:05d}.cur'.format(name,num=j),'w')
     except IOError:
-        print "[LCsim.py] File {} could not be opened!".format('noise.cur')
+        print("[LCsim.py] File {} could not be opened!".format('noise.cur'))
         sys.exit(1)
     
     for i in range(noise.shape[0]):
@@ -304,25 +304,25 @@ def LCsim_main(args):
         noise_norm = noise_norm + noise
     
     np.set_printoptions(suppress=True)
-    print model
+    print(model)
     
     #Save model to file
     save_model(model,args.f,args.name)
     
     #Output info if requested
     if args.i is True:
-        print '[Phase Magnitude Error]'
-        print model
-        print 'Added noise'
-        print noise_norm
-        print 'Period'
-        print args.p
-        print 'Scale factor'
-        print args.a
-        print 'Phase offset'
-        print args.phase
-        print 'Mean Magnitude'
-        print np.average(model[:,1])
+        print('[Phase Magnitude Error]')
+        print(model)
+        print('Added noise')
+        print(noise_norm)
+        print('Period')
+        print(args.p)
+        print('Scale factor')
+        print(args.a)
+        print('Phase offset')
+        print(args.phase)
+        print('Mean Magnitude')
+        print(np.average(model[:,1]))
 
 if __name__ == '__main__':    
     parser = argparse.ArgumentParser(description="Creates a model lightcurve from a given template.")

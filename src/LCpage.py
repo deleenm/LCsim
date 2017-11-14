@@ -227,7 +227,8 @@ def LCpage_main():
 
     #Output files and leave them available to download
     
-    print(prog.communicate()[0])
+    output = prog.communicate()[0]
+    print(output.decode('ascii').strip())
     print('''
     </body>
     </html>
@@ -251,7 +252,8 @@ if __name__ == '__main__':
 
     #Prepare webpage
     print("Content-type: text/html")
-    print('''<html>
+    print()
+    head = '''<html>
     <head>
     <meta charset="UTF-8">
     <title>LCsim Results</title>
@@ -264,7 +266,8 @@ if __name__ == '__main__':
     
     <body>
     <p><img src="../html/banner.jpg" width="600" height="199"  alt=""/></p>
-    ''')
+    '''
+    print(head)
 
     #Run LCpage
     ret = LCpage_main()
