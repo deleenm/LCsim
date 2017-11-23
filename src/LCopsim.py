@@ -174,6 +174,34 @@ if __name__ == '__main__':
         </head>
     
         <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="index.html">Mag</a></li>
+                  <li><a href="flux.html">Flux</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="range.html">Mag</a></li>
+                  <li><a href="fluxrange.html">Flux</a></li>
+                </ul>
+              </li>
+              <li class="active"><a href="opsim.html">Opsim</a></li>
+            </ul>
+          </div>
+        </nav>
         <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
         ''')
     
