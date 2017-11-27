@@ -212,7 +212,8 @@ $('input:radio[name="Tmpformat"]').change(function(){
 
 	$.each(json.definitions, function (key, value) 
 	{
-    $("#dropDownDest").append($('<option></option>').val(value.fileName).html(value.fileName));
+    $('table#tbl TBODY').append('<tr><td>'+value.name+'</td><td>'+value.tooltip +'</td><td>'+value.fileName +'</td></tr>');
+    });
 });
 
     
