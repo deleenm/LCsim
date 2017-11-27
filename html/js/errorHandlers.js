@@ -184,6 +184,7 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
 		 $(".listTest").hide();
+		 $('table#tbl TBODY').empty();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
@@ -193,31 +194,71 @@ $('input:radio[name="Tmpformat"]').change(function(){
 			
 			var json = {"definitions": [
   {
-    "name": "Template One",
-    "tooltip" : "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude",
-	"fileName" : "algo1.templ"
-	
+	"fileName" : "layden98_algol.templ",
+    "description" : "Algol Eclipsing Binary",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
   },
   {
-    "name": "Template Two",
-    "tooltip" : "Two Definiton",
-	"fileName" : "RRa2.templ"
+	"fileName" : "layden98_RRa1.templ",
+    "description" : "RRab RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+    {
+	"fileName" : "layden98_RRa2.templ",
+    "description" : "RRab RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
   },
   {
-    "name": "Template Three",
-    "tooltip" : "Three Definition",
-	"fileName" : "RRa1.templ"
+	"fileName" : "layden98_RRa3.templ",
+    "description" : "RRab RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+  {
+	"fileName" : "layden98_RRb1.templ",
+    "description" : "RRab RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+    {
+	"fileName" : "layden98_RRb2.templ",
+    "description" : "RRab RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+  {
+	"fileName" : "layden98_RRc.templ",
+    "description" : "RRc RR Lyrae",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+  {
+	"fileName" : "layden98_sin.templ",
+    "description" : "Pure Sine Wave",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
+  },
+  {
+	"fileName" : "layden98_w_uma.templ",
+    "description" : "W Ursae Majoris Eclipsing Binary",
+	"ref_short": "Layden (1998)",
+	"reference": "Layden, A.C. 1998, AJ, 115, 193",
   }
 ]};
 
 	$.each(json.definitions, function (key, value) 
 	{
-    $('table#tbl TBODY').append('<tr><td>'+value.name+'</td><td>'+value.tooltip +'</td><td>'+value.fileName +'</td></tr>');
+    $('table#tbl TBODY').append('<tr><td>'+value.fileName+'</td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
     });
-});
+};
 
     
-}});});
+}
+
+);});
 
 
 $(function() {
