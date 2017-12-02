@@ -65,9 +65,19 @@ div{background-color : #F4F4F4;}
 <p> Sample Text Block</p>
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
   <p>
-	<input type="hidden" name="FormType" value="Mag Range">
-    <label for="tempfile">Template File:</label>
-    <input type="file" name="tempfile" id="tempfile">
+    <input type="hidden" name="FormType" value="Mag Range">
+    <div class="form-group">
+      <label for="RadioGroup3_0"><br><h5><abbr title = "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude.">Template</abbr></h5></label><br>
+    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="uploadTmp" checked>Upload Template
+    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="useTmp">Use Existing Template
+    </div>
+    
+    <div class="form-group">
+    <input type="file" name="tempfile" id="tempfile" >
+    </div>
+    
+    <div class="listTest"> <select id="dropDownDest"></select></div>
+    
     <label for="scalemin"><br>
       <br>
     </label>
@@ -117,8 +127,37 @@ div{background-color : #F4F4F4;}
     <br>
      <label for="scalemin"><br>
      </label>
-     <label for="obsfile">Observation File:</label>
-     <input type="file" name="obsfile" id="obsfile">
+     <label for="RadioGroup2_0"><br><h5><abbr title = "This file gives a list of dates that you would like to simulate observations for. It can have 1, 2, or 3 columns.">Observation File:</abbr></h5></label><br>
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked>Upload
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate Using LCOpsim
+<div class="form-group">
+    <input type="file" name="obsfile" id="obsfile" >
+    </div>
+
+<div class="form-group">
+    <label for="ra" id="raLabel">*Right Ascension (degrees):</label>
+    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
+        <p id = "raError" data-error-type="errormessage"></p>
+	</div>
+  
+<div class="form-group">
+    <label for="dec" id="decLabel">*Declination (degrees):</label>
+    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" >
+        <p id = "decError" data-error-type="errormessage"></p>
+	</div>
+
+<div class="form-group">
+    <label for="filter" id="filterLabel">Select:</label>
+    <select class="form-control" name="filter" id="filter">
+      <option value="u">u</option>
+      <option value="g">g</option>
+      <option value="r">r</option>
+      <option value="i">i</option>
+      <option value="z">z</option>
+      <option value="y">y</option>
+      <option value="all" selected>All filters</option>
+    </select>
+    </div>
   </p>
    <p>
      <label for="period">Constant period (days):</label>
@@ -162,12 +201,12 @@ div{background-color : #F4F4F4;}
         <option value="min">Minimum Magnitude</option>
     </select>
 (mag)      :
-      <input type="text" name="magvalue" id="magvalue">
+      <input type="text" name="magvalue" id="magvalue" value="10">
   </p>
   <p></p>
   <p>
     <label for="scale">Constant Scale Factor:</label>
-    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')" >
+    <input type="text" name="scale" id="scale" value="1.0" onchange="errorHandler('scale','scaleError')" >
 	    <p id = "scaleError" data-error-type="errormessage"></p>    
   </p>
   <p>OR input range of scale factors:</p>

@@ -123,8 +123,38 @@ div{background-color : #F4F4F4;}
 	    <p id = "epochError" data-error-type="errormessage"></p>
 	<label for="scalemin"><br>
      </label>
-     <label for="obsfile">Observation File:</label>
-     <input type="file" name="obsfile" id="obsfile">
+    <label for="RadioGroup2_0"><br><h5><abbr title = "This file gives a list of dates that you would like to simulate observations for. It can have 1, 2, or 3 columns.">Observation File:</abbr></h5></label><br>
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked>Upload
+    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate Using LCOpsim
+
+    <div class="form-group">
+    <input type="file" name="obsfile" id="obsfile" >
+    </div>
+    
+    <div class="form-group">
+    <label for="ra" id="raLabel">*Right Ascension (degrees):</label>
+    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
+        <p id = "raError" data-error-type="errormessage"></p>
+	</div>
+  
+    <div class="form-group">
+    <label for="dec" id="decLabel">*Declination (degrees):</label>
+    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" >
+        <p id = "decError" data-error-type="errormessage"></p>
+	</div>
+    
+    <div class="form-group">
+    <label for="filter" id="filterLabel">Select:</label>
+    <select class="form-control" name="filter" id="filter">
+      <option value="u">u</option>
+      <option value="g">g</option>
+      <option value="r">r</option>
+      <option value="i">i</option>
+      <option value="z">z</option>
+      <option value="y">y</option>
+      <option value="all" selected>All filters</option>
+    </select>
+    </div>
   </p>
    <p>
      <label for="period">Constant period (days):</label>
@@ -163,18 +193,22 @@ div{background-color : #F4F4F4;}
     </blockquote>
   <p></p>
   <p>
-    <select name="flux" id="flux">
-      <option value="max">Maximum Value</option>
-      <option value="min">Minimum Value</option>
-    </select>
-    <label for="fluxvalue">:</label>
-    <input type="text" name="fluxvalue" id="fluxvalue" onchange="errorHandlerFlux('fluxvalue','fluxError')" required>
-	    <p id = "fluxError" data-error-type="errormessage"></p>
+    <div class="form-group">
+      <span class="col-md-2 control-label">Select Flux Magnitude:</span>
+      <div class="col-sm-5"><select class="form-control" name="flux" id="flux">
+        <option value="max">Maximum Magnitude</option>
+        <option value="min">Minimum Magnitude</option>
+      </select>
+	  </div>
+      <div class="col-sm-5">
+     <input class="form-control" name="fluxvalue" type="text" id="fluxvalue" value="10" onchange="errorHandlerFlux('fluxvalue','fluxError')" required>
+         <p id = "fluxError" data-error-type="errormessage"></p></div>
+    </div>
     <label for="scale3"> </label>
   </p>
   <p>
     <label for="scale">Constant Scale Factor:</label>
-    <input type="text" name="scale" id="scale" onchange="errorHandler('scale','scaleError')" >
+    <input type="text" name="scale" id="scale" value="1.0" onchange="errorHandler('scale','scaleError')" >
 	    <p id = "scaleError" data-error-type="errormessage"></p> 
   </p>
   <p>OR input range of scale factors:</p>
@@ -218,7 +252,7 @@ div{background-color : #F4F4F4;}
     <input name="filename" type="text" id="filename" value="model" required>
   </p>
   <p>
-    <label for="number">*umber of Lightcurves generated per combination of parameters:</label>
+    <label for="number">*Number of Lightcurves generated per combination of parameters:</label>
     <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
 	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
