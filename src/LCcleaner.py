@@ -33,7 +33,7 @@ def LCcleaner():
 
     folder = '../storage3/'
     cleandays = 5
-    maxsize = 100000000 #Max size of storage3 in bytes (100MB currently)
+    maxsize = 10 * 1000000 #10 MB max size for storage3
     maxdeltatime =  datetime.timedelta(hours=24*cleandays)
     for directory in os.listdir(folder):
         curpath = os.path.join(folder, directory)
@@ -53,9 +53,11 @@ def LCcleaner():
 def getSize(folder): #Returns size in bytes of a directory
     totalsize = 0
     for directorypath, directorynames, filenames in os.walk(folder):
+        print(directorypath + '\n')
         for f in filenames:
-            filepath = os.path.join(folder, f)
-            totalsize += os.path.getsize(directorypath + '/' + f)
+            filepath = os.path.join(directorypath, f)
+            size = os.path.getsize(filepath) 
+            totalsize += size
     return totalsize
 
 if __name__ == '__main__':
