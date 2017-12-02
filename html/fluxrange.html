@@ -15,6 +15,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src ="js/errorHandlers.js"></script>
+<script src="js/interactive.js"></script>
+
 </head>
 <style type="text/css">
 
@@ -218,14 +220,14 @@ div{background-color : #F4F4F4;}
     <input name="filename" type="text" id="filename" value="model" required>
   </p>
   <p>
-    <label for="number">*umber of Lightcurves generated per combination of parameters:</label>
+    <label for="number">*Number of Lightcurves generated per combination of parameters:</label>
     <input name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
 	    <p id = "numberError" data-error-type="errormessage"></p>
   </p>
   <p>&nbsp;</p>
   <p>
-    <input type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input type='reset' value='Clear' name='reset'>
+    <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
+	<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset'>
   </p>
 </form>
 

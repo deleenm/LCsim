@@ -166,11 +166,23 @@ if __name__ == '__main__':
         <head>
         <meta charset="UTF-8">
         <title>LCOpsim Results</title>
-        <style type="text/css">
-        body {
-        background-color: #F4F4F4;
-        }
-        </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style type="text/css">
+
+body {
+	background-color: #343A3F;
+	position: relative;
+    left: 10px;
+}
+[data-error-type="errormessage"]{color: red;}
+
+div{background-color : #F4F4F4;}
+
+</style>
         </head>
     
         <body>
@@ -180,29 +192,31 @@ if __name__ == '__main__':
               <a class="navbar-brand" href="#"></a>
             </div>
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
+              <li><a href="../html/index.html">Home</a></li>
+              <li><a href="../html/about.html">About</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="index.html">Mag</a></li>
-                  <li><a href="flux.html">Flux</a></li>
+                  <li><a href="../html/index.html">Mag</a></li>
+                  <li><a href="../html/flux.html">Flux</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="range.html">Mag</a></li>
-                  <li><a href="fluxrange.html">Flux</a></li>
+                  <li><a href="../html/range.html">Mag</a></li>
+                  <li><a href="../html/fluxrange.html">Flux</a></li>
                 </ul>
               </li>
-              <li class="active"><a href="opsim.html">Opsim</a></li>
+              <li class="active"><a href="../html/opsim.html">Opsim</a></li>
             </ul>
           </div>
-        </nav>
+        </nav><br><br>
+        <div class="container">
         <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
+        
         ''')
     
     #Run LCopsim
@@ -210,4 +224,4 @@ if __name__ == '__main__':
     sys.exit(ret)
     
     if args['s'] == False:
-        print("</body>")
+        print(" </div> </body> </html>")
