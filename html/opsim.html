@@ -17,11 +17,14 @@
         <script src ="js/errorHandlers.js"></script>
 
         <style type="text/css">
-
+          .container{
+            height: 700px;
+          }
             body {
                 background-color: #343A3F;
                 position: relative;
             }
+
             [data-error-type="errormessage"]{color: red;}
 
             div{background-color : #F4F4F4;}
@@ -80,7 +83,7 @@
                             <input class="form-control"  type="text" name="dec" id="dec" onchange="errorHandlerRightDeclination('dec', 'decError')" required>
                             <p id = "decError" data-error-type="errormessage"></p>
                         </div>
-                    </div>  
+                    </div>
                     <div class="col-sm-5">
 
                         <div class="form-group">
@@ -94,7 +97,7 @@
                                 <option value="y">y</option>
                                 <option value="all" selected>All filters</option>
                             </select>
-                        </div> 
+                        </div>
                     </div>
                                                 </div>
 
