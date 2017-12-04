@@ -63,7 +63,7 @@ def LCpage_main():
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
         if form.getvalue('Tmpformat') == 'useTmp':
-            templatefile = open('../data/tempates/' + form.getvalue('optradio'), 'r')
+            templatefile = open('../data/templates/' + form.getvalue('optradio'), 'r')
             #Process uploads
         elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
