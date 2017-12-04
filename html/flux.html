@@ -15,6 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src ="js/errorHandlers.js"></script>
+<script src="js/interactive.js"></script>
 </head>
 <style type="text/css">
 
@@ -151,8 +152,8 @@ div{background-color : #F4F4F4;}
 	    <p id = "numberError" data-error-type="errormessage"></p>
 	</div>
 	
-    <input class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input class="btn btn-primary btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
+    <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
+	<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
   
 </form>
 

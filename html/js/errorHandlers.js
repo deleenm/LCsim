@@ -116,7 +116,7 @@ function errorHandlerLightObs(inputID,outputID) {
         if(isNaN(x)) throw "not a number";
         x = Number(x);
         if(x < 0)    throw "too low";
-        if(x >= 1000)   throw "too high";
+        if(x > 100000)   throw "too high";
 		else{errorBoolean= false;}
     }
     catch(err) {
@@ -142,7 +142,6 @@ function errorHandlerLightObs(inputID,outputID) {
 		
 	}
 
-$(document).ready(function(){
 
 $("#ra").hide();
 $("#dec").hide();

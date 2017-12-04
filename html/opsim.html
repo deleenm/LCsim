@@ -1,102 +1,121 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LCsim</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LCsim</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src ="js/opsim.js"></script>
-</head>
-<style type="text/css">
+        <script src ="js/errorHandlers.js"></script>
 
-body {
-	background-color: #343A3F;
-	position: relative;
-    left: 10px;
-}
-[data-error-type="errormessage"]{color: red;}
+        <style type="text/css">
+          .container{
+            height: 700px;
+          }
+            body {
+                background-color: #343A3F;
+                position: relative;
+            }
 
-div{background-color : #F4F4F4;}
+            [data-error-type="errormessage"]{color: red;}
 
-</style>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-	  <li><a href="about.html">About</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="index.html">Mag</a></li>
-          <li><a href="flux.html">Flux</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="range.html">Mag</a></li>
-          <li><a href="fluxrange.html">Flux</a></li>
-        </ul>
-      </li>
-      <li class="active"><a href="opsim.html">Opsim</a></li>
-    </ul>
-  </div>
-</nav>
+            div{background-color : #F4F4F4;}
 
-<div class="container">
-<br>
-<br>
-<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
-<p> Sample Text Block</p>
-<form action="../src/LCopsim.py" method="post" name="form1" id="form1">
-	<input type="hidden" name="FormType" value="Opsim">
-	<div class="form-group">
-    <label for="ra">*Right Ascension (degrees):</label>
-    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')" required>
-	    <p id = "raError" data-error-type="errormessage"></p>
-	</div>
-  
-	<div class="form-group">
-    <label for="dec">*Declination (degrees):</label>
-    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" required>
-	    <p id = "decError" data-error-type="errormessage"></p>
-	</div>
-	
-	<div class="form-group">
-    <label for="filter">Select:</label>
-    <select class="form-control" name="filter" id="filter">
-      <option value="u">u</option>
-      <option value="g">g</option>
-      <option value="r">r</option>
-      <option value="i">i</option>
-      <option value="z">z</option>
-      <option value="y">y</option>
-      <option value="all" selected>All filters</option>
-    </select>
-	</div>
-  
-    <input class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">
-	<input class="btn btn-primary btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
-  
-</form>
+        </style>
+    </head>
 
-<br><br>
-<footer>Last Update: 04/13/2017</footer>
-</div>
-</body>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Simple Models
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Mag</a></li>
+                            <li><a href="flux.html">Flux</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Variable Models
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="range.html">Mag</a></li>
+                            <li><a href="fluxrange.html">Flux</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="opsim.html">Opsim</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <br>
+            <br>
+            <div class="row"><img class="center-block" src="banner.jpg" width="800" height="300" alt="banner"></div>
+                <p> Sample Text Block</p>
+                <form action="../src/LCopsim.py" method="post" name="form1" id="form1">
+                                <div class="row">
+
+                    <div class="col-sm-5">
+
+                        <input type="hidden" name="FormType" value="Opsim">
+                        <div class="form-group">
+                            <label for="ra"><span class="text-danger">* </span>Right Ascension (degrees):</label>
+                            <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra', 'raError')" required>
+                            <p id = "raError" data-error-type="errormessage"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dec"><span class="text-danger">* </span>Declination (degrees):</label>
+                            <input class="form-control"  type="text" name="dec" id="dec" onchange="errorHandlerRightDeclination('dec', 'decError')" required>
+                            <p id = "decError" data-error-type="errormessage"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+
+                        <div class="form-group">
+                            <label for="filter">Select:</label>
+                            <select class="form-control" name="filter" id="filter">
+                                <option value="u">u</option>
+                                <option value="g">g</option>
+                                <option value="r">r</option>
+                                <option value="i">i</option>
+                                <option value="z">z</option>
+                                <option value="y">y</option>
+                                <option value="all" selected>All filters</option>
+                            </select>
+                        </div>
+                    </div>
+                                                </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()"> &nbsp;
+                            <input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <br><br>
+
+
+                <footer>Last Update: 04/13/2017</footer>
+
+        </div>
+    </body>
 </html>
