@@ -84,9 +84,14 @@ def LCpage_main():
     saveDir = "../storage3/{}/upload".format(name)
     
     #Process uploads
-    if form['tempfile'].filename:
-        saveFile(form['tempfile'], saveDir)
-        templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
+    if form.getvalue('Tmpformat') == 'uploadObs':
+        if form['tempfile'].filename:
+            saveFile(form['tempfile'], saveDir)
+            templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
+    if form.getvalue('Tmpformat') == 'useTmp':
+        templatefile = open('../data/tempates/'+form.getvalue('optradio'),'r')
+
+
 
     #Process either obsfile upload or sim
     if form.getvalue('Obsformat') == 'uploadObs':
