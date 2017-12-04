@@ -2,14 +2,13 @@
 //handles all the user interactive features in HTML pages
 
 $(document).ready(function(){
-
 $("#ra").hide();
 $("#dec").hide();
 $("#filter").hide();
 $("#raLabel").hide();
 $("#decLabel").hide();
 $("#filterLabel").hide();
- $(".listTest").hide();
+ $(".templateTable").hide();
 
 
     $('input:radio[name="Obsformat"]').change(function(){
@@ -42,14 +41,14 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
-		 $(".listTest").hide();
+		 $(".templateTable").hide();
 		 $('table#tbl TBODY').empty();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
 			$("#tempfile").hide();
 			$("#dropDownDest").empty();
-			 $(".listTest").show();
+			 $(".templateTable").show();
 			
 			var json = {"definitions": [
   {
@@ -110,7 +109,7 @@ $('input:radio[name="Tmpformat"]').change(function(){
 
 	$.each(json.definitions, function (key, value) 
 	{
-    $('table#tbl TBODY').append('<tr><td>'+value.fileName+'</td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
+    $('table#tbl TBODY').append('<tr><td><label><input type="radio" id="RadioGroup4_0" value= "'+value.fileName+'" name="optradio">'+' '+value.fileName+'</label></td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
     });
 };
 
@@ -118,7 +117,6 @@ $('input:radio[name="Tmpformat"]').change(function(){
 }
 
 );});
-
 
 
 $(function() {
