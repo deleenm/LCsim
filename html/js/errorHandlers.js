@@ -251,7 +251,7 @@ $('input:radio[name="Tmpformat"]').change(function(){
 
 	$.each(json.definitions, function (key, value) 
 	{
-    $('table#tbl TBODY').append('<tr><td><label><input type="radio" id="RadioGroup4_0" value= "'+value.fileName+'" name="optradio">'+value.fileName+'</label></td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
+    $('table#tbl TBODY').append('<tr><td><label><input type="radio" id="RadioGroup4_0" value= "'+value.fileName+'" name="optradio">'+' '+value.fileName+'</label></td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
     });
 };
 
