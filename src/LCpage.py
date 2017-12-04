@@ -64,7 +64,7 @@ def LCpage_main():
     if not form['tempfile'].filename:
         if form.getvalue('Tmpformat') == 'useTmp':
             templatefile = '../data/templates/' + form.getvalue('optradio')
-            #Process uploads
+            #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
             templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
