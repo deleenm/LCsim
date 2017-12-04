@@ -62,8 +62,15 @@ def LCpage_main():
     
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
-        print('You must include a template file. Please go back and upload one.')
-        sys.exit(0)
+        if form.getvalue('Tmpformat') == 'useTmp':
+            templatefile = open('../data/tempates/' + form.getvalue('optradio'), 'r')
+            #Process uploads
+        elif form['tempfile'].filename:
+            saveFile(form['tempfile'], saveDir)
+            templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
+        else:
+            print('You must include a template file. Please go back and upload one.')
+            sys.exit(0)
     
     #Create directory with timestamp down to the second
 
@@ -82,14 +89,7 @@ def LCpage_main():
     
     #Specify upload directory
     saveDir = "../storage3/{}/upload".format(name)
-    
-    #Process uploads
-    if form.getvalue('Tmpformat') == 'uploadObs':
-        if form['tempfile'].filename:
-            saveFile(form['tempfile'], saveDir)
-            templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
-    if form.getvalue('Tmpformat') == 'useTmp':
-        templatefile = open('../data/tempates/'+form.getvalue('optradio'),'r')
+
 
 
 
