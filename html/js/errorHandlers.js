@@ -150,7 +150,7 @@ $("#filter").hide();
 $("#raLabel").hide();
 $("#decLabel").hide();
 $("#filterLabel").hide();
- $(".listTest").hide();
+ $(".templateTable").hide();
 
 
     $('input:radio[name="Obsformat"]').change(function(){
@@ -183,14 +183,14 @@ $('input:radio[name="Tmpformat"]').change(function(){
 		
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
-		 $(".listTest").hide();
+		 $(".templateTable").hide();
 		 $('table#tbl TBODY').empty();
 		 
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
 			$("#tempfile").hide();
 			$("#dropDownDest").empty();
-			 $(".listTest").show();
+			 $(".templateTable").show();
 			
 			var json = {"definitions": [
   {
