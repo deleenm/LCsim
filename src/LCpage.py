@@ -24,7 +24,7 @@ import logging
 import numpy as np
 import LCcleaner
 import LCopsim
-from shutil import copyfile
+from shutil import copy2
 # --------------------
 # Function Definitions
 # --------------------
