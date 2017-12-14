@@ -84,7 +84,7 @@ def LCpage_main():
             templatefile = '../data/templates/' + templatefileName
             tFile= open(templatefile,'r')
             saveFile(tFile, saveDir)
-            tFIle.close()
+            tFile.close()
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
