@@ -82,7 +82,7 @@ def LCpage_main():
         if form.getvalue('Tmpformat') == 'useTmp':
             templatefileName = form.getvalue('optradio')
             templatefile = '../data/templates/' + templatefileName
-            shutil.copyfile(templatefile, saveDir)
+            shutil.copyfile(templatefile, saveDir+'/'+templatefileName)
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
