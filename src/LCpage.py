@@ -63,11 +63,13 @@ def LCpage_main():
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
         if form.getvalue('Tmpformat') == 'useTmp':
-            templatefile = '../data/templates/' + form.getvalue('optradio')+''
+            templatefileName = form.getvalue('optradio')
+            templatefile = '../data/templates/' + templatefileName
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
-            templatefile = '{}/{}'.format(saveDir, form['tempfile'].filename)
+            templatefileName = form['tempfile'].filename
+            templatefile = '{}/{}'.format(saveDir, templatefileName)
     else:
             print('You must include a template file. Please go back and upload one.')
             sys.exit(0)
@@ -211,7 +213,7 @@ def LCpage_main():
         sys.exit(0)
 
     #Trigger logging function
-    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + form["tempfile"].filename + " Obs File: " + form['obsfile'].filename + "Form Type: " + form.getvalue('FormType')
+    message = "Directory: " + 'storage3/{}'.format(name) + " Template File: " + templatefilefile + " Obs File: " + form['obsfile'].filename + "Form Type: " + form.getvalue('FormType')
     log(message)
 
     #Run LCmain with form data
@@ -243,7 +245,7 @@ def LCpage_main():
 
 
     #Remove uploaded files
-    os.remove('{}/{}'.format(saveDir, form['tempfile'].filename))
+    os.remove('{}/{}'.format(saveDir, templatefileName))
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
 
