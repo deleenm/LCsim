@@ -24,6 +24,7 @@ import logging
 import numpy as np
 import LCcleaner
 import LCopsim
+from shutil import copyfile
 # --------------------
 # Function Definitions
 # --------------------
@@ -60,7 +61,9 @@ def LCpage_main():
     # Create instance of FieldStorage 
     form = cgi.FieldStorage()
 
-    #Specify upload directory
+    os.mkdir('../storage3/{}/upload'.format(name))
+
+    # Specify upload directory
     saveDir = "../storage3/{}/upload".format(name)
 
     #Ensure that template file is uploaded
@@ -68,7 +71,7 @@ def LCpage_main():
         if form.getvalue('Tmpformat') == 'useTmp':
             templatefileName = form.getvalue('optradio')
             templatefile = '../data/templates/' + templatefileName
-            saveFile(templatefile, saveDir)
+            shutil.copy2(templatefile, saveDir)
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
@@ -79,7 +82,6 @@ def LCpage_main():
             sys.exit(0)
     
     #Create directory with timestamp down to the second
-
     success = False
     while not success:
         try:
@@ -90,10 +92,6 @@ def LCpage_main():
             os.mkdir('../storage3/{}'.format(name))
         except OSError:
             success = False
-
-    os.mkdir('../storage3/{}/upload'.format(name))
-    
-
 
 
 
