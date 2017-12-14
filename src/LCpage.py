@@ -59,7 +59,10 @@ def LCpage_main():
     start = time()
     # Create instance of FieldStorage 
     form = cgi.FieldStorage()
-    
+
+    #Specify upload directory
+    saveDir = "../storage3/{}/upload".format(name)
+
     #Ensure that template file is uploaded
     if not form['tempfile'].filename:
         if form.getvalue('Tmpformat') == 'useTmp':
@@ -90,8 +93,7 @@ def LCpage_main():
 
     os.mkdir('../storage3/{}/upload'.format(name))
     
-    #Specify upload directory
-    saveDir = "../storage3/{}/upload".format(name)
+
 
 
 
