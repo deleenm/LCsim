@@ -253,6 +253,9 @@ def LCpage_main():
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
 
+    else:
+       os.remove('{}/{}'.format(saveDir, 'autoObsFile'))
+
     #Remove .cur files and info.txt
     files = glob.glob('{}/../*.cur'.format(saveDir))
     for f in files:
