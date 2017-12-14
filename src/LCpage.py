@@ -24,7 +24,7 @@ import logging
 import numpy as np
 import LCcleaner
 import LCopsim
-from shutil import copy2
+import shutil
 # --------------------
 # Function Definitions
 # --------------------
@@ -82,7 +82,7 @@ def LCpage_main():
         if form.getvalue('Tmpformat') == 'useTmp':
             templatefileName = form.getvalue('optradio')
             templatefile = '../data/templates/' + templatefileName
-            shutil.copy2(templatefile, saveDir)
+            shutil.copyfile(templatefile, saveDir)
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
