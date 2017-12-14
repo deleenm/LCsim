@@ -72,6 +72,7 @@ def LCpage_main():
             os.mkdir('../storage3/{}'.format(name))
         except OSError:
             success = False
+
     os.mkdir('../storage3/{}/upload'.format(name))
 
     # Specify upload directory
@@ -83,8 +84,9 @@ def LCpage_main():
             templatefileName = form.getvalue('optradio')
             templatefile = '../data/templates/' + templatefileName
             tFile= open(templatefile,'r+')
-            saveFile(tFile, saveDir)
+            saveFile(templatefile, saveDir)
             tFile.close()
+
             #Process uploads for files
     elif form['tempfile'].filename:
             saveFile(form['tempfile'], saveDir)
@@ -249,6 +251,7 @@ def LCpage_main():
 
 
     #Remove uploaded files
+
     os.remove('{}/{}'.format(saveDir, templatefileName))
     if form['obsfile'].filename:
         os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
