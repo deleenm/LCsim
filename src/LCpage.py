@@ -83,11 +83,7 @@ def LCpage_main():
         if form.getvalue('Tmpformat') == 'useTmp':
             templatefileName = form.getvalue('optradio')
             templatefile = '../data/templates/' + templatefileName
-            tFile= open(templatefile,'r')
-            print("Opened file "+templatefileName)
-            saveFile(tFile, saveDir)
-            print("Saved file " + templatefileName)
-            tFile.close()
+            shutil.copy(templatefile,saveDir)
 
             #Process uploads for files
     elif form['tempfile'].filename:
@@ -98,11 +94,6 @@ def LCpage_main():
             print('You must include a template file. Please go back and upload one.')
             sys.exit(0)
     
-
-
-
-
-
     #Process either obsfile upload or sim
     if form.getvalue('Obsformat') == 'uploadObs':
         if form['obsfile'].filename:
@@ -255,11 +246,7 @@ def LCpage_main():
     #Remove uploaded files
 
     os.remove('{}/{}'.format(saveDir, templatefileName))
-    if form['obsfile'].filename:
-        os.remove('{}/{}'.format(saveDir, form['obsfile'].filename))
-
-    else:
-       os.remove('{}/{}'.format(saveDir, 'autoObsFile'))
+    os.remove(obsfile)
 
     #Remove .cur files and info.txt
     files = glob.glob('{}/../*.cur'.format(saveDir))

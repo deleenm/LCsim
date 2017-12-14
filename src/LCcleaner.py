@@ -53,7 +53,7 @@ def LCcleaner():
 def getSize(folder): #Returns size in bytes of a directory
     totalsize = 0
     for directorypath, directorynames, filenames in os.walk(folder):
-        print(directorypath + '\n')
+        #print(directorypath + '\n')
         for f in filenames:
             filepath = os.path.join(directorypath, f)
             size = os.path.getsize(filepath) 
