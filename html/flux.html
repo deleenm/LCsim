@@ -7,7 +7,8 @@
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<!-- custom stlesheet import -->
+<link rel="stylesheet" href="css/style.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -16,149 +17,181 @@
 
 <script src ="js/errorHandlers.js"></script>
 <script src="js/interactive.js"></script>
-</head>
 <style type="text/css">
 
-body {
-	background-color: #343A3F;
-	position: relative;
-    left: 10px;
-}
 [data-error-type="errormessage"]{color: red;}
 
-div{background-color : #F4F4F4;}
-
 </style>
+</head>
+
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-	  <li><a href="about.html">About</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="index.html">Mag</a></li>
-          <li class="active"><a href="flux.html">Flux</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="range.html">Mag</a></li>
-          <li><a href="fluxrange.html">Flux</a></li>
-        </ul>
-      </li>
-      <li><a href="opsim.html">Opsim</a></li>
-    </ul>
-  </div>
-</nav>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">LCSim</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown active">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Simple Models <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="index.html">Mag</a></li>
+						<li class="active"><a href="flux.html">Flux</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Variable Models <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="range.html">Mag</a></li>
+						<li><a href="fluxrange.html">Flux</a></li>
+					</ul>
+				</li>
+				<li><a href="opsim.html">Opsim</a></li>
+				<li><a href="about.html">About</a></li>
+			</ul>
 
-<div class="container">
-<br>
-<br>
-<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
-<p> Sample Text Block</p>
+		</div>
+	</div>
+	</nav>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class=" col-lg-12 col-sm-12 col-md-12 col-xs-12">
+				<div align="center" class="banner">
+					<img src="images/LCsim_banner.png" alt="LCsim banner" width="75%">
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<div class="container" style="border-top: 1px solid #DCDCDC ">
+
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
-	<input type="hidden" name="FormType" value="Flux">
-	<br>
-	<div class="form-group">
-    <label for="tempfile"><h5>Template File (given in flux):</h5></label>
-    <input type="file" name="tempfile" id="tempfile">
-	</div>
-    
-	<div class="form-group">
-	<label for="RadioGroup1_0"><br><h5>Template File Format:</h5></label><br>
-    <input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked>Phase
-    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"> Date</label>
-	</div>
-	
-	<div class="form-group">
-    <label for="phase"><h5>*Phase offset:</h5></label>
-      <input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
-	   <p id = "phaseError" data-error-type="errormessage"></p>
-	</div>
-	
-	<div class="form-group">
-    <label for="date"><h5>Epoch of zero Phase:</h5></label>
-      <input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
-	    <p id = "epochError" data-error-type="errormessage"></p>
-	</div>
-    
-	<div class="form-group">
-    <label for="obsfile"><h5>Observation File:</h5></label>
-    <input type="file" name="obsfile" id="obsfile">
-    </div>
-	
-	
-	<div class="form-group">
-	<label for="period"><h5>*Period (days):</h5></label>
-    <input class="form-control" type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
-	    <p id = "periodError" data-error-type="errormessage"></p>
-	</div>
-	
-	<div class="form-group">
-	<span class="col-md-2 control-label">Select Flux Magnitude:</span>
-      <div class="col-sm-5"><select class="form-control" name="flux" id="flux">
-        <option value="max">Maximum Magnitude</option>
-        <option value="min">Minimum Magnitude</option>
-      </select>
-	  </div>
-	<div class="col-sm-5">
-     <input class="form-control" name="fluxvalue" type="text" id="fluxvalue" onchange="errorHandlerFlux('fluxvalue','fluxError')" required>
-	    <p id = "fluxError" data-error-type="errormessage"></p></div>
-    </div>
-	
-	<div class="form-group">
-    <label for="scale"><h5>Scale Factor:</h5></label>
-    <input class="form-control" name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
-	</div>
-	
- <div class="form-group">
-    <label for="error"><h5>Mean Error (mag):</h5></label>
-    <input class="form-control"  name="error" type="text" id="error" value="5" onchange="errorHandler('error','meanError')">
-	    <p id = "meanError" data-error-type="errormessage"></p>
-	</div>
-	
+	<br><br>
+	<div class="row">
+		<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input type="hidden" name="FormType" value="Flux">
+					<h4>Template File (given in flux)</h4>
+					<input type="file" name="tempfile" id="tempfile">
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input type="hidden" name="FormType" value="Flux">
+					<h4>Template File Format</h4>
+					<input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked> Phase&nbsp;&nbsp;&nbsp;
+			    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"> Date
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input type="hidden" name="FormType" value="Flux">
+					<h4><span class="text-danger">*</span> Phase Offset</h4>
+					<input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
+			   <p id = "phaseError" data-error-type="errormessage"></p>
+				</div>
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input type="hidden" name="FormType" value="Flux">
+					<h4><span class="text-danger">*</span> Epoch of zero Phase</h4>
+					<input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
+			    <p id = "epochError" data-error-type="errormessage"></p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4>Observation File</h4>
+					<input type="file" name="obsfile" id="obsfile">
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4> Select Flux Magnitude</h4>
+					<select class="form-control" name="flux" id="flux">
+		        <option value="max">Maximum Magnitude</option>
+		        <option value="min">Minimum Magnitude</option>
+		      </select>
+					<br>
+					<input class="form-control" name="fluxvalue" type="text" id="fluxvalue" onchange="errorHandlerFlux('fluxvalue','fluxError')" required>
+		 	    <p id = "fluxError" data-error-type="errormessage"></p>
+				</div>
 
-	<div class="form-group">
-    <label for="sigma"><h5>Enter sigma for systematic noise (mag) :</h5></label>
-    <input class="form-control" type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
-	    <p id = "sigmaError" data-error-type="errormessage"></p>
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4><span class="text-danger">* </span> Period (days)</h4>
+					<input class="form-control" type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
+				    <p id = "periodError" data-error-type="errormessage"></p>
+				</div>
+
+
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4>Scale Factor</h4>
+					<input class="form-control" name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
+				    <p id = "scaleError" data-error-type="errormessage"></p>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4>Mean Error (mag)</h4>
+					<input class="form-control"  name="error" type="text" id="error" value="5" onchange="errorHandler('error','meanError')">
+				    <p id = "meanError" data-error-type="errormessage"></p>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4>Enter sigma for systematic noise (mag)</h4>
+					<input class="form-control" type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
+				    <p id = "sigmaError" data-error-type="errormessage"></p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input type="checkbox" name="poisson" id="poisson"> <span style="font-size:17px;">Poisson Noise?</span> <br>
+					<input type="checkbox" name="info" id="info"> <span style="font-size:17px;">Output noise info?</span>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4>Output Filename</h4>
+					<input class="form-control" name="filename" type="text" id="filename" value="model">
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<h4><span class="text-danger">*</span> Number of Lightcurve Observations</h4>
+					<input class="form-control" name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
+				    <p id = "numberError" data-error-type="errormessage"></p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+					<input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
+				<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
+				<br><br>
+				<footer>Last Update: 04/13/2017</footer>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-	<div class="checkbox">
-    <label><input type="checkbox" name="poisson" id="poisson">Poisson Noise?</label>
-	</div>
-	
-	<div class="checkbox">
-    <label><input type="checkbox" name="info" id="info">Output noise info?</label>
-	</div>
-  
-	<div class="form-group">
-    <label for="filename"><h5>Output filename:</h5></label>
-    <input class="form-control" name="filename" type="text" id="filename" value="model">
-	</div>
-	
-	<div class="form-group">
-    <label for="number"><h5>*Number of Lightcurve Observations:</h5></label>
-    <input class="form-control" name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
-	    <p id = "numberError" data-error-type="errormessage"></p>
-	</div>
-	
-    <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
-	<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
-  
+
 </form>
 
 <br><br>
-<footer>Last Update: 04/13/2017</footer>
+
 </div>
 </body>
 </html>

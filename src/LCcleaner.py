@@ -56,7 +56,7 @@ def getSize(folder): #Returns size in bytes of a directory
         #print(directorypath + '\n')
         for f in filenames:
             filepath = os.path.join(directorypath, f)
-            size = os.path.getsize(filepath) 
+            size = os.path.getsize(filepath)
             totalsize += size
     return totalsize
 

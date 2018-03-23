@@ -5,7 +5,7 @@ function errorHandlerFlux(inputID,outputID) {
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -19,7 +19,7 @@ function errorHandlerFlux(inputID,outputID) {
     catch(err) {
         error.innerHTML = "Input is " + err;
 		errorBoolean = true;
-    }	
+    }
 }
 
 
@@ -28,7 +28,7 @@ function errorHandlerRightAscension(inputID,outputID) {
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -39,7 +39,7 @@ function errorHandlerRightAscension(inputID,outputID) {
     catch(err) {
         error.innerHTML = "Input is " + err;
 		errorBoolean = true;
-    }	
+    }
 }
 
 
@@ -48,7 +48,7 @@ function errorHandlerRightDeclination(inputID,outputID) {
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -59,7 +59,7 @@ function errorHandlerRightDeclination(inputID,outputID) {
     catch(err) {
         error.innerHTML = "Input is " + err;
 		errorBoolean = true;
-    }	
+    }
 }
 
 
@@ -70,7 +70,7 @@ function errorHandlerPhase(inputID,outputID) {
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -88,7 +88,7 @@ function errorHandler(inputID,outputID) {
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -99,19 +99,30 @@ function errorHandler(inputID,outputID) {
     }
     catch(err) {
         error.innerHTML = "Input is " + err;
-		errorBoolean = true;
+		    errorBoolean = true;
     }
-	
-	
+
+
 
 }
+
+function fileHandler(id){
+  var check = document.getElementById(id).checked;
+  if(check){
+    console.log("checked");
+    var removeattr = document.getElementById("obsfile");
+    removeattr.removeAttribute("required");
+  }
+
+}
+
 
 function errorHandlerLightObs(inputID,outputID) {
     var error, x;
     error = document.getElementById(outputID);
     error.innerHTML = "";
     x = document.getElementById(inputID).value;
-    try { 
+    try {
         if(x == "")  throw "empty";
         if(isNaN(x)) throw "not a number";
         x = Number(x);
@@ -124,8 +135,8 @@ function errorHandlerLightObs(inputID,outputID) {
 		errorBoolean = true;
     }
 	}
-	
-	 
+
+
 	function validator()
 	{
 		if(errorBoolean) {
@@ -135,11 +146,9 @@ function errorHandlerLightObs(inputID,outputID) {
 			return true;
 		}
 	}
-	
+
 	function clearErrors()
 	{
 		location.reload();
-		
+
 	}
-
-

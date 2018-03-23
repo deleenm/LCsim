@@ -1,0 +1,23 @@
+/* common css ........................*/
+body {
+	background-color: #343A3F;
+
+}
+.container{
+	background-color : #F4F4F4;
+}
+
+.banner{
+	background-color: #EFEFEF;
+}
+
+.center-block {
+  float:none;
+}
+label:hover{
+  background-color: #343A3F;
+  color:white;
+  cursor: pointer;
+}
+/* For index.html only.....................*/
+/*For flux.html only...................... */

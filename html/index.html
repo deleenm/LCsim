@@ -6,208 +6,288 @@
 <title>LCsim</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<!-- custom stlesheet import -->
+<link rel="stylesheet" href="css/style.css">
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<!-- including fontawesome library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src ="js/errorHandlers.js"></script>
 <script src="js/interactive.js"></script>
-
-
-</head>
 <style type="text/css">
 
-body {
-	background-color: #343A3F;
-	position: relative;
-    left: 10px;
-}
 [data-error-type="errormessage"]{color: red;}
 
-div{background-color : #F4F4F4;}
-
 </style>
+</head>
+
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">LCSim</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-	  <li><a href="about.html">About</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li class="active"><a href="index.html">Mag</a></li>
-          <li><a href="flux.html">Flux</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="range.html">Mag</a></li>
-          <li><a href="fluxrange.html">Flux</a></li>
-        </ul>
-      </li>
-      <li><a href="opsim.html">Opsim</a></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Simple Models <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="active"><a href="index.html">Mag</a></li>
+            <li><a href="flux.html">Flux</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Variable Models <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="range.html">Mag</a></li>
+            <li><a href="fluxrange.html">Flux</a></li>
+          </ul>
+        </li>
+        <li><a href="opsim.html">Opsim</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+
+    </div>
   </div>
 </nav>
-
+<br><br>
 <div class="container">
-<br>
-<br>
-<p><img class="center-block" src="banner.jpg" width=75% height=25%  alt="banner"></p>
-<p> Sample Text Block</p>
+	<div class="row">
+		<div class=" col-lg-12 col-sm-12 col-md-12 col-xs-12">
+			<div align="center" class="banner">
+				<img src="images/LCsim_banner.png" alt="LCsim banner" width="75%">
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="container" style="border-top: 1px solid #DCDCDC ">
+
 <form action="../src/LCpage.py" method="post" enctype="multipart/form-data" name="form1" id="form1">
     <input type="hidden" name="FormType" value="Mag">
-	<br>
-        <div class="well well-lg">
-	<div class="form-group">
-            <label for="RadioGroup3_0"><h5><abbr title = "Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude."><span class="lead">Template</span></abbr></h5></label><br>
-    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="uploadTmp" checked> Upload Template &nbsp;&nbsp;&nbsp;
-    <input name="Tmpformat" type="radio" id="RadioGroup3_0" value="useTmp"> Use Existing Template
+		<br><br>
+		<div class="row">
+			<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+						<h4>Template <a href="#" data-toggle="tooltip" data-placement="right" title="Template files are two column files that describe the shape of your variable star. They can be normalized or not. The first column is Phase (from 0 to 1) or some type of Julian date (JD, MJD, HJD, BJD) and the second column should be magnitude.">
+							<i class="fa fa-info-circle" aria-hidden="true"></i></a>
+						</h4>
+						<input name="Tmpformat" type="radio" id="RadioGroup3_0" value="uploadTmp" checked> Upload Template <br>
+						<input type="file" name="tempfile" id="tempfile" >
+						<br>
+					<input name="Tmpformat" type="radio" id="RadioGroup3_1" value="useTmp">  Use Existing Template
+					<br>
+					<div class="templateTable">
+					<table id="tbl" class="table table-hover">
+					<thead><tr><th>File Name</th><th>Description</th><th>Ref_short</th><th>Reference</th></tr></thead>
+					<tbody></tbody>
+				</table>
+				</div>
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
+						<h4>Template File Format <a data-toggle="tooltip" data-placement="right" title="Select whether the first column of your template file is a phase or a Julian date.">
+							<i class="fa fa-info-circle" aria-hidden="true"></i></a>
+						</h4>
+						<input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked><abbr title = "Phase runs from 0 to 1."> Phase</abbr>&nbsp;&nbsp;&nbsp;
+						<input name="format" type="radio" id="RadioGroup1_0" value="fdate"><abbr title = "This is some type of Julian Date (JD, MJD, HJD, BJD, etc.). It should be the same kind of date as your observation file."> Date</abbr>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
+
+<div class="row">
+	<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+		<div class="row">
+					<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<h4><span class="text-danger">*</span> Phase Offset <a data-toggle="tooltip" data-placement="right" title="If you would like to offset your template by a certain phase. The default is zero, no offset.">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</a></h4>
+		<input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
+		<p id = "phaseError" data-error-type="errormessage"></p>
+			</div>
+
+			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<h4>Epoch Of Zero Phase <a data-toggle="tooltip" data-placement="right" title="The Julian Date (JD, MJD, HJD, BJD) of epoch 0. This should have the same type of date as your observation file.">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</a></h4>
+				<input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
+		    <p id = "epochError" data-error-type="errormessage"></p>
+			</div>
+		</div>
+		<hr>
 	</div>
 
-	<div class="form-group">
-    <input type="file" name="tempfile" id="tempfile" >
-    </div>
-	
-	
-	<div class="templateTable">
-	<table id="tbl" class="table table-hover">
-	<thead><tr><th>File Name</th><th>Description</th><th>Ref_short</th><th>Reference</th></tr></thead>
-	<tbody></tbody></table></div>
+</div>
 
-	<div class="form-group">
-            <label for="RadioGroup1_0"><br><h5><abbr title = "Select whether the first column of your template file is a phase or a Julian date." ><span class="lead">Template File Format:</span></abbr></h5></label><br>
-    <input name="format" type="radio" id="RadioGroup1_0" value="fphase" checked><abbr title = "Phase runs from 0 to 1."> Phase</abbr>&nbsp;&nbsp;&nbsp;
-    <input name="format" type="radio" id="RadioGroup1_0" value="fdate"><abbr title = "This is some type of Julian Date (JD, MJD, HJD, BJD, etc.). It should be the same kind of date as your observation file."> Date</abbr></label>
-        </div> </div>
-        <div class="well well-lg">
-	<div class="form-group">
-            <label for="phase"><h5><abbr title = "If you would like to offset your template by a certain phase. The default is zero, no offset."><span class="lead"><span class="text-danger">*</span> Phase offset:</span></abbr></h5></label>
-      <input class="form-control" name="phase" type="text" id="phase" value="0" onchange="errorHandlerPhase('phase','phaseError')" required>
-	   <p id = "phaseError" data-error-type="errormessage"></p>
+<div class="row">
+	<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+		<div class="row">
+			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<h4> Observation File <a data-toggle="tooltip" data-placement="right" title="This file gives a list of dates that you would like to simulate observations for. It can have 1, 2, or 3 columns.">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</a>
+				</h4>
+				<input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked> Upload &nbsp;&nbsp;&nbsp;
+		    <input name="Obsformat" type="radio" id="RadioGroup2_1" value="generateObs" onchange="fileHandler(this.id);"> Generate Using LCOpsim <br><br>
+				<input type="file" name="obsfile" id="obsfile" required>
+			</div>
+		</div>
+
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+		<div class="row">
+			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<div id="raLabel">
+					<h4><span class="text-danger">*</span> Right Ascension (degrees) </h4>
+					<input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
+				    <p id = "raError" data-error-type="errormessage"></p>
+				</div>
+			</div>
+			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<div id="decLabel">
+					<h4><span class="text-danger">*</span> Declination (degrees) </h4>
+					<input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" >
+				    <p id = "decError" data-error-type="errormessage"></p>
+				</div>
+			</div>
+			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				<div id="filterLabel">
+					<h4> Select </h4>
+					<select class="form-control" name="filter" id="filter">
+			      <option value="u">u</option>
+			      <option value="g">g</option>
+			      <option value="r">r</option>
+			      <option value="i">i</option>
+			      <option value="z">z</option>
+			      <option value="y">y</option>
+			      <option value="all" selected>All filters</option>
+			    </select>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+
+	<div class="row">
+		<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+			<div class="row">
+
+				<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+					<h4>Select Magnitude</h4>
+					<select class="form-control" name="mag" id="mag">
+		        <option value="max">Maximum Magnitude</option>
+		        <option value="min">Minimum Magnitude</option>
+		      </select>
+					<br>
+					<input class="form-control" name="magvalue" type="text" id="magvalue" value="10">
+				</div>
+
+				<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+					<h4><span class="text-danger">*</span> Period (days)</h4>
+					<input class="form-control" type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
+				    <p id = "periodError" data-error-type="errormessage"></p>
+				</div>
+
+			</div>
+			<hr>
+		</div>
 	</div>
 
-	<div class="form-group">
-    <label for="date"><h5><abbr title = "The Julian Date (JD, MJD, HJD, BJD) of epoch 0. This should have the same type of date as your observation file.">Epoch of zero Phase:</abbr></h5></label>
-      <input class="form-control" type="text" name="date" id="date" value="0" onchange="errorHandler('date','epochError')">
-	    <p id = "epochError" data-error-type="errormessage"></p>
-	</div>
-        </div>
+	 <div class="row">
+	 	<div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+	 		<div class="row">
+	 			<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+					<h4>Scale Factor</h4>
+					<input class="form-control" name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
+				    <p id = "scaleError" data-error-type="errormessage"></p>
+				</div>
 
-	<div class="form-group">
-	<label for="RadioGroup2_0"><br><h5><abbr title = "This file gives a list of dates that you would like to simulate observations for. It can have 1, 2, or 3 columns.">Observation File:</abbr></h5></label><br>
-    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="uploadObs" checked>Upload
-    <input name="Obsformat" type="radio" id="RadioGroup2_0" value="generateObs">Generate Using LCOpsim
-	</div>
+				<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+					<h4><span class="text-danger">* </span> Mean Error (mag)</h4>
+					<input class="form-control"  name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')" required>
+				    <p id = "meanError" data-error-type="errormessage"></p>
+				</div>
 
+				<div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+					<h4>Enter sigma for systematic noise (mag)</h4>
+					<input class="form-control" type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
+				    <p id = "sigmaError" data-error-type="errormessage"></p>
+				</div>
 
-	<div class="form-group">
-    <input type="file" name="obsfile" id="obsfile" >
-    </div>
-
-	<div class="form-group">
-    <label for="ra" id="raLabel">*Right Ascension (degrees):</label>
-    <input class="form-control" type="text" name="ra" id="ra" onchange="errorHandlerRightAscension('ra','raError')">
-	    <p id = "raError" data-error-type="errormessage"></p>
-	</div>
-
-	<div class="form-group">
-    <label for="dec" id="decLabel">*Declination (degrees):</label>
-    <input class="form-control"  type="text" name="dec" id="dec"onchange="errorHandlerRightDeclination('dec','decError')" >
-	    <p id = "decError" data-error-type="errormessage"></p>
-	</div>
-
-	<div class="form-group">
-    <label for="filter" id="filterLabel">Select:</label>
-    <select class="form-control" name="filter" id="filter">
-      <option value="u">u</option>
-      <option value="g">g</option>
-      <option value="r">r</option>
-      <option value="i">i</option>
-      <option value="z">z</option>
-      <option value="y">y</option>
-      <option value="all" selected>All filters</option>
-    </select>
+			</div>
+			<hr>
+		</div>
 	</div>
 
 
+	<div class="row">
+	 <div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+		 <div class="row">
+			 <div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				 <div class="checkbox">
+			     <label><input type="checkbox" name="poisson" id="poisson"><span style="font-size: 17px;">Poisson Noise?</span></label>
+			 	</div>
 
-	<div class="form-group">
-	<label for="period"><h5>*Period (days):</h5></label>
-    <input class="form-control" type="text" name="period" id="period" onchange="errorHandler('period','periodError')" required>
-	    <p id = "periodError" data-error-type="errormessage"></p>
-	</div>
-
-	<div class="form-group">
-	<span class="col-md-2 control-label">Select Magnitude:</span>
-      <div class="col-sm-5"><select class="form-control" name="mag" id="mag">
-        <option value="max">Maximum Magnitude</option>
-        <option value="min">Minimum Magnitude</option>
-      </select>
-	  </div>
-	<div class="col-sm-5">
-     <input class="form-control" name="magvalue" type="text" id="magvalue" value="10"></div>
-    </div>
-
-
-	<div class="form-group">
-    <label for="scale"><h5>Scale Factor:</h5></label>
-    <input class="form-control" name="scale" type="text" id="scale" value="1.0 " onchange="errorHandler('scale','scaleError')">
-	    <p id = "scaleError" data-error-type="errormessage"></p>
-	</div>
-
-	<div class="form-group">
-    <label for="error"><h5>*Mean Error (mag):</h5></label>
-    <input class="form-control"  name="error" type="text" id="error" value="0.01" onchange="errorHandler('error','meanError')" required>
-	    <p id = "meanError" data-error-type="errormessage"></p>
-	</div>
+			 	<div class="checkbox">
+			     <label><input type="checkbox" name="info" id="info"><span style="font-size: 17px;">Output noise info?</span></label>
+			 	</div>
+			 </div>
+		 </div>
+		 <hr>
+	 </div>
+ </div>
 
 
-	<div class="form-group">
-    <label for="sigma"><h5>Enter sigma for systematic noise (mag) :</h5></label>
-    <input class="form-control" type="text" name="sigma" id="sigma" value="0" onchange="errorHandler('sigma','sigmaError')">
-	    <p id = "sigmaError" data-error-type="errormessage"></p>
-	</div>
+	<div class="row">
+	 <div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+		 <div class="row">
+			 <div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				 <h4>Output Filename</h4>
+				 <input class="form-control" name="filename" type="text" id="filename" value="model">
+			 </div>
 
-	<div class="checkbox">
-    <label><input type="checkbox" name="poisson" id="poisson">Poisson Noise?</label>
-	</div>
+			 <div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+				 <h4><span class="text-danger">*</span> Number of Lightcurve Observations:</h4>
+				 <input class="form-control" name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
+		 	    <p id = "numberError" data-error-type="errormessage"></p>
+			 </div>
+		 </div>
+		 <hr>
+	 </div>
+ </div>
 
-	<div class="checkbox">
-    <label><input type="checkbox" name="info" id="info">Output noise info?</label>
-	</div>
+<div class="row">
+ <div class="col-lg-10 col-sm-12, col-md-10 col-xs-12 center-block">
+	 <div class="row">
+		 <div class="col-sm-5 col-lg-6 col-xs-5 col-md-6">
+			 <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
+	 	<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
+		<br><br>
+		<footer>Last Update: 08/04/2017</footer>
+		 </div>
+	 </div>
+ </div>
+</div>
 
-	<div class="form-group">
-    <label for="filename"><h5>Output filename:</h5></label>
-    <input class="form-control" name="filename" type="text" id="filename" value="model">
-	</div>
+</form>
 
-	<div class="form-group">
-    <label for="number"><h5>*Number of Lightcurve Observations:</h5></label>
-    <input class="form-control" name="number" type="text" id="number" value="1" onchange="errorHandlerLightObs('number','numberError')" required>
-	    <p id = "numberError" data-error-type="errormessage"></p>
-	</div>
-
-    <input class="btn btn-success btn-lg" type="submit" name="submit" id="submit" value="Submit" onclick="return validator()">&nbsp;&nbsp;
-	<input class="btn btn-danger btn-lg" type='reset' value='Clear' name='reset' onclick="clearErrors()">
-
-</form
 
 <br><br>
-<footer>Last Update: 08/04/2017</footer>
-
 </div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 #!/usr/local/lib/student/anaconda3/envs/LCsim/bin/python
-'''
-LCopsim.py querys an SQLite database to give filters and epochs in LSST for a
-given position.
-'''
+#'''
+#LCopsim.py querys an SQLite database to give filters and epochs in LSST for a
+#hello
+
 
 import cgi
 import cgitb
@@ -46,7 +46,7 @@ def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
     LSSTFieldDec_arr = np.array(LSSTFieldDec)
 
     form = cgi.FieldStorage()
-
+    #check for Right Ascension
     if(cra != None):
         ra = cra
     elif form.getvalue('ra'):
@@ -55,7 +55,7 @@ def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
     else:
         print('You must specify a Right Ascension. Please go back.')
         sys.exit(0)
-
+    #check for declination
     if(cdec != None):
         dec = cdec
     elif form.getvalue('dec'):
@@ -118,7 +118,7 @@ def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
     if csilent == False:
 
         print('<table align="center" border="1">')
-        print("<tr><th colspan='2'>Field:{} RA: {:.3f} Dec: {:.3f} Dist: {:.3f}</th></tr>".format(fieldId,fieldRa,fieldDec,fieldSep))
+        print("<tr><th colspan='2'> Field:{} RA: {:.3f} Dec: {:.3f} Dist: {:.3f}</th></tr>".format(fieldId,fieldRa,fieldDec,fieldSep))
         print("<tr><th>Filter</th><th>MJD</th></tr>")
 
         if len(LSSTFieldFilter_arr) == 0:
@@ -128,7 +128,7 @@ def LCopsim_main(cra,cdec,cfiltr,cobsfile,csilent):
             for i in range(len(LSSTFieldFilter_arr)):
                 print("<tr><td>{}</td><td>{}</td></tr>".format(LSSTFieldFilter_arr[i],LSSTFieldDate_arr[i]))
 
-        print("</table>")
+        print("</table><br><br><br>")
 
     if obsfile != None:
         try:
@@ -162,60 +162,92 @@ if __name__ == '__main__':
         #Prepare webpage
         print("Content-type: text/html")
         print()
-        print('''<html>
-        <head>
-        <meta charset="UTF-8">
-        <title>LCOpsim Results</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        print('''<!doctype html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>LCsim</title>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <style type="text/css">
+                    <!-- Latest compiled and minified CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                    <!-- custom stlesheet import -->
+                    <link rel="stylesheet" href="../html/css/style.css">
+                    <!-- jQuery library -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-body {
-	background-color: #343A3F;
-	position: relative;
-    left: 10px;
-}
-[data-error-type="errormessage"]{color: red;}
+                    <!-- Latest compiled JavaScript -->
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-div{background-color : #F4F4F4;}
+                    <script src ="js/errorHandlers.js"></script>
 
-</style>
-        </head>
+                    <style type="text/css">
 
-        <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#"></a>
-            </div>
-            <ul class="nav navbar-nav">
-              <li><a href="../html/index.html">Home</a></li>
-              <li><a href="../html/about.html">About</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Simple Models
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="../html/index.html">Mag</a></li>
-                  <li><a href="../html/flux.html">Flux</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" type ="button" href="#">Variable Models
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="../html/range.html">Mag</a></li>
-                  <li><a href="../html/fluxrange.html">Flux</a></li>
-                </ul>
-              </li>
-              <li class="active"><a href="../html/opsim.html">Opsim</a></li>
-            </ul>
-          </div>
-        </nav><br><br>
-        <div class="container">
-        <p><img src="../html/banner.jpg" width="600" height="199"  alt="" style="margin:auto;display:block"/></p>
+
+                    [data-error-type="errormessage"]{color: red;}
+
+                    </style>
+                </head>
+
+    <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+    	<div class="container-fluid">
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    			<a class="navbar-brand" href="#">LCSim</a>
+    		</div>
+    		<div class="collapse navbar-collapse" id="myNavbar">
+    			<ul class="nav navbar-nav">
+    				<li><a href="../html/index.html">Home</a></li>
+    				<li class="dropdown">
+    					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Simple Models <span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+    						<li><a href="../html/index.html">Mag</a></li>
+    						<li><a href="../html/flux.html">Flux</a></li>
+    					</ul>
+    				</li>
+    				<li class="dropdown">
+    					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Variable Models <span class="caret"></span></a>
+    					<ul class="dropdown-menu">
+    						<li><a href="../html/range.html">Mag</a></li>
+    						<li><a href="../html/fluxrange.html">Flux</a></li>
+    					</ul>
+    				</li>
+    				<li class="active"><a href="../html/opsim.html">Opsim</a></li>
+    				<li><a href="../html/about.html">About</a></li>
+    			</ul>
+
+    		</div>
+    	</div>
+    	</nav>
+    	<br><br>
+      <div class="container">
+    		<div class="row">
+    			<div class=" col-lg-12 col-sm-12 col-md-12 col-xs-12">
+    				<div align="center" class="banner">
+    					<img src="../html/images/LCsim_banner.png" alt="LCsim banner" width="75%">
+    				</div>
+
+    			</div>
+    		</div>
+    	</div>
+
+          <div class="container" style="border-top: 1px solid #DCDCDC ">
+        <br><br>
+        <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 center-block">
+            <button type="button" class="btn btn-success">Download CSV</button>
+        </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class= "col-lg-6 col-md-6 col-sm-12 col-xs-12 center-block">
+                <div style="height: 420px; overflow: auto;">
+
 
         ''')
 
@@ -224,4 +256,4 @@ div{background-color : #F4F4F4;}
     sys.exit(ret)
 
     if args['s'] == False:
-        print(" </div> </body> </html>")
+        print("</div> </div> </div> </div> </body> </html>")

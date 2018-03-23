@@ -13,7 +13,7 @@ $("#filterLabel").hide();
 
     $('input:radio[name="Obsformat"]').change(function(){
 		$("#test").append($('input[name ="Obsformat"]:checked').val());
-		
+
 		if ($('input[name ="Obsformat"]:checked').val() == 'uploadObs'){
 		 $("#ra").hide();
 		 $("#dec").hide();
@@ -22,7 +22,7 @@ $("#filterLabel").hide();
 		 $("#decLabel").hide();
 		 $("#filterLabel").hide();
 		 $("#obsfile").show();
-		 
+
 		 }
 		else if ($('input[name ="Obsformat"]:checked').val() == 'generateObs'){
 			$("#obsfile").hide();
@@ -32,24 +32,24 @@ $("#filterLabel").hide();
 			$("#raLabel").show();
 			$("#decLabel").show();
 			$("#filterLabel").show();
-			} 
-		
+			}
+
     });
-	
+
 $('input:radio[name="Tmpformat"]').change(function(){
 		$("#test").append($('input[name ="Tmpformat"]:checked').val());
-		
+
 		if ($('input[name ="Tmpformat"]:checked').val() == 'uploadTmp'){
 		 $("#tempfile").show();
 		 $(".templateTable").hide();
 		 $('table#tbl TBODY').empty();
-		 
+
 		 }
 		else if ($('input[name ="Tmpformat"]:checked').val() == 'useTmp'){
 			$("#tempfile").hide();
 			$("#dropDownDest").empty();
 			 $(".templateTable").show();
-			
+
 			var json = {"definitions": [
   {
 	"fileName" : "layden98_algol.templ",
@@ -107,13 +107,13 @@ $('input:radio[name="Tmpformat"]').change(function(){
   }
 ]};
 
-	$.each(json.definitions, function (key, value) 
+	$.each(json.definitions, function (key, value)
 	{
     $('table#tbl TBODY').append('<tr><td><label><input type="radio" id="RadioGroup4_0" value= "'+value.fileName+'" name="optradio">'+' '+value.fileName+'</label></td><td>' +value.description +' </td><td> ' +value.ref_short +'</td><td> '+value.reference +'</td></tr>');
     });
 };
 
-    
+
 }
 
 );});
