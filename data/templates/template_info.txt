@@ -1,12 +1,12 @@
-#Filename,		Description,			Ref_short	Reference
-layden98_algol.templ,	Algol Eclipsing Binary, 	Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRa1.templ,	RRab RR Lyrae,	 		Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRa2.templ,	RRab RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRa3.templ,	RRab RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193`
-layden98_RRb1.templ, 	RRab RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRb2.templ,	RRab RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRb3.templ,	RRab RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_RRc.templ,	RRc RR Lyrae,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_sin.templ,	Pure Sine Wave,			Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-layden98_w_uma.templ,	W Ursae Majoris Eclipsing Binary	Layden (1998),	Layden, A.C. 1998, AJ, 115, 193
-
+#Filename|		Description|			Ref_short|	Reference
+layden98_algol.templ|	Algol Eclipsing Binary| 	Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRa1.templ|	RRab RR Lyrae|	 		Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRa2.templ|	RRab RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRa3.templ|	RRab RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193`
+layden98_RRb1.templ| 	RRab RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRb2.templ|	RRab RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRb3.templ|	RRab RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_RRc.templ|	RRc RR Lyrae|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_sin.templ|	Pure Sine Wave|			Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+layden98_w_uma.templ|	W Ursae Majoris Eclipsing Binary|	Layden (1998)|	Layden, A.C. 1998, AJ, 115, 193
+test.templ|		This is a test			|	short|	No reference at all
