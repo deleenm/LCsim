@@ -89,12 +89,16 @@ def LCmain_date(args):
 
                 period = ''
 
-                #Create initial model
-                main_model = LCsim.LCsim_model(args.templatefile, amp, args.d, args.e,
-                                              args.o, period, phase, args.max, args.z, args.flux)
 
+                #Create initial model
+                orig_model = LCsim.LCsim_model(args.templatefile, amp, args.d, args.e,
+                                              args.o, period, phase, args.max, args.z, args.flux)
+                    
 
                 for i in range(int(args.n)):
+
+                    #Make copy of orig_model to process
+                    main_model = np.copy(orig_model)
 
                     #Set output file type
                     file = args.f+'{num:05d}'.format(num=i+number)+'.cur'
@@ -197,10 +201,13 @@ def LCmain_main(args):
                     args.flux = None
 
                 #Create initial model
-                main_model = LCsim.LCsim_model(args.templatefile, amp, args.d, args.e,
+                orig_model = LCsim.LCsim_model(args.templatefile, amp, args.d, args.e,
                                               args.o, period, phase, args.max, args.z, args.flux)
 
                 for i in range(int(args.n)):
+
+                    #Make copy of orig_model to process
+                    main_model = np.copy(orig_model)
 
                     #Set output file type
                     file = args.f+'{num:05d}'.format(num=i+number)+'.cur'

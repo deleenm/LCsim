@@ -33,7 +33,7 @@ def LCcleaner():
 
     folder = '../storage3/'
     cleandays = 5
-    maxsize = 10 * 1000000 #10 MB max size for storage3
+    maxsize = 100 * 1000000 #100 MB max size for storage3
     maxdeltatime =  datetime.timedelta(hours=24*cleandays)
     for directory in os.listdir(folder):
         curpath = os.path.join(folder, directory)
